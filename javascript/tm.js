@@ -8,16 +8,18 @@ let currentState = "find_food";
 function startSimulation() {
     const tapeInput = document.getElementById("tapeInput").value;
 
-    // Check if input starts with 'd' and is of correct length
-    if (tapeInput[0] !== 'd' || tapeInput.length > 10) {
-        alert("Tape must start with 'd' and have a maximum length of 10.");
+    // Validate user input to ensure it only contains '0' and 'F'
+    if (!/^[0F]*$/.test(tapeInput)) {
+        alert("Tape can only contain the characters '0' and 'F'.");
         return;
     }
 
-    // Initialize tape and display it
-    tape = tapeInput.split("");
+    // Initialize tape: Add duck ('d') at the beginning and a goal ('G') at the end
+    tape = ['d', ...tapeInput.split(""), 'G'];
     headPosition = 0;
     currentState = "find_food";
+
+    // Display the tape
     displayTape();
     
     // Show "Next Step" button
@@ -32,15 +34,15 @@ function displayTape() {
     tape.forEach((cell, index) => {
         const cellElement = document.createElement("span");
         cellElement.className = "tape-cell";
-        cellElement.textContent = cell;
-        
+        cellElement.textContent = cell === 'G' ? ' ' : cell; // Display goal 'G' as a blank space for the user
+
         // Highlight the cell at the head position
         if (index === headPosition) {
             cellElement.style.border = "2px solid #ffcb05";
             cellElement.style.backgroundColor = "#ffcb05";
             cellElement.style.color = "#00274c";
         }
-        
+
         tapeContainer.appendChild(cellElement);
     });
 }
@@ -57,12 +59,12 @@ function nextStep() {
                 headPosition--; // Move left
             } else if (currentSymbol === '0' || currentSymbol === 'd') {
                 headPosition++; // Move right
-            } else if (currentSymbol === ' ') {
+            } else if (currentSymbol === 'G') {
                 currentState = "prepare_to_end";
                 headPosition--; // Move left
             }
             break;
-        
+
         case "back_to_duck":
             if (currentSymbol === 'd') {
                 currentState = "find_food";
@@ -77,7 +79,7 @@ function nextStep() {
                 tape[headPosition] = '1';  // Overwrite with '1'
                 headPosition--; // Move left
             } else if (currentSymbol === 'd') {
-                tape[headPosition] = 'D';  // Duck is full
+                tape[headPosition] = 's';  // Duck is full
                 currentState = "duck_can_walk";
                 headPosition++; // Move right
             }
@@ -87,13 +89,13 @@ function nextStep() {
             if (currentSymbol === '1') {
                 tape[headPosition] = 's';  // Duck steps
                 headPosition++; // Move right
-            } else if (currentSymbol === ' ') {
-                currentState = "win";
+            } else if (currentSymbol === 'G') {
+                currentState = "happy";
             }
             break;
 
-        case "win":
-            alert("The duck has reached the end!");
+        case "happy":
+            alert("The duck has reached the goal!");
             document.getElementById("nextStep").style.display = "none"; // Hide "Next Step" button
             return;
 

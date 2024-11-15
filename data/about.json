@@ -59,6 +59,16 @@
                 "Conducted error analysis and applied data cleaning, improving model reliability and outcomes.",
                 "Initiated data augmentation techniques, achieving performance gains that supported key objectives."
             ]
+        },
+        {
+            "organization": "English Language Institute, University of Michigan",
+            "start_date": "Sept 2022",
+            "end_date": "Oct 2022",
+            "role": "Undergraduate Consultant",
+            "details": [
+                "Provided prospective GSIs with feedback on the quality of their instruction in areas such as lesson delivery, comprehensibility, vocabulary selection, body language, and lesson environment.",
+                "Engaged with multilingual speakers from a variety of countries and LSA disciplines including economics, sociology, linguistics, history, biology, earth science, etc."
+            ]
         }
     ],
     "teaching_experience": [
@@ -80,16 +90,6 @@
             "role": "Tutor",
             "details": [
                 "Provided walk-in tutoring for Calculus I, II, Multivariable and Vector Calculus, Linear Algebra, and Probability."
-            ]
-        },
-        {
-            "organization": "English Language Institute, University of Michigan",
-            "start_date": "Sept 2022",
-            "end_date": "Oct 2022",
-            "role": "Undergraduate Consultant",
-            "details": [
-                "Provided prospective GSIs with feedback on the quality of their instruction in areas such as lesson delivery, comprehensibility, vocabulary selection, body language, and lesson environment.",
-                "Engaged with multilingual speakers from a variety of countries and LSA disciplines including economics, sociology, linguistics, history, biology, earth science, etc."
             ]
         }
     ]
