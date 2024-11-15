@@ -1,0 +1,187 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f2f4f8;
+}
+
+/* Links */
+a {
+    color: #00274c; /* Michigan Blue */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+a:hover {
+    color: #ffcb05; /* Michigan Maize */
+    border-bottom: 1px solid #ffcb05;
+}
+
+/* Header and Footer */
+header, footer {
+    background-color: #00274c;
+    color: white;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 1.2rem;
+}
+
+nav a {
+    color: white;
+    font-weight: bold;
+}
+
+/* Sticky Footer */
+footer {
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #ffcb05;
+    color: #00274c;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    max-width: 900px;
+    margin: 3rem auto;
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* Floating Elements for Interactivity */
+.floating-objects {
+    position: relative;
+}
+
+.floating-object {
+    position: absolute;
+    opacity: 0.1;
+    animation: floatAnimation 5s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Links Section for Projects and Other Buttons */
+.links a {
+    display: inline-block;
+    margin: 1rem;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid #00274c;
+    border-radius: 5px;
+    color: #00274c;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.links a:hover {
+    background-color: #00274c;
+    color: white;
+}
+
+/* Profile Picture Styling */
+.profile-picture {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #ffcb05;
+    margin-bottom: 1rem;
+}
+
+/* About Page Sections */
+section {
+    margin: 2rem auto;
+    padding: 2rem 1.5rem;
+    max-width: 800px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+section h2 {
+    font-size: 1.8rem;
+    color: #00274c;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Grid for Project Items */
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+/* Individual Project Item */
+.project-item {
+    background: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+}
+
+/* About Header */
+.about-header {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.about-header h1 {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+    color: #00274c;
+}
+
+.about-header p {
+    font-size: 1rem;
+    margin: 0.2rem 0;
+    color: #555;
+}

@@ -1,0 +1,96 @@
+{
+    "user": {
+        "name": "Eric Khiu",
+        "address": "1317 Wilmot St Apt 1, Ann Arbor, MI 48104",
+        "email": "erickhiu@umich.edu",
+        "phone": "+1 (734) 510-1866",
+        "linkedin_url": "https://linkedin.com/in/eric-khiu-224499145",
+        "website_url": "https://sites.google.com/umich.edu/erickhiu/"
+    },
+    "education": [
+        {
+            "institution": "University of Michigan, Ann Arbor",
+            "start_date": "Aug 2021",
+            "end_date": "Present",
+            "degree": "B.S. Computer Science, Data Science, and Mathematics",
+            "gpa": "3.86",
+            "graduation_date": "May 2025",
+            "course_highlights": []
+        }
+    ],
+    "skills": {
+        "programming_languages": "Python, C++, C, R, HTML, JavaScript",
+        "python_packages": "TensorFlow, PyTorch, Numpy, Pandas, Scipy, Sklearn, Matplotlib, Flask, React",
+        "languages": "Fluent in English, Chinese, and Malay; Beginner in Japanese and Korean",
+        "tools": "Visual Studio Code, Git Repository, Google Colab, Ubuntu, Adobe Premiere Pro"
+    },
+    "research_experience": [
+        {
+            "organization": "The Fields Institute for Research in Mathematical Sciences, University of Toronto",
+            "start_date": "May 2023",
+            "end_date": "Present",
+            "role": "Research Team Lead",
+            "details": [
+                "Research Focus: Multilingual NLP for low-resource languages, emphasizing the intersection of mathematics, social science, and machine learning.",
+                "Conducted studies on linguistic data integrity and reproducibility in typological databases.",
+                "Performed regression analysis to explore influential factors on machine translation performance."
+            ]
+        },
+        {
+            "organization": "Research on Teaching Mathematics in Undergraduate Settings (RTMUS) Lab",
+            "start_date": "Sept 2022",
+            "end_date": "Dec 2023",
+            "role": "Undergraduate Research Assistant",
+            "project": "Undergraduate Teaching and Learning in Mathematics with Open Software and Textbook (UTMOST3)",
+            "details": [
+                "Developed interactive textbooks that better support teaching and learning of undergraduate mathematics.",
+                "Designed frameworks to analyze students' responses to the reading questions embedded in textbooks."
+            ]
+        }
+    ],
+    "work_experience": [
+        {
+            "organization": "Pantas Malaysia",
+            "start_date": "July 2024",
+            "end_date": "Aug 2024",
+            "role": "Full Stack Data Scientist Intern",
+            "details": [
+                "Researched and developed language model-driven solutions, enhancing data classification accuracy and effectiveness.",
+                "Conducted error analysis and applied data cleaning, improving model reliability and outcomes.",
+                "Initiated data augmentation techniques, achieving performance gains that supported key objectives."
+            ]
+        }
+    ],
+    "teaching_experience": [
+        {
+            "organization": "Computer Science and Engineering (CSE), University of Michigan",
+            "start_date": "Jan 2024",
+            "end_date": "Present",
+            "role": "Instructional Aide",
+            "course": "EECS 376: Foundations of Computer Science",
+            "details": [
+                "Facilitate weekly discussion sections and hold office hours for EECS 376.",
+                "Course topics: Algorithm design, computability (finite automata, Turing Machines, Turing reductions), complexity theory (P & NP, NP-hard, NP-Completeness, heuristics), cryptography (Diffie-Helman, RSA)."
+            ]
+        },
+        {
+            "organization": "Math Learning Center, University of Michigan",
+            "start_date": "Sept 2022",
+            "end_date": "Oct 2022",
+            "role": "Tutor",
+            "details": [
+                "Provided walk-in tutoring for Calculus I, II, Multivariable and Vector Calculus, Linear Algebra, and Probability."
+            ]
+        },
+        {
+            "organization": "English Language Institute, University of Michigan",
+            "start_date": "Sept 2022",
+            "end_date": "Oct 2022",
+            "role": "Undergraduate Consultant",
+            "details": [
+                "Provided prospective GSIs with feedback on the quality of their instruction in areas such as lesson delivery, comprehensibility, vocabulary selection, body language, and lesson environment.",
+                "Engaged with multilingual speakers from a variety of countries and LSA disciplines including economics, sociology, linguistics, history, biology, earth science, etc."
+            ]
+        }
+    ]
+}

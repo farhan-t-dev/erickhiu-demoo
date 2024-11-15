@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Eric Khiu</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Include header -->
+    <div id="header-placeholder"></div>
+    
+    <main>
+        <section class="about-header">
+            <img src="assets/images/headshot.png" alt="Eric Khiu" class="profile-picture">
+            <h1 id="name"></h1>
+            <p id="address"></p>
+            <p><a id="email" href="#"></a></p>
+            <p id="phone"></p>
+            <p><a id="linkedin" target="_blank">LinkedIn</a> | <a id="website" target="_blank">Website</a></p>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+        </section>
+
+        <section id="research-experience">
+            <h2>Research Experience</h2>
+        </section>
+
+        <section id="work-experience">
+            <h2>Work Experience</h2>
+        </section>
+
+        <section id="teaching-experience">
+            <h2>Teaching Experience</h2>
+        </section>
+    </main>
+
+    <!-- Include footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Function to dynamically load templates
+        async function loadTemplate(id, path) {
+            const response = await fetch(path);
+            const text = await response.text();
+            document.getElementById(id).innerHTML = text;
+        }
+
+        // Load header and footer
+        loadTemplate('header-placeholder', 'templates/header.html');
+        loadTemplate('footer-placeholder', 'templates/footer.html');
+
+        // Load and render about data
+        async function loadAboutData() {
+            const response = await fetch('data/about.json'); // Ensure JSON is in the 'data' folder
+            const data = await response.json();
+
+            // Populate user info
+            document.getElementById('name').textContent = data.user.name;
+            document.getElementById('address').textContent = data.user.address;
+            document.getElementById('email').textContent = data.user.email;
+            document.getElementById('email').href = `mailto:${data.user.email}`;
+            document.getElementById('phone').textContent = `Phone: ${data.user.phone}`;
+            document.getElementById('linkedin').href = data.user.linkedin_url;
+            document.getElementById('website').href = data.user.website_url;
+
+            // Populate education
+            const educationContainer = document.getElementById('education');
+            data.education.forEach(edu => {
+                const eduDiv = document.createElement('div');
+                eduDiv.innerHTML = `
+                    <h3>${edu.institution}</h3>
+                    <p>${edu.degree} (${edu.start_date} - ${edu.end_date})</p>
+                    <p>GPA: ${edu.gpa}</p>
+                `;
+                educationContainer.appendChild(eduDiv);
+            });
+
+            // Populate skills
+            const skillsContainer = document.getElementById('skills');
+            skillsContainer.innerHTML = `
+                <p><strong>Programming Languages:</strong> ${data.skills.programming_languages}</p>
+                <p><strong>Python Packages:</strong> ${data.skills.python_packages}</p>
+                <p><strong>Languages:</strong> ${data.skills.languages}</p>
+                <p><strong>Tools:</strong> ${data.skills.tools}</p>
+            `;
+
+            // Populate research experience
+            const researchContainer = document.getElementById('research-experience');
+            data.research_experience.forEach(research => {
+                const researchDiv = document.createElement('div');
+                researchDiv.innerHTML = `
+                    <h3>${research.organization}</h3>
+                    <p>${research.role} (${research.start_date} - ${research.end_date})</p>
+                    <ul>
+                        ${research.details.map(detail => `<li>${detail}</li>`).join('')}
+                    </ul>
+                `;
+                researchContainer.appendChild(researchDiv);
+            });
+
+            // Populate work experience
+            const workContainer = document.getElementById('work-experience');
+            data.work_experience.forEach(work => {
+                const workDiv = document.createElement('div');
+                workDiv.innerHTML = `
+                    <h3>${work.organization}</h3>
+                    <p>${work.role} (${work.start_date} - ${work.end_date})</p>
+                    <ul>
+                        ${work.details.map(detail => `<li>${detail}</li>`).join('')}
+                    </ul>
+                `;
+                workContainer.appendChild(workDiv);
+            });
+
+            // Populate teaching experience
+            const teachingContainer = document.getElementById('teaching-experience');
+            data.teaching_experience.forEach(teaching => {
+                const teachingDiv = document.createElement('div');
+                teachingDiv.innerHTML = `
+                    <h3>${teaching.organization}</h3>
+                    <p>${teaching.role} (${teaching.start_date} - ${teaching.end_date})</p>
+                    <p>${teaching.course ? `Course: ${teaching.course}` : ''}</p>
+                    <ul>
+                        ${teaching.details.map(detail => `<li>${detail}</li>`).join('')}
+                    </ul>
+                `;
+                teachingContainer.appendChild(teachingDiv);
+            });
+        }
+
+        // Call the function
+        loadAboutData();
+    </script>
+</body>
+</html>

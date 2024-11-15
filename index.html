@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Khiu - Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Include header -->
+    <div id="header-placeholder"></div>
+    
+    <main>
+        <section class="hero">
+            <h2>Have you ever wondered how computers really "think"?</h2>
+            <p>They’re powerful tools, capable of solving incredible problems—but to unlock their full potential, we need to understand how they view the world and what they can do with that perspective. That’s what drives me.</p>
+            <p>I want to exploit this power to solve problems—whether it’s analyzing data to predict trends, applying math to financial models, or using computational linguistics to understand and bridge human languages.</p>
+        </section>
+    </main>
+
+    <!-- Include footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Function to dynamically load templates
+        async function loadTemplate(id, path) {
+            const response = await fetch(path);
+            const text = await response.text();
+            document.getElementById(id).innerHTML = text;
+        }
+
+        // Load header and footer
+        loadTemplate('header-placeholder', 'templates/header.html');
+        loadTemplate('footer-placeholder', 'templates/footer.html');
+    </script>
+</body>
+</html>
