@@ -16,6 +16,16 @@
             <p>They’re powerful tools, capable of solving incredible problems—but to unlock their full potential, we need to understand how they view the world and what they can do with that perspective. That’s what drives me.</p>
             <p>I want to exploit this power to solve problems—whether it’s analyzing data to predict trends, applying math to financial models, or using computational linguistics to understand and bridge human languages.</p>
         </section>
+
+        <!-- Turing Machine Section -->
+        <section id="turing-machine">
+            <h3>Interactive Turing Machine Simulation</h3>
+            <label for="tapeInput">Enter a tape (starting with 'd', max length 10):</label>
+            <input type="text" id="tapeInput" maxlength="10" placeholder="Example: d0F0F0F">
+            <button id="startSimulation">Start Simulation</button>
+            <div id="tapeContainer"></div>
+            <button id="nextStep" style="display: none;">Next Step</button>
+        </section>
     </main>
 
     <!-- Include footer -->
@@ -32,6 +42,16 @@
         // Load header and footer
         loadTemplate('header-placeholder', 'templates/header.html');
         loadTemplate('footer-placeholder', 'templates/footer.html');
+    </script>
+
+    <!-- Link to the Turing Machine JavaScript file -->
+    <script src="javascript/tm.js"></script>
+
+    <!-- Event Listener for Start Simulation button -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("startSimulation").addEventListener("click", startSimulation);
+        });
     </script>
 </body>
 </html>

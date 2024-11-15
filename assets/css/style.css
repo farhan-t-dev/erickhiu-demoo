@@ -43,12 +43,18 @@ header h1 {
 
 nav {
     display: flex;
-    gap: 1.2rem;
+    gap: 1.2rem; /* Space between navigation links */
 }
 
 nav a {
     color: white;
     font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffcb05; /* Hover color */
 }
 
 /* Sticky Footer */
@@ -184,4 +190,18 @@ section h2 {
     font-size: 1rem;
     margin: 0.2rem 0;
     color: #555;
+}
+
+.tape-cell {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 2px;
+    font-weight: bold;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
 }
