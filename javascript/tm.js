@@ -5,6 +5,16 @@ let tape = [];
 let headPosition = 0;
 let currentState = "find_food";
 
+// Emoji mapping
+const emojis = {
+    d: "🦆", // Duck
+    F: "🌾", // Food
+    G: "🌊", // Goal
+    s: "🐾", // Footsteps
+    0: "🟫", // Soil
+    1: "💧"  // Water
+};
+
 function startSimulation() {
     const tapeInput = document.getElementById("tapeInput").value;
 
@@ -34,7 +44,7 @@ function displayTape() {
     tape.forEach((cell, index) => {
         const cellElement = document.createElement("span");
         cellElement.className = "tape-cell";
-        cellElement.textContent = cell === 'G' ? ' ' : cell; // Display goal 'G' as a blank space for the user
+        cellElement.textContent = emojis[cell] || cell; // Map to emoji or show as-is
 
         // Highlight the cell at the head position
         if (index === headPosition) {
