@@ -281,6 +281,20 @@ function drawStateDiagram() {
         .attr("d", "M0,-5L10,0L0,5")
         .attr("fill", "#666");
 
+    // Add highlighted arrowhead
+    svg.append("defs")
+        .append("marker")
+        .attr("id", "highlight-arrow")
+        .attr("viewBox", "0 -5 10 10")
+        .attr("refX", 10)
+        .attr("refY", 0)
+        .attr("markerWidth", 6)
+        .attr("markerHeight", 6)
+        .attr("orient", "auto")
+        .append("path")
+        .attr("d", "M0,-5L10,0L0,5")
+        .attr("fill", stateColors.transition); // Use transition color
+
     highlightCurrentState();
 }
 
@@ -302,13 +316,15 @@ function highlightCurrentState() {
         // Temporarily change the color of the arrow
         activeLine
             .attr("stroke", stateColors.transition)
-            .attr("stroke-width", 3);
+            .attr("stroke-width", 3)
+            .attr("marker-end", "url(#highlight-arrow)");
 
         // Reset the color after 0.5 seconds
         setTimeout(() => {
             activeLine
                 .attr("stroke", "#666")
-                .attr("stroke-width", 2);
+                .attr("stroke-width", 2)
+                .attr("marker-end", "url(#arrow)"); 
         }, 500);
     }
 }
@@ -363,38 +379,17 @@ function nextStep() {
                 headPosition++; // Move right
             } else if (currentSymbol === 'G') {
                 currentState = "qh";
-                alert("The duck has reached the goal!");
             }
             break;
 
         case "qh":
+            alert("The duck has reached the goal!");
             document.getElementById("nextStep").style.display = "none"; // Hide "Next Step" button
             return;
 
         default:
             break;
     }
-
-    // // Identify the active transition
-    // const activeTransition = transitions.find(
-    //     t => t.from === previousState && t.to === currentState
-    // );
-
-    // if (activeTransition) {
-    //     const activeLine = d3.select(`.transition-${activeTransition.from}-${activeTransition.to}`);
-
-    //     // Temporarily change the color of the arrow
-    //     activeLine
-    //         .attr("stroke", stateColors.transition)
-    //         .attr("stroke-width", 3);
-
-    //     // Reset the color after 0.5 seconds
-    //     setTimeout(() => {
-    //         activeLine
-    //             .attr("stroke", "#666")
-    //             .attr("stroke-width", 2);
-    //     }, 500);
-    // }
 
     // Update tape and state display after each step
     displayTape();
