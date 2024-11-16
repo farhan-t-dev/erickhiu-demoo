@@ -11,7 +11,7 @@ const emojis = {
     F: "🐛", // Food (Fish)
     G: "🌊", // Goal
     s: "🐾", // Footsteps
-    0: "🟫", // Obstacle
+    0: "🟫", // Soil
     1: "💧"  // Water (Path)
 };
 
@@ -324,6 +324,7 @@ function nextStep() {
                 currentState = "q1";
                 headPosition--; // Move left
             } else if (currentSymbol === '0' || currentSymbol === 'd') {
+                currentState = "q0";
                 headPosition++; // Move right
             } else if (currentSymbol === 'G') {
                 currentState = "q2";
@@ -335,7 +336,8 @@ function nextStep() {
             if (currentSymbol === 'd') {
                 currentState = "q0";
                 headPosition++; // Move right
-            } else {
+            } else if (currentSymbol === '0') {
+                currentState = "q1";
                 headPosition--; // Move left
             }
             break;
@@ -357,11 +359,11 @@ function nextStep() {
                 headPosition++; // Move right
             } else if (currentSymbol === 'G') {
                 currentState = "qh";
+                alert("The duck has reached the goal!");
             }
             break;
 
         case "qh":
-            alert("The duck has reached the goal!");
             document.getElementById("nextStep").style.display = "none"; // Hide "Next Step" button
             return;
 
