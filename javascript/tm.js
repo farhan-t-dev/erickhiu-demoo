@@ -4,6 +4,7 @@ document.getElementById("nextStep").addEventListener("click", nextStep);
 let tape = [];
 let headPosition = 0;
 let currentState = "q0";
+let previousState = "q0";
 
 // Emoji mapping
 const emojis = {
@@ -128,7 +129,7 @@ function drawStateDiagram() {
 
         if (fromState.id === toState.id) {
             // For q0 (find_food) and q2 (prepare_to_end)
-            if (fromState.id === "q0" | fromState.id === "q2"){
+            if (fromState.id === "q0" || fromState.id === "q2"){
                 svg.append("path")
                 .attr(
                     "d",
@@ -176,7 +177,7 @@ function drawStateDiagram() {
 
         } else {
             // For q0 (find food) to q2 (prepare to end)
-            if (fromState.id === "q0" & toState.id === "q2"){
+            if (fromState.id === "q0" && toState.id === "q2"){
                 svg.append("line")
                 .attr("x1", fromState.x + dx / 10)
                 .attr("y1", fromState.y + dy / 10)
@@ -196,8 +197,8 @@ function drawStateDiagram() {
                 .attr("fill", "#333")
                 .text(transition.label);
             }
-            else if ((fromState.id === "q2" & toState.id === "q3") |
-                     (fromState.id === "q3" & toState.id === "qh")){
+            else if ((fromState.id === "q2" && toState.id === "q3") |
+                     (fromState.id === "q3" && toState.id === "qh")){
                 svg.append("line")
                 .attr("x1", fromState.x + dx / 10)
                 .attr("y1", fromState.y + dy / 10)
@@ -291,14 +292,17 @@ function highlightCurrentState() {
     d3.selectAll(".transition-line").attr("stroke", "#666").attr("stroke-width", 2);
 
     // Find the active transition
-    const activeTransition = transitions.find(t => t.from === currentState);
+    const activeTransition = transitions.find(
+        t => t.from === previousState && t.to === currentState
+    );
+
     if (activeTransition) {
         const activeLine = d3.select(`.transition-${activeTransition.from}-${activeTransition.to}`);
 
         // Temporarily change the color of the arrow
         activeLine
             .attr("stroke", stateColors.transition)
-            .attr("stroke-width", 4);
+            .attr("stroke-width", 3);
 
         // Reset the color after 0.5 seconds
         setTimeout(() => {
@@ -314,7 +318,7 @@ function nextStep() {
     const currentSymbol = tape[headPosition];
 
     // Track the previous state
-    const previousState = currentState;
+    previousState = currentState;
 
     // Turing machine transition logic based on the current state and symbol
     switch (currentState) {
@@ -371,26 +375,26 @@ function nextStep() {
             break;
     }
 
-    // Identify the active transition
-    const activeTransition = transitions.find(
-        t => t.from === previousState && t.to === currentState
-    );
+    // // Identify the active transition
+    // const activeTransition = transitions.find(
+    //     t => t.from === previousState && t.to === currentState
+    // );
 
-    if (activeTransition) {
-        const activeLine = d3.select(`.transition-${activeTransition.from}-${activeTransition.to}`);
+    // if (activeTransition) {
+    //     const activeLine = d3.select(`.transition-${activeTransition.from}-${activeTransition.to}`);
 
-        // Temporarily change the color of the arrow
-        activeLine
-            .attr("stroke", stateColors.transition)
-            .attr("stroke-width", 3);
+    //     // Temporarily change the color of the arrow
+    //     activeLine
+    //         .attr("stroke", stateColors.transition)
+    //         .attr("stroke-width", 3);
 
-        // Reset the color after 0.5 seconds
-        setTimeout(() => {
-            activeLine
-                .attr("stroke", "#666")
-                .attr("stroke-width", 2);
-        }, 500);
-    }
+    //     // Reset the color after 0.5 seconds
+    //     setTimeout(() => {
+    //         activeLine
+    //             .attr("stroke", "#666")
+    //             .attr("stroke-width", 2);
+    //     }, 500);
+    // }
 
     // Update tape and state display after each step
     displayTape();
