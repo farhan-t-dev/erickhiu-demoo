@@ -1,5 +1,6 @@
 document.getElementById("startSimulation").addEventListener("click", startSimulation);
 document.getElementById("nextStep").addEventListener("click", nextStep);
+document.getElementById("restartSimulation").addEventListener("click", restartSimulation);
 
 let tape = [];
 let headPosition = 0;
@@ -385,6 +386,7 @@ function nextStep() {
         case "qh":
             alert("The duck has reached the goal!");
             document.getElementById("nextStep").style.display = "none"; // Hide "Next Step" button
+            document.getElementById("restartSimulation").style.display = "inline-block"; // Show "Restart" button
             return;
 
         default:
@@ -394,4 +396,24 @@ function nextStep() {
     // Update tape and state display after each step
     displayTape();
     highlightCurrentState();
+}
+
+function restartSimulation() {
+    // Reset the tape, states, and UI elements
+    tape = [];
+    headPosition = 0;
+    currentState = "q0";
+    previousState = "q0";
+
+    // Hide the "Next Step" and "Restart" buttons
+    document.getElementById("nextStep").style.display = "none";
+    document.getElementById("restartSimulation").style.display = "none";
+
+    // Clear the tape and diagram containers
+    document.getElementById("tapeContainer").innerHTML = "";
+    document.getElementById("stateDiagram").innerHTML = "";
+
+    // Reset the input field and show the "Start Simulation" button
+    document.getElementById("tapeInput").value = "";
+    document.getElementById("startSimulation").style.display = "inline-block";
 }
