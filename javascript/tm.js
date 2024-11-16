@@ -3,7 +3,7 @@ document.getElementById("nextStep").addEventListener("click", nextStep);
 
 let tape = [];
 let headPosition = 0;
-let currentState = "find_food";
+let currentState = "q0";
 
 // Emoji mapping
 const emojis = {
@@ -55,7 +55,7 @@ function startSimulation() {
     // Initialize tape: Add duck ('d') at the beginning and a goal ('G') at the end
     tape = ['d', ...tapeInput.split(""), 'G'];
     headPosition = 0;
-    currentState = "find_food";
+    currentState = "q0";
 
     // Display the tape
     displayTape();
@@ -318,49 +318,49 @@ function nextStep() {
 
     // Turing machine transition logic based on the current state and symbol
     switch (currentState) {
-        case "find_food":
+        case "q0":
             if (currentSymbol === 'F') {
                 tape[headPosition] = '0'; // Consume food
-                currentState = "back_to_duck";
+                currentState = "q1";
                 headPosition--; // Move left
             } else if (currentSymbol === '0' || currentSymbol === 'd') {
                 headPosition++; // Move right
             } else if (currentSymbol === 'G') {
-                currentState = "prepare_to_end";
+                currentState = "q2";
                 headPosition--; // Move left
             }
             break;
 
-        case "back_to_duck":
+        case "q1":
             if (currentSymbol === 'd') {
-                currentState = "find_food";
+                currentState = "q0";
                 headPosition++; // Move right
             } else {
                 headPosition--; // Move left
             }
             break;
 
-        case "prepare_to_end":
+        case "q2":
             if (currentSymbol === '0') {
                 tape[headPosition] = '1'; // Overwrite with '1'
                 headPosition--; // Move left
             } else if (currentSymbol === 'd') {
                 tape[headPosition] = 's'; // Duck is full
-                currentState = "duck_can_walk";
+                currentState = "q3";
                 headPosition++; // Move right
             }
             break;
 
-        case "duck_can_walk":
+        case "q3":
             if (currentSymbol === '1') {
                 tape[headPosition] = 's'; // Duck steps
                 headPosition++; // Move right
             } else if (currentSymbol === 'G') {
-                currentState = "happy";
+                currentState = "qh";
             }
             break;
 
-        case "happy":
+        case "qh":
             alert("The duck has reached the goal!");
             document.getElementById("nextStep").style.display = "none"; // Hide "Next Step" button
             return;
@@ -380,7 +380,7 @@ function nextStep() {
         // Temporarily change the color of the arrow
         activeLine
             .attr("stroke", stateColors.transition)
-            .attr("stroke-width", 4);
+            .attr("stroke-width", 3);
 
         // Reset the color after 0.5 seconds
         setTimeout(() => {
