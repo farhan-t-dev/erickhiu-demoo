@@ -24,8 +24,9 @@
             <input type="text" id="tapeInput" maxlength="10" placeholder="Example: 0F0F0F">
             <button id="startSimulation">Start Simulation</button>
             <div id="tapeContainer"></div>
+            <div id="stateDiagram" style="margin-top: 20px;"></div> <!-- Diagram Container -->
             <button id="nextStep" style="display: none;">Next Step</button>
-        </section>        
+        </section>
     </main>
 
     <!-- Include footer -->
@@ -46,6 +47,8 @@
 
     <!-- Link to the Turing Machine JavaScript file -->
     <script src="javascript/tm.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
 
     <!-- Event Listener for Start Simulation button -->
     <script>
