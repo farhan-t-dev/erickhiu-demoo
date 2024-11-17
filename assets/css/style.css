@@ -244,17 +244,3 @@ section h2 {
     margin: 0.2rem 0;
     color: #555;
 }
-
-.tape-cell {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    margin: 2px;
-    font-weight: bold;
-    background-color: #f7f7f7;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    color: #333;
-}
