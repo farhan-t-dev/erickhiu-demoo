@@ -30,9 +30,9 @@ const stateColors = {
 const states = [
     { id: "q0", label: "search", x: 100, y: 100 },
     { id: "q1", label: "back", x: 250, y: 250 },
-    { id: "q2", label: "no more", x: 400, y: 100 },
-    { id: "q3", label: "walk", x: 550, y: 250 },
-    { id: "qh", label: "happy", x: 700, y: 100 }
+    { id: "q2", label: "wet", x: 400, y: 100 },
+    { id: "q3", label: "waddle", x: 550, y: 250 },
+    { id: "qh", label: "end", x: 700, y: 100 }
 ];
 
 const transitions = [
@@ -47,30 +47,6 @@ const transitions = [
     { from: "q3", to: "qh", label: `${emojis.G}→R` }
 ];
 
-// function startSimulation() {
-//     if (tape.length === 0) {
-//         alert("Please place the tape first by clicking on the cells!");
-//         return;
-//     }
-
-//     // Mark the simulation as started
-//     simulationStarted = true;
-
-//     // Initialize state
-//     headPosition = 0;
-//     currentState = "q0";
-
-//     // Display the tape
-//     displayTape();
-//     drawStateDiagram();
-
-//     // Show "Next Step" button
-//     document.getElementById("nextStep").style.display = "inline-block";
-//     document.getElementById("automatic").style.display = "inline-block";
-
-//     // Hide "Start Simulation" button
-//     document.getElementById("startSimulation").style.display = "none";
-// }
 function startSimulation() {
     if (tape.length === 0) {
         alert("Please place the tape first by clicking on the cells!");
@@ -381,33 +357,6 @@ function highlightCurrentState() {
         }, 500);
     }
 }
-
-// function automaticSimulation() {
-//     // Disable other buttons during automatic simulation
-//     document.getElementById("nextStep").disabled = true;
-//     document.getElementById("startSimulation").disabled = true;
-//     document.getElementById("automatic").disabled = true;
-
-//     // Automatically step through the simulation every 1 second
-//     autoInterval = setInterval(() => {
-//         if (currentState === "qh") {
-//             stopAutomaticSimulation();
-//         } else {
-//             nextStep();
-//         }
-//     }, 1000); // Adjust the interval (in milliseconds) as desired
-// }
-
-// function stopAutomaticSimulation() {
-//     // Stop the automatic simulation
-//     clearInterval(autoInterval);
-//     autoInterval = null;
-
-//     // Re-enable buttons after stopping
-//     document.getElementById("nextStep").disabled = false;
-//     document.getElementById("startSimulation").disabled = false;
-//     document.getElementById("automatic").disabled = false;
-// }
 
 function automaticSimulation() {
     autoInterval = setInterval(() => {
