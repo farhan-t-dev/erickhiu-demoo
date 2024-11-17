@@ -481,7 +481,7 @@ function nextStep() {
             break;
 
         case "qh":
-            alert("Waquackquack has reached the lake!");
+            showPopup();
             stopAutomaticSimulation(); 
             document.getElementById("nextStep").style.display = "none"; // Hide "Next Step" button
             document.getElementById("restartSimulation").style.display = "inline-block"; // Show "Restart" button
@@ -519,20 +519,22 @@ function restartSimulation() {
     document.getElementById("startSimulation").style.display = "inline-block";
 }
 
+// Function to show the popup
+function showPopup() {
+    const popup = document.getElementById("popupModal");
+    popup.style.display = "block"; // Show the modal
+}
+
+// Function to close the popup
+function closePopup() {
+    const popup = document.getElementById("popupModal");
+    popup.style.display = "none"; // Hide the modal
+}
+
 // Initialize the tape on page load
 setupInitialTape();
 
-// document.getElementById("automatic").addEventListener("click", () => {
-//     // Automatically step through the simulation
-//     automaticInterval = setInterval(() => {
-//         if (currentState === "qh") {
-//             // Stop automatic stepping once the simulation is done
-//             clearInterval(automaticInterval);
-//             return;
-//         }
-//         nextStep(); // Call the nextStep function
-//     }, 1000); // Execute every 1 second (adjust the interval as needed)
-// });
+// Event listener
 document.getElementById("stepThrough").addEventListener("click", () => {
     document.getElementById("stepThrough").style.display = "none";
     document.getElementById("automatic").style.display = "none";
