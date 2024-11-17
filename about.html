@@ -18,7 +18,7 @@
                 <h1>Eric Khiu</h1>
                 <div class="contact-info">
                     <p><img src="assets/images/gmail-icon.webp" alt="Email" class="icon"> <a href="mailto:erickhiu@umich.edu">erickhiu@umich.edu</a></p>
-                    <p>📞 <a href="tel:+17345101866">+1 (734) 510-1866</a></p>
+                    <p>📞<a href="tel:+17345101866">+1 (734) 510-1866</a></p>
                     <p><img src="assets/images/linkedin-icon.png" alt="LinkedIn" class="icon"> <a href="https://linkedin.com/in/eric-khiu-224499145" target="_blank">LinkedIn</a></p>
                 </div>
             </section>
@@ -47,6 +47,9 @@
                 </div> 
         </div>
     </main>
+
+        <!-- Include footer -->
+        <div id="footer-placeholder"></div>
     
 
     <script>
@@ -59,6 +62,7 @@
 
         // Load header and footer
         loadTemplate('header-placeholder', 'templates/header.html');
+        loadTemplate('footer-placeholder', 'templates/footer.html');
 
         async function loadAboutData() {
             try {
