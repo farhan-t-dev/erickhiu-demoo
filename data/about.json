@@ -1,11 +1,10 @@
 {
     "user": {
         "name": "Eric Khiu",
-        "address": "1317 Wilmot St Apt 1, Ann Arbor, MI 48104",
         "email": "erickhiu@umich.edu",
         "phone": "+1 (734) 510-1866",
         "linkedin_url": "https://linkedin.com/in/eric-khiu-224499145",
-        "website_url": "https://sites.google.com/umich.edu/erickhiu/"
+        "google_scholar_url": "https://scholar.google.com/citations?user=O8ydiOkAAAAJ&hl=en"
     },
     "education": [
         {
@@ -15,7 +14,9 @@
             "degree": "B.S. Computer Science, Data Science, and Mathematics",
             "gpa": "3.86",
             "graduation_date": "May 2025",
-            "course_highlights": []
+            "course_highlights": ["Machine Learning", "Artificial Intelligence", "Natural Language Processing", "Theoretical Computer Science", 
+            "Mathematics of Finance", "Intermediate Microeconomics Theory", "Numerical Analysis in Finance", 
+            "Theoretical Statistics","Applied Regression Analysis" ]
         }
     ],
     "skills": {
@@ -77,8 +78,8 @@
             "start_date": "Jan 2024",
             "end_date": "Present",
             "role": "Instructional Aide",
-            "course": "EECS 376: Foundations of Computer Science",
             "details": [
+                "Course: EECS 376: Foundations of Computer Science",
                 "Facilitate weekly discussion sections and hold office hours for EECS 376.",
                 "Course topics: Algorithm design, computability (finite automata, Turing Machines, Turing reductions), complexity theory (P & NP, NP-hard, NP-Completeness, heuristics), cryptography (Diffie-Helman, RSA)."
             ]
@@ -89,6 +90,7 @@
             "end_date": "Oct 2022",
             "role": "Tutor",
             "details": [
+                "Courses: Calculus I and II, Multivariable Calculus, Linear Algebra, Probability",
                 "Provided walk-in tutoring for Calculus I, II, Multivariable and Vector Calculus, Linear Algebra, and Probability."
             ]
         }

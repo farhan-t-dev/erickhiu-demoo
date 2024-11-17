@@ -11,35 +11,43 @@
     <div id="header-placeholder"></div>
     
     <main>
-        <section class="about-header">
-            <img src="assets/images/headshot.png" alt="Eric Khiu" class="profile-picture">
-            <h1 id="name"></h1>
-            <p id="address"></p>
-            <p><a id="email" href="#"></a></p>
-            <p id="phone"></p>
-            <p><a id="linkedin" target="_blank">LinkedIn</a> | <a id="website" target="_blank">Website</a></p>
-        </section>
-
-        <section id="education">
-            <h2>Education</h2>
-        </section>
-
-        <section id="skills">
-            <h2>Skills</h2>
-        </section>
-
-        <section id="research-experience">
-            <h2>Research Experience</h2>
-        </section>
-
-        <section id="work-experience">
-            <h2>Work Experience</h2>
-        </section>
-
-        <section id="teaching-experience">
-            <h2>Teaching Experience</h2>
-        </section>
+        <div class="two-column-layout">
+            <!-- Left Column: About Header -->
+            <section class="about-header">
+                <img src="assets/images/headshot.png" alt="Eric Khiu" class="profile-picture">
+                <h1>Eric Khiu</h1>
+                <div class="contact-info">
+                    <p><img src="assets/images/gmail-icon.webp" alt="Email" class="icon"> <a href="mailto:erickhiu@umich.edu">erickhiu@umich.edu</a></p>
+                    <p>📞 <a href="tel:+17345101866">+1 (734) 510-1866</a></p>
+                    <p><img src="assets/images/linkedin-icon.png" alt="LinkedIn" class="icon"> <a href="https://linkedin.com/in/eric-khiu-224499145" target="_blank">LinkedIn</a></p>
+                </div>
+            </section>
+    
+            <!-- Right Column: Main Content -->
+                <div class="main-wrapper">
+                    <section id="education">
+                        <h2>Education</h2>
+                    </section>
+            
+                    <section id="skills">
+                        <h2>Skills</h2>
+                    </section>
+            
+                    <section id="research-experience">
+                        <h2>Research Experience</h2>
+                    </section>
+            
+                    <section id="work-experience">
+                        <h2>Work Experience</h2>
+                    </section>
+            
+                    <section id="teaching-experience">
+                        <h2>Teaching Experience</h2>
+                    </section>
+                </div> 
+        </div>
     </main>
+    
 
     <script>
         // Function to dynamically load templates
@@ -51,84 +59,93 @@
 
         // Load header and footer
         loadTemplate('header-placeholder', 'templates/header.html');
-        loadTemplate('footer-placeholder', 'templates/footer.html');
 
-        // Load and render about data
         async function loadAboutData() {
-            const response = await fetch('data/about.json'); // Ensure JSON is in the 'data' folder
-            const data = await response.json();
+            try {
+                const response = await fetch('data/about.json'); // Ensure path is correct
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log(data); // Debugging: Verify data is loaded
+                renderAboutData(data);
+            } catch (error) {
+                console.error("Error loading about data:", error);
+            }
+        }
 
-            // Populate user info
-            document.getElementById('name').textContent = data.user.name;
-            document.getElementById('address').textContent = data.user.address;
-            document.getElementById('email').textContent = data.user.email;
-            document.getElementById('email').href = `mailto:${data.user.email}`;
-            document.getElementById('phone').textContent = `Phone: ${data.user.phone}`;
-            document.getElementById('linkedin').href = data.user.linkedin_url;
-            document.getElementById('website').href = data.user.website_url;
-
-            // Populate education
-            const educationContainer = document.getElementById('education');
-            data.education.forEach(edu => {
-                const eduDiv = document.createElement('div');
-                eduDiv.innerHTML = `
-                    <h3>${edu.institution}</h3>
-                    <p>${edu.degree} (${edu.start_date} - ${edu.end_date})</p>
-                    <p>GPA: ${edu.gpa}</p>
-                `;
-                educationContainer.appendChild(eduDiv);
-            });
-
-            // Populate skills
-            const skillsContainer = document.getElementById('skills');
-            skillsContainer.innerHTML = `
+        function renderAboutData(data) {
+            // Populate User Info
+            document.querySelector(".about-header h1").textContent = data.user.name;
+            document.querySelector(".contact-info").innerHTML = `
+                <p><img src="assets/images/gmail-icon.webp" class="icon" alt="Email"> <a href="mailto:${data.user.email}">${data.user.email}</a></p>
+                <p>📞 <a href="tel:${data.user.phone}">${data.user.phone}</a></p>
+                <p><img src="assets/images/linkedin-icon.png" class="icon" alt="LinkedIn"> <a href="${data.user.linkedin_url}" target="_blank">LinkedIn</a></p>
+            `;
+        
+            // Populate Education
+            const educationSection = document.getElementById('education');
+            const edu = data.education[0]; // Assuming a single education entry
+            educationSection.innerHTML = `
+                <h2>Education</h2>
+                <h3>${edu.institution}</h3>
+                <p>${edu.degree} (${edu.start_date} - ${edu.end_date})</p>
+                <p>Expected Graduation: ${edu.graduation_date}</p>
+            `;
+        
+            // Populate Skills
+            const skillsSection = document.getElementById('skills');
+            skillsSection.innerHTML = `
+                <h2>Skills</h2>
                 <p><strong>Programming Languages:</strong> ${data.skills.programming_languages}</p>
                 <p><strong>Python Packages:</strong> ${data.skills.python_packages}</p>
                 <p><strong>Languages:</strong> ${data.skills.languages}</p>
                 <p><strong>Tools:</strong> ${data.skills.tools}</p>
             `;
-
-            // Populate research experience
-            const researchContainer = document.getElementById('research-experience');
-            data.research_experience.forEach(research => {
-                const researchDiv = document.createElement('div');
-                researchDiv.innerHTML = `
-                    <h3>${research.organization}</h3>
-                    <p>${research.role} (${research.start_date} - ${research.end_date})</p>
-                    <ul>
-                        ${research.details.map(detail => `<li>${detail}</li>`).join('')}
-                    </ul>
+        
+            // Populate Research Experience
+            const researchSection = document.getElementById('research-experience');
+            researchSection.innerHTML = `<h2>Research Experience</h2>`;
+            data.research_experience.forEach(exp => {
+                researchSection.innerHTML += `
+                    <div>
+                        <h3>${exp.organization}</h3>
+                        <p>${exp.role} <span class="date-align">(${exp.start_date} - ${exp.end_date})</span></p>
+                        <ul>
+                            ${exp.details.map(detail => `<li>${detail}</li>`).join('')}
+                        </ul>
+                    </div>
                 `;
-                researchContainer.appendChild(researchDiv);
             });
-
-            // Populate work experience
-            const workContainer = document.getElementById('work-experience');
-            data.work_experience.forEach(work => {
-                const workDiv = document.createElement('div');
-                workDiv.innerHTML = `
-                    <h3>${work.organization}</h3>
-                    <p>${work.role} (${work.start_date} - ${work.end_date})</p>
-                    <ul>
-                        ${work.details.map(detail => `<li>${detail}</li>`).join('')}
-                    </ul>
+        
+            // Populate Work Experience
+            const workSection = document.getElementById('work-experience');
+            workSection.innerHTML = `<h2>Work Experience</h2>`;
+            data.work_experience.forEach(exp => {
+                workSection.innerHTML += `
+                    <div>
+                        <h3>${exp.organization}</h3>
+                        <p>${exp.role} <span class="date-align">(${exp.start_date} - ${exp.end_date})</span></p>
+                        <ul>
+                            ${exp.details.map(detail => `<li>${detail}</li>`).join('')}
+                        </ul>
+                    </div>
                 `;
-                workContainer.appendChild(workDiv);
             });
-
-            // Populate teaching experience
-            const teachingContainer = document.getElementById('teaching-experience');
-            data.teaching_experience.forEach(teaching => {
-                const teachingDiv = document.createElement('div');
-                teachingDiv.innerHTML = `
-                    <h3>${teaching.organization}</h3>
-                    <p>${teaching.role} (${teaching.start_date} - ${teaching.end_date})</p>
-                    <p>${teaching.course ? `Course: ${teaching.course}` : ''}</p>
-                    <ul>
-                        ${teaching.details.map(detail => `<li>${detail}</li>`).join('')}
-                    </ul>
+        
+            // Populate Teaching Experience
+            const teachingSection = document.getElementById('teaching-experience');
+            teachingSection.innerHTML = `<h2>Teaching Experience</h2>`;
+            data.teaching_experience.forEach(exp => {
+                teachingSection.innerHTML += `
+                    <div>
+                        <h3>${exp.organization}</h3>
+                        <p>${exp.role} <span class="date-align">(${exp.start_date} - ${exp.end_date})</span></p>
+                        <ul>
+                            ${exp.details.map(detail => `<li>${detail}</li>`).join('')}
+                        </ul>
+                    </div>
                 `;
-                teachingContainer.appendChild(teachingDiv);
             });
         }
 

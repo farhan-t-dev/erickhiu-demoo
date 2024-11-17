@@ -228,10 +228,21 @@ section h2 {
 
 /* About Header */
 .about-header {
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    text-align: left; /* Left-align text */
+    padding: 1rem;
+    margin-left: 1rem;
 }
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0; /* Add spacing between lines */
+}
+
+.contact-info a {
+    margin-left: 5px; /* Add spacing between icon and text */
+}
+
 
 .about-header h1 {
     font-size: 2rem;
@@ -244,3 +255,210 @@ section h2 {
     margin: 0.2rem 0;
     color: #555;
 }
+
+/* Two-Column Layout */
+.two-column-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: 1200px; /* Limit overall width for better readability */
+    margin: 2rem auto;
+    padding: 0 1.5rem; /* Add horizontal padding */
+}
+
+/* Left Column */
+.two-column-layout .about-header {
+    flex: 1; /* Narrower width */
+    text-align: left;
+    margin: 0;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.two-column-layout .about-header img {
+    margin: 0 auto 1rem auto;
+    display: block; /* Center the profile picture */
+}
+
+.two-column-layout .about-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #00274c;
+}
+
+.two-column-layout .about-header p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+/* Right Column */
+.two-column-layout .main-content {
+    flex: 2; /* Wider width for main content */
+}
+
+.two-column-layout .main-content section {
+    margin-bottom: 2rem; /* Add spacing between sections */
+}
+
+.two-column-layout .main-content h2 {
+    font-size: 1.8rem;
+    color: #00274c;
+    margin-bottom: 1rem;
+}
+
+/* Layout */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem; /* Space between columns */
+    margin-top: 2rem;
+}
+
+.about-header {
+    flex: 1; /* Narrower column */
+    max-width: 250px;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Contact Info */
+.contact-info p {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.contact-info .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    filter: grayscale(1); /* Make icons consistent */
+}
+
+.contact-info a {
+    color: #00274c; /* Michigan Blue */
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    color: #ffcb05; /* Michigan Maize */
+}
+
+/* Adjust column for right sections */
+.main-wrapper {
+    flex: 3; /* Wider column */
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+/* Fix Section Spacing */
+.main-wrapper > section {
+    margin-bottom: 2rem;
+}
+
+/* Date Alignment */
+section ul li, section p {
+    text-align: left;
+}
+
+.section-dates {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Layout */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem; /* Space between columns */
+    margin-top: 2rem;
+}
+
+.about-header {
+    flex: 1; /* Narrower column */
+    max-width: 250px;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Contact Info */
+.contact-info p {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.contact-info .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    filter: grayscale(1); /* Make icons consistent */
+}
+
+.contact-info a {
+    color: #00274c; /* Michigan Blue */
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    color: #ffcb05; /* Michigan Maize */
+}
+
+/* Adjust column for right sections */
+.main-wrapper {
+    flex: 3; /* Wider column */
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+/* Fix Section Spacing */
+.main-wrapper > section {
+    margin-bottom: 2rem;
+}
+
+/* Date Alignment */
+section ul li, section p {
+    text-align: left;
+}
+
+.section-dates {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+section h2 {
+    padding-top: 0.5rem;
+    font-size: 1.8rem;
+    color: #00274c;
+    margin-bottom: 1rem;
+}
+
+.date-align {
+    text-align: right;
+    font-style: italic;
+    color: #555;
+}
+
+
+
