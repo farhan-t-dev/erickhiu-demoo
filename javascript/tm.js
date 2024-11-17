@@ -230,9 +230,9 @@ function drawStateDiagram() {
                      (fromState.id === "q3" && toState.id === "qh")){
                 svg.append("line")
                 .attr("x1", fromState.x + dx / 10)
-                .attr("y1", fromState.y + dy / 10)
+                .attr("y1", fromState.y + 1.5 * dy / 10)
                 .attr("x2", toState.x - dx / 10)
-                .attr("y2", toState.y - dy / 10)
+                .attr("y2", toState.y - 1.5 * dy / 10)
                 .attr("stroke", "#666")
                 .attr("stroke-width", 2)
                 .attr("marker-end", "url(#arrow)")
