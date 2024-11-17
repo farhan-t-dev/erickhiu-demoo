@@ -463,6 +463,7 @@ function restartSimulation() {
 
     // Show the initial setup
     setupInitialTape();
+    drawStateDiagram();
 
     // Show the "Start Simulation" button
     document.getElementById("startSimulation").style.display = "inline-block";
@@ -484,6 +485,11 @@ function closePopup() {
 setupInitialTape();
 
 // Event listener
+window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("startSimulation").addEventListener("click", startSimulation);
+    drawStateDiagram(); // Display state diagram
+});
+
 document.getElementById("stepThrough").addEventListener("click", () => {
     document.getElementById("stepThrough").style.display = "none";
     document.getElementById("automatic").style.display = "none";

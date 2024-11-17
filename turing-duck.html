@@ -15,24 +15,19 @@
 
         <!-- Turing Machine Introduction -->
         <section id="turing-machine" class="hero">
+            <img src="assets/images/turing-duck-thumbnail.png" alt="Turing Machine Thumbnail" style="width: 10vw;">
             <h2>Turing, please feed Waquackquack!</h2>
             <div class="flush-left">
-                <!-- <p>
-                    The Turing Machine is a simple yet fascinating way to understand how computers process information.
-                    It's a conceptual tool that forms the foundation of computer science and helps us grasp how logic
-                    and algorithms come together to solve problems. Here's a fun example to explore—feeding a duck!
-                </p> -->
                 <p>
                     Waquackquack the duck has a peculiar habit—it won’t walk through the soil until it has eaten all the tasty worms 
-                    (its favorite food!) along the path. But don’t worry, the <strong>Turing Machine</strong> is here to help! 
+                    along the path and the soil is wet enough for it to waddle through. But don’t worry, the <strong>Turing Machine</strong> is here to help! 
                     It’s a clever little machine that will do all the work for you, step by step.
                 </p>
                 <ul>
                     <li>The Turing Machine can only carry <strong>one worm</strong> at a time.</li>
                     <li>It can only look at <strong>one cell ahead</strong> at a time to decide what to do next.</li>
                     <li>
-                        Once it finds the lake (🏞️), the Turing Machine will fetch water (💧) to wet the soil, 
-                        so Waquackquack can finally walk through to its destination.
+                        Once it finds the lake (🏞️), the Turing Machine will fetch water (💧) to wet the soil.
                     </li>
                 </ul>
             
@@ -65,14 +60,16 @@
                 </ol>
             
                 <p>
-                    As you step through the simulation, notice how the machine works like a decision-making process: 
-                    checking the content of the current cell, deciding what to do at that cell, and moving forward or backward. Happy exploring the foundational principles of computation!
+                    As you step through the simulation, notice how the machine behaves differently in each 'state': checking the content of the current cell, deciding what to do at that cell, and moving forward or backward. 
+                </p>
+                <p>
+                    Happy exploring the foundational principles of computation!
                 </p>
             </div>
             <div id="tapeContainer"></div>
             <button id="startSimulation">Start Simulation</button>
-            <button id="stepThrough" style="display: none;">Step Through</button>
-            <button id="automatic" style="display: none;">Automatic</button>
+            <button id="stepThrough" style="display: none; margin-right: 10px;">Step Through</button>
+            <button id="automatic" style="display: none;">Automatic</button>            
             <button id="nextStep" style="display: none;">Next Step</button>
             <button id="restartSimulation" style="display: none;">Restart</button>            
             <div id="stateDiagram" style="margin-top: 20px;"></div>
@@ -85,6 +82,18 @@
                         Close
                     </button>
                 </div>
+            </div>
+            <div class="flush-left">
+            <h3>For those who are interested (Perfect for EECS 376 folks):</h3>
+                <ol>
+                    <li>
+                        Can you list the seven-tuple that defines this Turing machine?
+                    </li>
+                    <li>
+                        Right now, the Turing machine has a single halting state representing a happy ending where Waquackquack successfully reaches the lake. 
+                        How would you modify the Turing machine to include a "reject state," where Waquackquack becomes frustrated and storms off to the lake 
+                        because no worms were collected along the way?
+                </ol>
             </div>
         </section>
         
