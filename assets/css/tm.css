@@ -1,3 +1,99 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f4f8;
+    color: #333;
+}
+
+/* Turing Machine Section */
+#turing-machine {
+    text-align: center;
+    padding: 20px;
+}
+
+h3 {
+    font-size: 24px;
+    color: #00274c;
+    margin-bottom: 20px;
+}
+
+/* Tape Styling */
+#tapeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between cells */
+    margin: 20px auto;
+}
+
+.tape-cell {
+    display: inline-block;
+    padding: 15px;
+    border: 2px solid #ccc;
+    margin: 2px;
+    text-align: center;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.tape-cell:hover {
+    background-color: #ffcb05; /* Highlight color */
+    color: #00274c; /* Text color on hover */
+}
+
+/* Button Styling */
+button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00274c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #ffcb05;
+    color: #00274c;
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+button:active {
+    transform: scale(0.95); /* Button press effect */
+}
+
+/* Center Buttons */
+#startSimulation,
+#nextStep,
+#restartSimulation {
+    display: inline-block;
+    margin: 10px auto;
+}
+
+/* State Diagram Styling */
+#stateDiagram {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#stateDiagram svg {
+    display: block;
+    margin: 0 auto;
+}
+
+/* State Node Styling */
 .state-node {
     display: inline-block;
     margin: 10px;
@@ -7,48 +103,22 @@
     background-color: #ccc;
     color: black;
     font-weight: bold;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.state-node:hover {
+    transform: scale(1.1);
+    background-color: #ffcb05; /* Highlight on hover */
 }
 
 .state-transition {
     margin: 5px;
     color: #666;
     font-style: italic;
-}
-
-#stateDiagram svg {
-    display: block;
-    margin: 0 auto;
-}
-
-.state-node {
-    cursor: pointer;
-}
-
-.state-transition {
     fill: none;
     stroke: #666;
     stroke-width: 2px;
 }
-
-.state-node {
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-}
-
-.tape-cell {
-    display: inline-block;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin: 2px;
-    text-align: center;
-    font-size: 20px;
-}
-
-#stateDiagram {
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 800px;
-    margin: 20px auto;
-    text-align: center;
-}
-

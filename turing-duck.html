@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turing Duck</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/tm.css">    
+</head>
+<body>
+    <!-- Include header -->
+    <div id="header-placeholder"></div>
+    
+    <main>
+
+        <!-- Turing Machine Introduction -->
+        <section id="turing-machine" class="hero">
+            <h2>Turing, please feed Waquackquack!</h2>
+            <div class="flush-left">
+                <!-- <p>
+                    The Turing Machine is a simple yet fascinating way to understand how computers process information.
+                    It's a conceptual tool that forms the foundation of computer science and helps us grasp how logic
+                    and algorithms come together to solve problems. Here's a fun example to explore—feeding a duck!
+                </p> -->
+                <p>
+                    Waquackquack the duck has a peculiar habit—it won’t walk through the soil until it has eaten all the tasty worms 
+                    (its favorite food!) along the path. But don’t worry, the <strong>Turing Machine</strong> is here to help! 
+                    It’s a clever little machine that will do all the work for you, step by step. Waquackquack has a few rules for the Turing Machine to follow:
+                </p>
+                <ul>
+                    <li>The Turing Machine can only carry <strong>one worm</strong> at a time.</li>
+                    <li>It can only look at <strong>one cell ahead</strong> at a time to decide what to do next.</li>
+                    <li>
+                        Once it finds the lake (🏞️), the Turing Machine will fetch water (💧) to wet the soil, 
+                        so Waquackquack can finally walk through to its destination.
+                    </li>
+                </ul>
+            
+                <h3>What Do You Do?</h3>
+                <p>
+                    Your role is simple—you’re the <strong>designer of the map</strong>! Place worms (🐛) on the soil (🟫) 
+                    for the Turing machine to collect. The Turing Machine will handle everything else—deciding what to do at each step and executing the plan to perfection.
+                </p>
+            
+                <h3>How to Play:</h3>
+                <ol>
+                    <li>
+                        <strong>Design the map:</strong> Click on the soil cells (🟫) to toggle them into food (🐛). 
+                        Place worms wherever you like along the path to the lake (🏞️)!
+                    </li>
+                    <li>
+                        <strong>Start the simulation:</strong> Once the path is ready, click <strong>"Start Simulation"</strong> to begin.
+                    </li>
+                    <li>
+                        <strong>Step through the Turing Machine:</strong> Click <strong>"Next Step"</strong> to watch how the Turing Machine processes 
+                        the path one cell at a time.
+                        <ul>
+                            <li>It will check the current cell, pick up worms if present, and move forward.</li>
+                            <li>If it reaches the lake, it will fetch water (💧) to wet the soil.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Mission accomplished:</strong> Once the soil is wet, Waquackquack will happily waddle to the lake.
+                    </li>
+                </ol>
+            
+                <p>
+                    As you step through the simulation, notice how the machine works like a decision-making process: 
+                    checking the current cell, deciding what to do next, and moving forward. Happy exploring the foundational principles of computation!
+                </p>
+            </div>
+            <div id="tapeContainer"></div>
+            <button id="startSimulation">Start Simulation</button>
+            <button id="nextStep" style="display: none;">Next Step</button>
+            <button id="automatic" style="display: none;">Automatic</button>
+            <button id="restartSimulation" style="display: none;">Restart</button>
+
+            <div id="stateDiagram" style="margin-top: 20px;"></div>
+        </section>
+        
+    </main>
+
+    <script>
+        // Function to dynamically load templates
+        async function loadTemplate(id, path) {
+            const response = await fetch(path);
+            const text = await response.text();
+            document.getElementById(id).innerHTML = text;
+        }
+
+        // Load header and footer
+        loadTemplate('header-placeholder', 'templates/header.html');
+        loadTemplate('footer-placeholder', 'templates/footer.html');
+    </script>
+
+    <!-- Link to the Turing Machine JavaScript file -->
+    <script src="javascript/tm.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+
+    <!-- Event Listener for Start Simulation button -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("startSimulation").addEventListener("click", startSimulation);
+        });
+    </script>
+</body>
+</html>
