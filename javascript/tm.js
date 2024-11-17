@@ -6,12 +6,14 @@ let tape = [];
 let headPosition = 0;
 let currentState = "q0";
 let previousState = "q0";
+let simulationStarted = false;
+let autoInterval = null; // Variable to store the interval ID
 
 // Emoji mapping
 const emojis = {
     d: "🦆", // Duck
     F: "🐛", // Food (Fish)
-    G: "🌊", // Goal
+    G: "🏞️", // Goal
     s: "🐾", // Footsteps
     0: "🟫", // Soil
     1: "💧"  // Water (Path)
@@ -46,16 +48,15 @@ const transitions = [
 ];
 
 function startSimulation() {
-    const tapeInput = document.getElementById("tapeInput").value;
-
-    // Validate user input to ensure it only contains '0' and 'F'
-    if (!/^[0F]*$/.test(tapeInput)) {
-        alert("Tape can only contain the characters '0' and 'F'.");
+    if (tape.length === 0) {
+        alert("Please place the tape first by clicking on the cells!");
         return;
     }
 
-    // Initialize tape: Add duck ('d') at the beginning and a goal ('G') at the end
-    tape = ['d', ...tapeInput.split(""), 'G'];
+    // Mark the simulation as started
+    simulationStarted = true;
+
+    // Initialize state
     headPosition = 0;
     currentState = "q0";
 
@@ -65,6 +66,10 @@ function startSimulation() {
 
     // Show "Next Step" button
     document.getElementById("nextStep").style.display = "inline-block";
+    document.getElementById("automatic").style.display = "inline-block";
+
+    // Hide "Start Simulation" button
+    document.getElementById("startSimulation").style.display = "none";
 }
 
 function displayTape() {
@@ -77,6 +82,11 @@ function displayTape() {
         cellElement.className = "tape-cell";
         cellElement.textContent = emojis[cell] || cell; // Map to emoji or show as-is
 
+        // Add click event for toggling food/soil before simulation starts
+        if (!simulationStarted && index !== 0 && index !== tape.length - 1) {
+            cellElement.addEventListener("click", () => toggleFood(index));
+        }
+
         // Highlight the cell at the head position
         if (index === headPosition) {
             cellElement.style.border = "2px solid #ffcb05";
@@ -87,6 +97,24 @@ function displayTape() {
         tapeContainer.appendChild(cellElement);
     });
 }
+
+
+function toggleFood(index) {
+    if (simulationStarted) return; // Do nothing if simulation has started
+
+    // Toggle between soil and food
+    tape[index] = tape[index] === "F" ? "0" : "F";
+
+    // Update the tape display
+    displayTape();
+}
+
+function setupInitialTape() {
+    // Initialize the tape with duck, soil, and goal
+    tape = ["d", "0", "0", "0", "0", "0", "0", "0", "0", "0", "G"];
+    displayTape();
+}
+
 
 function drawStateDiagram() {
     const stateDiagramContainer = document.getElementById("stateDiagram");
@@ -219,7 +247,7 @@ function drawStateDiagram() {
                 .attr("fill", "#333")
                 .text(transition.label);
             }
-            // TODO: q0 (find food) and q1 (back to duck)
+            // q0 (find food) and q1 (back to duck)
             else if ((fromState.id === "q0" && toState.id === "q1") || (fromState.id === "q1" && toState.id === "q0")) {
                 const offsetx = (fromState.id === "q0") ? -10 : 10; // Offset for spacing between parallel lines
                 const offsety = (fromState.id === "q0") ? 10 : -10; // Offset for spacing between parallel lines
@@ -286,7 +314,7 @@ function drawStateDiagram() {
     svg.append("defs")
         .append("marker")
         .attr("id", "highlight-arrow")
-        .attr("viewBox", "0 -5 10 10")
+        .attr("viewBox", "5 -5 10 10")
         .attr("refX", 10)
         .attr("refY", 0)
         .attr("markerWidth", 6)
@@ -328,6 +356,33 @@ function highlightCurrentState() {
                 .attr("marker-end", "url(#arrow)"); 
         }, 500);
     }
+}
+
+function automaticSimulation() {
+    // Disable other buttons during automatic simulation
+    document.getElementById("nextStep").disabled = true;
+    document.getElementById("startSimulation").disabled = true;
+    document.getElementById("automatic").disabled = true;
+
+    // Automatically step through the simulation every 1 second
+    autoInterval = setInterval(() => {
+        if (currentState === "qh") {
+            stopAutomaticSimulation();
+        } else {
+            nextStep();
+        }
+    }, 1000); // Adjust the interval (in milliseconds) as desired
+}
+
+function stopAutomaticSimulation() {
+    // Stop the automatic simulation
+    clearInterval(autoInterval);
+    autoInterval = null;
+
+    // Re-enable buttons after stopping
+    document.getElementById("nextStep").disabled = false;
+    document.getElementById("startSimulation").disabled = false;
+    document.getElementById("automatic").disabled = false;
 }
 
 
@@ -384,7 +439,8 @@ function nextStep() {
             break;
 
         case "qh":
-            alert("The duck has reached the goal!");
+            alert("Waquackquack has reached the lake!");
+            stopAutomaticSimulation(); 
             document.getElementById("nextStep").style.display = "none"; // Hide "Next Step" button
             document.getElementById("restartSimulation").style.display = "inline-block"; // Show "Restart" button
             return;
@@ -404,6 +460,7 @@ function restartSimulation() {
     headPosition = 0;
     currentState = "q0";
     previousState = "q0";
+    simulationStarted = false;
 
     // Hide the "Next Step" and "Restart" buttons
     document.getElementById("nextStep").style.display = "none";
@@ -413,7 +470,23 @@ function restartSimulation() {
     document.getElementById("tapeContainer").innerHTML = "";
     document.getElementById("stateDiagram").innerHTML = "";
 
-    // Reset the input field and show the "Start Simulation" button
-    document.getElementById("tapeInput").value = "";
+    // Show the initial setup
+    setupInitialTape();
+
+    // Show the "Start Simulation" button
     document.getElementById("startSimulation").style.display = "inline-block";
 }
+
+// Initialize the tape on page load
+setupInitialTape();
+document.getElementById("automatic").addEventListener("click", () => {
+    // Automatically step through the simulation
+    automaticInterval = setInterval(() => {
+        if (currentState === "qh") {
+            // Stop automatic stepping once the simulation is done
+            clearInterval(automaticInterval);
+            return;
+        }
+        nextStep(); // Call the nextStep function
+    }, 1000); // Execute every 1 second (adjust the interval as needed)
+});
