@@ -47,6 +47,30 @@ const transitions = [
     { from: "q3", to: "qh", label: `${emojis.G}→R` }
 ];
 
+// function startSimulation() {
+//     if (tape.length === 0) {
+//         alert("Please place the tape first by clicking on the cells!");
+//         return;
+//     }
+
+//     // Mark the simulation as started
+//     simulationStarted = true;
+
+//     // Initialize state
+//     headPosition = 0;
+//     currentState = "q0";
+
+//     // Display the tape
+//     displayTape();
+//     drawStateDiagram();
+
+//     // Show "Next Step" button
+//     document.getElementById("nextStep").style.display = "inline-block";
+//     document.getElementById("automatic").style.display = "inline-block";
+
+//     // Hide "Start Simulation" button
+//     document.getElementById("startSimulation").style.display = "none";
+// }
 function startSimulation() {
     if (tape.length === 0) {
         alert("Please place the tape first by clicking on the cells!");
@@ -64,8 +88,8 @@ function startSimulation() {
     displayTape();
     drawStateDiagram();
 
-    // Show "Next Step" button
-    document.getElementById("nextStep").style.display = "inline-block";
+    // Show "Step Through" and "Automatic" buttons
+    document.getElementById("stepThrough").style.display = "inline-block";
     document.getElementById("automatic").style.display = "inline-block";
 
     // Hide "Start Simulation" button
@@ -358,31 +382,49 @@ function highlightCurrentState() {
     }
 }
 
-function automaticSimulation() {
-    // Disable other buttons during automatic simulation
-    document.getElementById("nextStep").disabled = true;
-    document.getElementById("startSimulation").disabled = true;
-    document.getElementById("automatic").disabled = true;
+// function automaticSimulation() {
+//     // Disable other buttons during automatic simulation
+//     document.getElementById("nextStep").disabled = true;
+//     document.getElementById("startSimulation").disabled = true;
+//     document.getElementById("automatic").disabled = true;
 
-    // Automatically step through the simulation every 1 second
+//     // Automatically step through the simulation every 1 second
+//     autoInterval = setInterval(() => {
+//         if (currentState === "qh") {
+//             stopAutomaticSimulation();
+//         } else {
+//             nextStep();
+//         }
+//     }, 1000); // Adjust the interval (in milliseconds) as desired
+// }
+
+// function stopAutomaticSimulation() {
+//     // Stop the automatic simulation
+//     clearInterval(autoInterval);
+//     autoInterval = null;
+
+//     // Re-enable buttons after stopping
+//     document.getElementById("nextStep").disabled = false;
+//     document.getElementById("startSimulation").disabled = false;
+//     document.getElementById("automatic").disabled = false;
+// }
+
+function automaticSimulation() {
     autoInterval = setInterval(() => {
         if (currentState === "qh") {
             stopAutomaticSimulation();
         } else {
             nextStep();
         }
-    }, 1000); // Adjust the interval (in milliseconds) as desired
+    }, 1000);
 }
 
 function stopAutomaticSimulation() {
-    // Stop the automatic simulation
     clearInterval(autoInterval);
     autoInterval = null;
 
-    // Re-enable buttons after stopping
-    document.getElementById("nextStep").disabled = false;
-    document.getElementById("startSimulation").disabled = false;
-    document.getElementById("automatic").disabled = false;
+    // Show "Restart" button
+    document.getElementById("restartSimulation").style.display = "inline-block";
 }
 
 
@@ -479,14 +521,26 @@ function restartSimulation() {
 
 // Initialize the tape on page load
 setupInitialTape();
+
+// document.getElementById("automatic").addEventListener("click", () => {
+//     // Automatically step through the simulation
+//     automaticInterval = setInterval(() => {
+//         if (currentState === "qh") {
+//             // Stop automatic stepping once the simulation is done
+//             clearInterval(automaticInterval);
+//             return;
+//         }
+//         nextStep(); // Call the nextStep function
+//     }, 1000); // Execute every 1 second (adjust the interval as needed)
+// });
+document.getElementById("stepThrough").addEventListener("click", () => {
+    document.getElementById("stepThrough").style.display = "none";
+    document.getElementById("automatic").style.display = "none";
+    document.getElementById("nextStep").style.display = "inline-block"; // Show "Next Step"
+});
+
 document.getElementById("automatic").addEventListener("click", () => {
-    // Automatically step through the simulation
-    automaticInterval = setInterval(() => {
-        if (currentState === "qh") {
-            // Stop automatic stepping once the simulation is done
-            clearInterval(automaticInterval);
-            return;
-        }
-        nextStep(); // Call the nextStep function
-    }, 1000); // Execute every 1 second (adjust the interval as needed)
+    document.getElementById("stepThrough").style.display = "none";
+    document.getElementById("automatic").style.display = "none";
+    automaticSimulation(); // Start automatic simulation
 });
