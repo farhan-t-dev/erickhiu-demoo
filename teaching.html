@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Khiu - Teaching</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Include header -->
+    <div id="header-placeholder"></div>
+
+    <main class="hero">
+        <h2>Teaching</h2>
+    </main>
+
+    <!-- Include footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Function to dynamically load templates
+        async function loadTemplate(id, path) {
+            const response = await fetch(path);
+            const text = await response.text();
+            document.getElementById(id).innerHTML = text;
+        }
+
+        // Load header
+        loadTemplate('header-placeholder', 'templates/header.html');
+        loadTemplate('footer-placeholder', 'templates/footer.html');
+    </script>
+</body>
+</html>
