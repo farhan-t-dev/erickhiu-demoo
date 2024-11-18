@@ -2,6 +2,7 @@
 body, html {
     height: 100%;
     margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     font-family: 'Helvetica', sans-serif;
@@ -12,14 +13,15 @@ body, html {
 
 main {
     flex: 1; /* Ensure the main content stretches to fill available space */
+    width: 100%
 }
 
 section {
-    margin: 2rem auto;
-    padding: 1.5rem 2rem;
+    margin: 0rem auto;
+    padding: 1.5rem 1.5rem;
     /* max-width: 800px; */
     background: white;
-    border-radius: 12px;
+    /* border-radius: 12px; */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -50,13 +52,22 @@ header {
     align-items: center;
     background-color: #00274c;
     color: white;
-    padding: 1.5rem 2rem;
+    margin: 0;
+    padding: 0;
+    /* padding: 1.5rem 2rem; */
 }
 
 header .logo {
     text-decoration: none;
     color: white;
     font-family: 'Papyrus', fantasy;
+}
+
+header, .topnav {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #00274c;
 }
 
 header h1 {
@@ -68,12 +79,13 @@ header h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
+    /* position: sticky; */
     top: 0;
     width: 100%;
     background-color: #00274c;
-    border-bottom: 1px solid #dbdbdb;
-    padding: 0.5rem 2rem; /* Add padding for better spacing */
+    /* border-bottom: 1px solid #dbdbdb; */
+    padding: 0.5rem 2rem; 
+    margin: 0;
 }
 
 .nav {
@@ -107,7 +119,8 @@ footer {
     width: 100%;
     background-color: #00274c;
     color: white;
-    padding: 1.5rem;
+    padding: 1rem;
+    margin: 0;
     text-align: center;
     box-sizing: border-box; /* Includes padding in the total width calculation */
 }
@@ -118,6 +131,62 @@ footer {
 
 .footer a:hover {
     text-decoration: underline;
+}
+
+/* Homepage */
+.banner {
+    position: relative;
+    background-image: url('../images/homepage/banner.png'); /* Set the background image separately */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 0;
+    padding-top: 35%;
+    display: flex;
+    color: white;
+    overflow: hidden;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(242, 244, 248, 0.3) 0.5%, rgba(0, 0, 0, 0.5) 50%, #001325 100%);
+    z-index: 1;
+}
+
+/* Text styling */
+.banner-text {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    z-index: 2;
+    padding: 0 20px;
+    max-width: 55%;
+    text-align: left;
+    font-family: 'Helvetica', sans-serif;
+    text-shadow: 1px 1px 2px #333;
+}
+
+.banner-text h2 {
+    font-size: 2.5rem;
+    color: #ffcb05;
+    font-family: 'Papyrus', fantasy;
+    margin-bottom: 1rem;
+}
+
+.banner-text p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: white;
+}
+
+.hero {
+    padding: 20px;
+    background-color: #f5f5f5; /* Light gray background for the hero section */
 }
 
 /* Two-Column Layout */
@@ -222,7 +291,7 @@ button + button {
     padding: 1.5rem;
     background-color: white;
     border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
     transition: transform 0.3s ease;
 }
 
