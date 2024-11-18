@@ -473,4 +473,107 @@ section h2 {
     color: #555;
 }
 
+.experience-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.experience-item img.experience-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.experience-item div {
+    flex: 1;
+}
+
+.experience-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-item p {
+    margin: 0.3rem 0;
+    color: #555;
+}
+
+.experience-item ul {
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+    list-style-type: disc;
+}
+
+/* Fix for separate sections with no shared awkward spacing */
+.main-wrapper > section {
+    margin-bottom: 2rem; /* Ensure consistent spacing */
+}
+
+/* Date Alignment */
+.date-align {
+    text-align: right;
+    font-style: italic;
+    color: #555;
+}
+
+/* Experience Item */
+.experience-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+/* Align logo with the title */
+.experience-item img.experience-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    border-radius: 8px;
+    object-fit: cover;
+    align-self: flex-start; /* Top align logo with title */
+}
+
+.experience-item div {
+    flex: 1;
+}
+
+.experience-item h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.experience-item p {
+    margin: 0.3rem 0;
+    color: #555;
+}
+
+/* Add consistent list styles */
+.experience-item ul {
+    margin: 0.5rem 0 0 1rem;
+    padding-left: 1rem;
+    list-style-type: disc;
+}
+
+.role-and-dates {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline; /* Align text vertically at the baseline */
+    margin-top: 0.5rem; /* Optional: Add spacing above */
+}
+
+.role-and-dates p {
+    margin: 0;
+    font-size: 1rem; /* Adjust text size if needed */
+    color: #333; /* Match other text styles */
+}
+
+.role-and-dates .date-align {
+    text-align: right; /* Ensure date aligns right within flex container */
+    font-style: italic;
+    color: #555;
+}
 

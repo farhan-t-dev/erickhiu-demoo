@@ -1,10 +1,9 @@
 {
-    "user": {
-        "name": "Eric Khiu",
-        "email": "erickhiu@umich.edu",
-        "phone": "+1 (734) 510-1866",
-        "linkedin_url": "https://linkedin.com/in/eric-khiu-224499145",
-        "google_scholar_url": "https://scholar.google.com/citations?user=O8ydiOkAAAAJ&hl=en"
+    "skills": {
+        "programming_languages": "Python, C++, C, R, HTML, JavaScript",
+        "python_packages": "TensorFlow, PyTorch, Numpy, Pandas, Scipy, Sklearn, Matplotlib, Flask, React",
+        "languages": "Fluent in English, Chinese, and Malay; Beginner in Japanese and Korean",
+        "tools": "Visual Studio Code, Git Repository, Google Colab, Ubuntu, Adobe Premiere Pro"
     },
     "education": [
         {
@@ -13,40 +12,20 @@
             "end_date": "Present",
             "degree": "B.S. Computer Science, Data Science, and Mathematics",
             "gpa": "3.86",
-            "graduation_date": "May 2025",
-            "course_highlights": ["Machine Learning", "Artificial Intelligence", "Natural Language Processing", "Theoretical Computer Science", 
-            "Mathematics of Finance", "Intermediate Microeconomics Theory", "Numerical Analysis in Finance", 
-            "Theoretical Statistics","Applied Regression Analysis" ]
-        }
-    ],
-    "skills": {
-        "programming_languages": "Python, C++, C, R, HTML, JavaScript",
-        "python_packages": "TensorFlow, PyTorch, Numpy, Pandas, Scipy, Sklearn, Matplotlib, Flask, React",
-        "languages": "Fluent in English, Chinese, and Malay; Beginner in Japanese and Korean",
-        "tools": "Visual Studio Code, Git Repository, Google Colab, Ubuntu, Adobe Premiere Pro"
-    },
-    "research_experience": [
-        {
-            "organization": "The Fields Institute for Research in Mathematical Sciences, University of Toronto",
-            "start_date": "May 2023",
-            "end_date": "Present",
-            "role": "Research Team Lead",
-            "details": [
-                "Research Focus: Multilingual NLP for low-resource languages, emphasizing the intersection of mathematics, social science, and machine learning.",
-                "Conducted studies on linguistic data integrity and reproducibility in typological databases.",
-                "Performed regression analysis to explore influential factors on machine translation performance."
-            ]
+            "logo": "umich-logo.png",
+            "description": "Specializing in theoretical computer science and machine learning.",
+            "details": ["CS & DS Focuses: Machine Learning and Natural Language Processing",
+                        "Mathematics Focuses: Financial Mathematics and Risk Management"]
         },
         {
-            "organization": "Research on Teaching Mathematics in Undergraduate Settings (RTMUS) Lab",
-            "start_date": "Sept 2022",
-            "end_date": "Dec 2023",
-            "role": "Undergraduate Research Assistant",
-            "project": "Undergraduate Teaching and Learning in Mathematics with Open Software and Textbook (UTMOST3)",
-            "details": [
-                "Developed interactive textbooks that better support teaching and learning of undergraduate mathematics.",
-                "Designed frameworks to analyze students' responses to the reading questions embedded in textbooks."
-            ]
+            "institution": "Taylor's University, Malaysia",
+            "start_date": "Aug 2020",
+            "end_date": "April 2021",
+            "degree": "American Degree Program - Computer Science",
+            "gpa": "4.00",
+            "logo": "taylors-logo.jpeg",
+            "details":["Student representative for computer science students in the ADP program.",
+                        "Concecutive Dean's List Award recipient."]
         }
     ],
     "work_experience": [
@@ -59,40 +38,34 @@
                 "Researched and developed language model-driven solutions, enhancing data classification accuracy and effectiveness.",
                 "Conducted error analysis and applied data cleaning, improving model reliability and outcomes.",
                 "Initiated data augmentation techniques, achieving performance gains that supported key objectives."
-            ]
-        },
-        {
-            "organization": "English Language Institute, University of Michigan",
-            "start_date": "Sept 2022",
-            "end_date": "Oct 2022",
-            "role": "Undergraduate Consultant",
-            "details": [
-                "Provided prospective GSIs with feedback on the quality of their instruction in areas such as lesson delivery, comprehensibility, vocabulary selection, body language, and lesson environment.",
-                "Engaged with multilingual speakers from a variety of countries and LSA disciplines including economics, sociology, linguistics, history, biology, earth science, etc."
-            ]
+            ],
+            "logo": "pantas-logo.jpg"
         }
     ],
-    "teaching_experience": [
+    "research_experience": [
         {
-            "organization": "Computer Science and Engineering (CSE), University of Michigan",
-            "start_date": "Jan 2024",
+            "organization": "The Fields Institute for Research in Mathematical Sciences, Canada",
+            "start_date": "May 2023",
             "end_date": "Present",
-            "role": "Instructional Aide",
+            "role": "Research Team Lead",
             "details": [
-                "Course: EECS 376: Foundations of Computer Science",
-                "Facilitate weekly discussion sections and hold office hours for EECS 376.",
-                "Course topics: Algorithm design, computability (finite automata, Turing Machines, Turing reductions), complexity theory (P & NP, NP-hard, NP-Completeness, heuristics), cryptography (Diffie-Helman, RSA)."
-            ]
+                "Research focus: Multilingual NLP for low-resource languages, emphasizing the intersection of mathematics, social science, and machine learning.",
+                "Conducted studies on linguistic data integrity and reproducibility in typological databases.",
+                "Performed regression analysis to explore influential factors on machine translation performance."
+            ],
+            "logo": "fields-logo.jpg"
         },
         {
-            "organization": "Math Learning Center, University of Michigan",
+            "organization": "Marsal's Family School of Education",
             "start_date": "Sept 2022",
-            "end_date": "Oct 2022",
-            "role": "Tutor",
+            "end_date": "Dec 2023",
+            "role": "Undergraduate Research Assistant",
             "details": [
-                "Courses: Calculus I and II, Multivariable Calculus, Linear Algebra, Probability",
-                "Provided walk-in tutoring for Calculus I, II, Multivariable and Vector Calculus, Linear Algebra, and Probability."
-            ]
+                "Research focus: Mathematics education in undergraduate settings, focusing on the use of Open Software and Textbook.",
+                "Collaborated with other members of the research team to develop open-source interactive textbooks that better support the teaching and learning of Calculus, Linear Algebra, and Abstract Algebra. ",
+                "Analyzed students' reasoning in answering reading questions embedded in an interactive Linear Algebra textbook using APOS Theory, Balacheff's model of conceptions, Sfrad's model of commognition, and polysemous approach."
+            ],
+            "logo": "marsal-logo.jpeg"
         }
     ]
 }
