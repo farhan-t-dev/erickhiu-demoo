@@ -1,9 +1,32 @@
 {
     "skills": {
-        "programming_languages": "Python, C++, C, R, HTML, JavaScript",
-        "python_packages": "TensorFlow, PyTorch, Numpy, Pandas, Scipy, Sklearn, Matplotlib, Flask, React",
-        "languages": "Fluent in English, Chinese, and Malay; Beginner in Japanese and Korean",
-        "tools": "Visual Studio Code, Git Repository, Google Colab, Ubuntu, Adobe Premiere Pro"
+        "natural_languages": [
+            { "name": "English (UK)", "icon": "uk-icon.png", "alt": "English (UK)" },
+            { "name": "English (American)", "icon": "us-icon.png", "alt": "English (American)" },
+            { "name": "Chinese", "icon": "china-icon.png", "alt": "Chinese" },
+            { "name": "Malay", "icon": "malaysia-icon.png", "alt": "Malay" },
+            { "name": "Japanese (beginner)", "icon": "japan-icon.png", "alt": "Japanese" },
+            { "name": "Korean (beginner)", "icon": "korean-icon.png", "alt": "Korean" }
+        ],
+        "programming_languages": [
+            { "name": "Python", "icon": "python-icon.png", "alt": "Python" },
+            { "name": "C++", "icon": "cpp-icon.png", "alt": "C++" },
+            { "name": "C", "icon": "c-icon.png", "alt": "C" },
+            { "name": "R", "icon": "r-icon.png", "alt": "R" },
+            { "name": "HTML", "icon": "html-icon.png", "alt": "HTML" },
+            { "name": "JavaScript", "icon": "js-icon.png", "alt": "JavaScript" }
+        ],
+        "tools": [
+            { "name": "VS Code", "icon": "vscode-icon.jpg", "alt": "VS Code" },
+            { "name": "GitHub", "icon": "github-icon.png", "alt": "GitHub" },
+            { "name": "Ubuntu", "icon": "ubuntu-icon.png", "alt": "Ubuntu" },
+            { "name": "R Studio", "icon": "r-studio-icon.png", "alt": "R Studio" },
+            { "name": "Overleaf", "icon": "overleaf-icon.jpg", "alt": "Overleaf" },
+            { "name": "Premiere Pro", "icon": "premiere-pro-icon.png", "alt": "Premiere Pro" }
+        ],
+        "python_packages": [
+            "TensorFlow", "PyTorch", "Numpy", "Pandas", "Scipy", "Sklearn", "Matplotlib", "Flask", "React"
+        ]
     },
     "education": [
         {
@@ -61,8 +84,8 @@
             "end_date": "Dec 2023",
             "role": "Undergraduate Research Assistant",
             "details": [
-                "Research focus: Mathematics education in undergraduate settings, focusing on the use of Open Software and Textbook.",
-                "Collaborated with other members of the research team to develop open-source interactive textbooks that better support the teaching and learning of Calculus, Linear Algebra, and Abstract Algebra. ",
+                "Research focus: Mathematics education using open software and textbooks in undergraduate settings.",
+                "Developed open-source interactive textbooks that better support the teaching and learning of Calculus, Linear Algebra, and Abstract Algebra. ",
                 "Analyzed students' reasoning in answering reading questions embedded in an interactive Linear Algebra textbook using APOS Theory, Balacheff's model of conceptions, Sfrad's model of commognition, and polysemous approach."
             ],
             "logo": "marsal-logo.jpeg"

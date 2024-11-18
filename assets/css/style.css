@@ -110,16 +110,6 @@ header h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    width: 100%;
-    padding: 1.5rem 2rem;
-    background-color: #00274c;
-    color: white;
-    margin-top: auto; /* Push footer to the bottom if the content is short */
-}
-
 /* Page Wrapper */
 body, html {
     height: 100%;
@@ -209,13 +199,6 @@ section {
     background: white;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-section h2 {
-    font-size: 1.8rem;
-    color: #00274c;
-    margin-bottom: 1rem;
-    position: relative;
 }
 
 /* Grid for Project Items */
@@ -367,20 +350,6 @@ section h2 {
     color: #ffcb05; /* Michigan Maize */
 }
 
-/* Adjust column for right sections */
-.main-wrapper {
-    flex: 3; /* Wider column */
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-}
-
-/* Fix Section Spacing */
-.main-wrapper > section {
-    margin-bottom: 2rem;
-}
-
 /* Date Alignment */
 section ul li, section p {
     text-align: left;
@@ -438,21 +407,31 @@ section ul li, section p {
 /* Adjust column for right sections */
 .main-wrapper {
     flex: 3; /* Wider column */
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    margin: 0rem auto;
+    padding: 0rem 1rem;
 }
 
 /* Fix Section Spacing */
 .main-wrapper > section {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
+
+/* Adjust column for right sections */
+.side-wrapper {
+    flex: 1; /* narrower column */
+    background-color: white;
+    margin: 2rem auto;
+    border-radius:16px;
+    padding: 0rem 1rem;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.15);
+}
+
 
 /* Date Alignment */
 section ul li, section p {
     text-align: left;
 }
+
 
 .section-dates {
     text-align: right;
@@ -461,6 +440,7 @@ section ul li, section p {
 }
 
 section h2 {
+    margin: 0;
     padding-top: 0.5rem;
     font-size: 1.8rem;
     color: #00274c;
@@ -577,3 +557,61 @@ section h2 {
     color: #555;
 }
 
+.skills-category {
+    margin-bottom: 2rem;
+}
+
+.icon-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.icon-item {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 2px;
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.icon-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.icon-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skills-category ul {
+    margin-top: 1rem;
+    padding-left: 20px;
+    list-style: disc;
+}
+
+/* Full-Width Footer Styling */
+.full-width-footer {
+    background-color: #00274c;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    width: 100%; /* Ensure the footer spans the full width of the viewport */
+    box-sizing: border-box; /* Includes padding in the total width calculation */
+}
+.full-width-footer a {
+    color: #ffcb05;
+    text-decoration: none;
+}
+
+.full-width-footer a:hover {
+    text-decoration: underline;
+}

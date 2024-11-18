@@ -13,16 +13,25 @@
     <main>
         <div class="two-column-layout">
             <!-- Left Column: My Skillbox -->
-            <section class="about-header">
-                <h2>My Skillbox</h2>
-                <ul>
-                    <li><strong>Programming Languages:</strong> <span id="programming-languages"></span></li>
-                    <li><strong>Python Packages:</strong> <span id="python-packages"></span></li>
-                    <li><strong>Languages:</strong> <span id="languages"></span></li>
-                    <li><strong>Tools:</strong> <span id="tools"></span></li>
-                </ul>
-            </section>
-
+             <div class="side-wrapper">
+                    <h2>My Skillbox</h2>
+                    <div id="natural-languages" class="skills-category">
+                        <h3>Natural Languages</h3>
+                        <div class="icon-container"></div>
+                    </div>
+                    <div id="programming-languages" class="skills-category">
+                        <h3>Programming Languages</h3>
+                        <div class="icon-container"></div>
+                    </div>
+                    <div id="tools" class="skills-category">
+                        <h3>Tools</h3>
+                        <div class="icon-container"></div>
+                    </div>
+                    <div id="python-packages" class="skills-category">
+                        <h3>Python Packages</h3>
+                        <ul></ul>
+                    </div>
+            </div>
             <!-- Right Column: Main Content -->
             <div class="main-wrapper">
                 <section id="education">
@@ -65,13 +74,43 @@
             renderResearchExperience(data.research_experience);
         }
 
-        // Render Skills in the Left Column
         function renderSkillbox(skills) {
-            document.getElementById('programming-languages').textContent = skills.programming_languages;
-            document.getElementById('python-packages').textContent = skills.python_packages;
-            document.getElementById('languages').textContent = skills.languages;
-            document.getElementById('tools').textContent = skills.tools;
-        }
+            // Render natural languages
+            const naturalLanguagesContainer = document.querySelector("#natural-languages .icon-container");
+            skills.natural_languages.forEach(lang => {
+                naturalLanguagesContainer.innerHTML += `
+                    <div class="icon-item" title="${lang.name}">
+                        <img src="assets/images/skills/natural-languages/${lang.icon}" alt="${lang.alt}">
+                    </div>
+                `;
+            });
+        
+            // Render programming languages
+            const programmingLanguagesContainer = document.querySelector("#programming-languages .icon-container");
+            skills.programming_languages.forEach(lang => {
+                programmingLanguagesContainer.innerHTML += `
+                    <div class="icon-item" title="${lang.name}">
+                        <img src="assets/images/skills/programming-languages/${lang.icon}" alt="${lang.alt}">
+                    </div>
+                `;
+            });
+        
+            // Render tools
+            const toolsContainer = document.querySelector("#tools .icon-container");
+            skills.tools.forEach(tool => {
+                toolsContainer.innerHTML += `
+                    <div class="icon-item" title="${tool.name}">
+                        <img src="assets/images/skills/tools/${tool.icon}" alt="${tool.alt}">
+                    </div>
+                `;
+            });
+        
+            // Render Python packages
+            const pythonPackagesContainer = document.querySelector("#python-packages ul");
+            skills.python_packages.forEach(pkg => {
+                pythonPackagesContainer.innerHTML += `<li>${pkg}</li>`;
+            });
+        }        
 
         // Render Education in the Right Column
         function renderEducation(education) {
