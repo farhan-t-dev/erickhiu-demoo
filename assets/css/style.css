@@ -1,44 +1,49 @@
 /* General Styling */
-body {
-    font-family: 'Helvetica', sans-serif;
+body, html {
+    height: 100%;
     margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Helvetica', sans-serif;
     color: #333;
     background-color: #f2f4f8;
+    box-sizing: border-box;
+}
+
+main {
+    flex: 1; /* Ensure the main content stretches to fill available space */
+}
+
+section {
+    margin: 2rem auto;
+    padding: 1.5rem 1.5rem;
+    /* max-width: 800px; */
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+section ul li, section p {
+    text-align: left;
+}
+
+section h2 {
+    margin: 0;
+    padding-top: 0.5rem;
+    font-size: 1.8rem;
+    color: #00274c;
+    margin-bottom: 1rem;
 }
 
 .flush-left {
-    text-align: left; /* Aligns text to the left */
-    margin: 0 ; /* Centers the block content within the section */
-    max-width: 900px; /* Sets a reasonable max width for better readability */
-    line-height: 1.6; /* Improves readability by increasing line spacing */
+    text-align: left;
+    margin: 0 ;
+    width: 100%;
+    line-height: 1.6;
 }
 
+/* Header and Navigation */
 
-/* Links */
-a {
-    color: #00274c; /* Michigan Blue */
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 1px solid transparent;
-}
-
-a:hover {
-    color: #ffcb05; /* Michigan Maize */
-    border-bottom: 1px solid #ffcb05;
-}
-
-/* Header and Footer */
-header, footer {
-    background-color: #00274c;
-    color: white;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    position: relative;
-}
-
-/* Header and Navigation Styling */
 header {
     display: flex;
     justify-content: space-between; /* Align items to the left and right */
@@ -51,6 +56,7 @@ header {
 header .logo {
     text-decoration: none;
     color: white;
+    font-family: 'Papyrus', fantasy;
 }
 
 header h1 {
@@ -58,7 +64,6 @@ header h1 {
     margin: 0;
 }
 
-/* Top Navigation */
 .topnav {
     display: flex;
     align-items: center;
@@ -69,16 +74,6 @@ header h1 {
     background-color: #00274c;
     border-bottom: 1px solid #dbdbdb;
     padding: 0.5rem 2rem; /* Add padding for better spacing */
-}
-
-.logo {
-    text-decoration: none;
-    color: black;
-}
-
-.logo h1 {
-    font-size: 1.5rem;
-    margin: 0;
 }
 
 .nav {
@@ -103,25 +98,74 @@ header h1 {
     color: #ffcb05; /* Michigan Maize for hover */
 }
 
-/* Sticky Behavior */
-.topnav.sticky {
-    background-color: white;
-    z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Footer */
+footer {
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #00274c;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    box-sizing: border-box; /* Includes padding in the total width calculation */
+}
+.footer a {
+    color: #ffcb05;
+    text-decoration: none;
 }
 
-/* Page Wrapper */
-body, html {
-    height: 100%;
-    margin: 0;
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Two-Column Layout */
+.two-column-layout {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 1200px; /* Limit overall width for better readability */
+    margin: 2rem auto;
+    padding: 0 1.5rem; /* Add horizontal padding */
 }
 
-main {
-    flex: 1; /* Ensure the main content stretches to fill available space */
+/* Adjust column for right sections */
+.main-wrapper {
+    flex: 3; /* Wider column */
+    margin: 0rem auto;
+    padding: 0rem 1rem;
 }
 
+.main-wrapper > section {
+    margin-bottom: 1rem;
+}
+
+.side-wrapper {
+    flex: 1; /* narrower column */
+    margin: 0rem auto;
+    padding: 0rem 1rem;
+}
+
+.side-wrapper > section {
+    margin-bottom: 1rem;
+}
+
+
+/* Links */
+a {
+    color: #00274c; /* Michigan Blue */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+a:hover {
+    color: #ffcb05; /* Michigan Maize */
+    border-bottom: 1px solid #ffcb05;
+}
 
 /* Hero Section */
 .hero {
@@ -148,40 +192,90 @@ main {
     margin-bottom: 1rem;
 }
 
-/* Floating Elements for Interactivity */
-.floating-objects {
-    position: relative;
-}
-
-.floating-object {
-    position: absolute;
-    opacity: 0.1;
-    animation: floatAnimation 5s ease-in-out infinite;
-}
-
-@keyframes floatAnimation {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Links Section for Projects and Other Buttons */
-.links a {
-    display: inline-block;
-    margin: 1rem;
-    padding: 0.6rem 1.2rem;
-    border: 2px solid #00274c;
+/* Buttons */
+button {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    border: none;
     border-radius: 5px;
-    color: #00274c;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.links a:hover {
+    cursor: pointer;
     background-color: #00274c;
     color: white;
+    transition: background-color 0.3s;
 }
 
-/* Profile Picture Styling */
+button:hover {
+    background-color: #ffcb05;
+    color: #00274c;
+}
+
+/* Spacing Between Buttons */
+button + button {
+    margin-left: 10px;
+}
+
+/* Cool Items Section */
+.cool-item.hero {
+    display: flex; /* Arrange items in a row */
+    align-items: flex-start; /* Align thumbnail and text at the top */
+    gap: 1.5rem; /* Add spacing between thumbnail and text */
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.cool-item.hero:hover {
+    transform: translateY(-5px); /* Add hover effect */
+}
+
+.cool-item img.thumbnail {
+    max-width: 150px; /* Limit the thumbnail size */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cool-item img.thumbnail:hover {
+    transform: scale(1.05); /* Slight zoom-in on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+}
+
+.cool-item .content {
+    flex: 1; /* Allow the content to take remaining space */
+}
+
+.cool-item .content h2 {
+    text-align: left;
+    font-weight: 300;
+    margin: 0 0 0.5rem 0; /* Add spacing below the title */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00274c;
+}
+
+.cool-item .content h2 a {
+    font-weight: 700;
+    text-decoration: none;
+    color: #00274c;
+    transition: color 0.3s ease;
+}
+
+.cool-item .content h2 a:hover {
+    color: #ffcb05;
+}
+
+.cool-item .content p {
+    text-align: left;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* About page stuff */
+
 .profile-picture {
     border-radius: 50%;
     width: 150px;
@@ -189,373 +283,6 @@ main {
     object-fit: cover;
     border: 3px solid #ffcb05;
     margin-bottom: 1rem;
-}
-
-/* About Page Sections */
-section {
-    margin: 2rem auto;
-    padding: 2rem 1.5rem;
-    max-width: 800px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Grid for Project Items */
-.project-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-}
-
-/* Individual Project Item */
-.project-item {
-    background: white;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-.project-item:hover {
-    transform: translateY(-5px);
-}
-
-/* About Header */
-.about-header {
-    text-align: left; /* Left-align text */
-    padding: 1rem;
-    margin-left: 1rem;
-}
-
-.contact-info p {
-    display: flex;
-    align-items: center;
-    margin: 0.5rem 0; /* Add spacing between lines */
-}
-
-.contact-info a {
-    margin-left: 5px; /* Add spacing between icon and text */
-}
-
-
-.about-header h1 {
-    font-size: 2rem;
-    margin: 0.5rem 0;
-    color: #00274c;
-}
-
-.about-header p {
-    font-size: 1rem;
-    margin: 0.2rem 0;
-    color: #555;
-}
-
-/* Two-Column Layout */
-.two-column-layout {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 2rem;
-    max-width: 1200px; /* Limit overall width for better readability */
-    margin: 2rem auto;
-    padding: 0 1.5rem; /* Add horizontal padding */
-}
-
-/* Left Column */
-.two-column-layout .about-header {
-    flex: 1; /* Narrower width */
-    text-align: left;
-    margin: 0;
-    padding: 1.5rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.two-column-layout .about-header img {
-    margin: 0 auto 1rem auto;
-    display: block; /* Center the profile picture */
-}
-
-.two-column-layout .about-header h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #00274c;
-}
-
-.two-column-layout .about-header p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0.5rem 0;
-    color: #333;
-}
-
-/* Right Column */
-.two-column-layout .main-content {
-    flex: 2; /* Wider width for main content */
-}
-
-.two-column-layout .main-content section {
-    margin-bottom: 2rem; /* Add spacing between sections */
-}
-
-.two-column-layout .main-content h2 {
-    font-size: 1.8rem;
-    color: #00274c;
-    margin-bottom: 1rem;
-}
-
-/* Layout */
-.main-content {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem; /* Space between columns */
-    margin-top: 2rem;
-}
-
-.about-header {
-    flex: 1; /* Narrower column */
-    max-width: 250px;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-/* Contact Info */
-.contact-info p {
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
-    color: #333;
-    margin: 0.5rem 0;
-}
-
-.contact-info .icon {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    filter: grayscale(1); /* Make icons consistent */
-}
-
-.contact-info a {
-    color: #00274c; /* Michigan Blue */
-    text-decoration: none;
-}
-
-.contact-info a:hover {
-    color: #ffcb05; /* Michigan Maize */
-}
-
-/* Date Alignment */
-section ul li, section p {
-    text-align: left;
-}
-
-.section-dates {
-    text-align: right;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-/* Layout */
-.main-content {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem; /* Space between columns */
-    margin-top: 2rem;
-}
-
-.about-header {
-    flex: 1; /* Narrower column */
-    max-width: 250px;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-/* Contact Info */
-.contact-info p {
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
-    color: #333;
-    margin: 0.5rem 0;
-}
-
-.contact-info .icon {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    filter: grayscale(1); /* Make icons consistent */
-}
-
-.contact-info a {
-    color: #00274c; /* Michigan Blue */
-    text-decoration: none;
-}
-
-.contact-info a:hover {
-    color: #ffcb05; /* Michigan Maize */
-}
-
-/* Adjust column for right sections */
-.main-wrapper {
-    flex: 3; /* Wider column */
-    margin: 0rem auto;
-    padding: 0rem 1rem;
-}
-
-/* Fix Section Spacing */
-.main-wrapper > section {
-    margin-bottom: 1rem;
-}
-
-/* Adjust column for right sections */
-.side-wrapper {
-    flex: 1; /* narrower column */
-    background-color: white;
-    color:#00274c;
-    margin: 2rem auto;
-    border-radius:16px;
-    padding: 0rem 1rem;
-    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.15);
-}
-
-
-/* Date Alignment */
-section ul li, section p {
-    text-align: left;
-}
-
-
-.section-dates {
-    text-align: right;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-section h2 {
-    margin: 0;
-    padding-top: 0.5rem;
-    font-size: 1.8rem;
-    color: #00274c;
-    margin-bottom: 1rem;
-}
-
-.date-align {
-    text-align: right;
-    font-style: italic;
-    color: #555;
-}
-
-.experience-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 2rem;
-}
-
-.experience-item img.experience-logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 1rem;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-.experience-item div {
-    flex: 1;
-}
-
-.experience-item h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.experience-item p {
-    margin: 0.3rem 0;
-    color: #555;
-}
-
-.experience-item ul {
-    margin: 0.5rem 0;
-    padding-left: 1rem;
-    list-style-type: disc;
-}
-
-/* Fix for separate sections with no shared awkward spacing */
-.main-wrapper > section {
-    margin-bottom: 2rem; /* Ensure consistent spacing */
-}
-
-/* Date Alignment */
-.date-align {
-    text-align: right;
-    font-style: italic;
-    color: #555;
-}
-
-/* Experience Item */
-.experience-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-}
-
-/* Align logo with the title */
-.experience-item img.experience-logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 1rem;
-    border-radius: 8px;
-    object-fit: cover;
-    align-self: flex-start; /* Top align logo with title */
-}
-
-.experience-item div {
-    flex: 1;
-}
-
-.experience-item h3 {
-    font-size: 1.2rem;
-    margin: 0;
-    margin-bottom: 0.5rem;
-}
-
-.experience-item p {
-    margin: 0.3rem 0;
-    color: #555;
-}
-
-/* Add consistent list styles */
-.experience-item ul {
-    margin: 0.5rem 0 0 1rem;
-    padding-left: 1rem;
-    list-style-type: disc;
-}
-
-.role-and-dates {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline; /* Align text vertically at the baseline */
-    margin-top: 0.5rem; /* Optional: Add spacing above */
-}
-
-.role-and-dates p {
-    margin: 0;
-    font-size: 1rem; /* Adjust text size if needed */
-    color: #333; /* Match other text styles */
-}
-
-.role-and-dates .date-align {
-    text-align: right; /* Ensure date aligns right within flex container */
-    font-style: italic;
-    color: #555;
 }
 
 .skills-category {
@@ -566,6 +293,16 @@ section h2 {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+.skills-category ul {
+    margin-top: 1rem;
+    padding-left: 20px;
+    list-style: disc;
+}
+
+.skills-category ul li {
+    margin-bottom: 0.5rem; /* Adjust the spacing between items */
 }
 
 .icon-item {
@@ -593,26 +330,69 @@ section h2 {
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.skills-category ul {
-    margin-top: 1rem;
-    padding-left: 20px;
-    list-style: disc;
+/* Experience Item */
+.experience-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
 }
 
-/* Full-Width Footer Styling */
-.full-width-footer {
-    background-color: #00274c;
-    color: white;
-    padding: 1.5rem;
-    text-align: center;
-    width: 100%; /* Ensure the footer spans the full width of the viewport */
-    box-sizing: border-box; /* Includes padding in the total width calculation */
-}
-.full-width-footer a {
-    color: #ffcb05;
-    text-decoration: none;
+.experience-item img.experience-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    border-radius: 8px;
+    object-fit: cover;
+    align-self: flex-start; /* Top align logo with title */
 }
 
-.full-width-footer a:hover {
-    text-decoration: underline;
+.experience-item div {
+    flex: 1;
+}
+
+.experience-item h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.experience-item p {
+    margin: 0.3rem 0;
+    color: #555;
+}
+
+.experience-item ul {
+    margin: 0.5rem 0 0 1rem;
+    padding-left: 1rem;
+    list-style-type: disc;
+}
+
+.experience-item ul li {
+    margin-bottom: 0.5rem; /* Adjust the spacing between items */
+}
+
+/* Date Alignment */
+.date-align {
+    text-align: right;
+    font-style: italic;
+    color: #555;
+}
+
+.role-and-dates {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline; /* Align text vertically at the baseline */
+    margin-top: 0.5rem; /* Optional: Add spacing above */
+}
+
+.role-and-dates p {
+    margin: 0;
+    font-size: 1rem; /* Adjust text size if needed */
+    color: #333; /* Match other text styles */
+}
+
+.role-and-dates .date-align {
+    text-align: right; /* Ensure date aligns right within flex container */
+    font-style: italic;
+    color: #555;
 }

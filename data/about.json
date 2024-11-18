@@ -23,11 +23,12 @@
             { "name": "R Studio", "icon": "r-studio-icon.png", "alt": "R Studio" },
             { "name": "Jupyter Notebook", "icon": "jupyter-icon.png", "alt": "Jupyter Notebook" },
             { "name": "Overleaf", "icon": "overleaf-icon.webp", "alt": "Overleaf" },
+            { "name": "AWS", "icon": "aws-icon.webp", "alt": "AWS" },
             { "name": "Apps Script", "icon": "apps-script-icon.png", "alt": "Apps Script" },
             { "name": "Premiere Pro", "icon": "premiere-pro-icon.png", "alt": "Premiere Pro" }
         ],
         "python_packages": [
-            "TensorFlow", "PyTorch", "Numpy", "Pandas", "Scipy", "Sklearn", "Matplotlib", "Flask", "React"
+            "PyTorch", "TensorFlow", "Numpy", "Pandas", "Scipy", "Sklearn", "Matplotlib", "Flask", "React"
         ]
     },
     "education": [
@@ -39,8 +40,8 @@
             "gpa": "3.86",
             "logo": "umich-logo.png",
             "description": "Specializing in theoretical computer science and machine learning.",
-            "details": ["CS & DS Focuses: Machine Learning and Natural Language Processing",
-                        "Mathematics Focuses: Financial Mathematics and Risk Management"]
+            "details": ["CS & DS Focus: Machine Learning and Natural Language Processing",
+                        "Mathematics Focus: Financial Mathematics and Risk Management"]
         },
         {
             "institution": "Taylor's University, Malaysia",
@@ -74,7 +75,7 @@
             "end_date": "Present",
             "role": "Research Team Lead",
             "details": [
-                "Research focus: Multilingual NLP for low-resource languages, emphasizing the intersection of mathematics, social science, and machine learning.",
+                "Research: Multilingual NLP for low-resource languages, emphasizing the intersection of mathematics, social science, and machine learning.",
                 "Conducted studies on linguistic data integrity and reproducibility in typological databases.",
                 "Performed regression analysis to explore influential factors on machine translation performance."
             ],
@@ -86,7 +87,7 @@
             "end_date": "Dec 2023",
             "role": "Undergraduate Research Assistant",
             "details": [
-                "Research focus: Mathematics education using open software and textbooks in undergraduate settings.",
+                "Research: Mathematics education using open software and textbooks in undergraduate settings.",
                 "Developed open-source interactive textbooks that better support the teaching and learning of Calculus, Linear Algebra, and Abstract Algebra. ",
                 "Analyzed students' reasoning in answering reading questions embedded in an interactive Linear Algebra textbook using APOS Theory, Balacheff's model of conceptions, Sfrad's model of commognition, and polysemous approach."
             ],
