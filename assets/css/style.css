@@ -420,6 +420,7 @@ section ul li, section p {
 .side-wrapper {
     flex: 1; /* narrower column */
     background-color: white;
+    color:#00274c;
     margin: 2rem auto;
     border-radius:16px;
     padding: 0rem 1rem;

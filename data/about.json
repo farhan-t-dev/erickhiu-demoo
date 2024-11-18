@@ -21,7 +21,9 @@
             { "name": "GitHub", "icon": "github-icon.png", "alt": "GitHub" },
             { "name": "Ubuntu", "icon": "ubuntu-icon.png", "alt": "Ubuntu" },
             { "name": "R Studio", "icon": "r-studio-icon.png", "alt": "R Studio" },
-            { "name": "Overleaf", "icon": "overleaf-icon.jpg", "alt": "Overleaf" },
+            { "name": "Jupyter Notebook", "icon": "jupyter-icon.png", "alt": "Jupyter Notebook" },
+            { "name": "Overleaf", "icon": "overleaf-icon.webp", "alt": "Overleaf" },
+            { "name": "Apps Script", "icon": "apps-script-icon.png", "alt": "Apps Script" },
             { "name": "Premiere Pro", "icon": "premiere-pro-icon.png", "alt": "Premiere Pro" }
         ],
         "python_packages": [
