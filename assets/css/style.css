@@ -6,7 +6,6 @@
     box-sizing: border-box; /* Ensures padding and borders are included in the width/height calculations */
 }
 
-
 body, html {
     height: 100%;
     margin: 0;
@@ -21,20 +20,47 @@ body, html {
 
 main {
     flex: 1; /* Ensure the main content stretches to fill available space */
-    width: 100%
+    width: 100%;
 }
 
 section {
     margin: 0rem auto;
+    padding: 1rem 1rem;
+    color: #333;
+    /* background: white; */
+}
+
+.section-shadow {
+    margin: 0rem auto;
     padding: 1.5rem 1.5rem;
-    /* max-width: 800px; */
     background: white;
-    /* border-radius: 12px; */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-section ul li, section p {
+.section-page {
+    background-color: white;
+    color: #00274c;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    max-width: 900px;
+    margin: 3rem auto;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+section ul li, section ol li, section p {
     text-align: left;
+    margin: 0 ;
+    width: 100%;
+    line-height: 1.5;
+    color: #333;
+}
+
+section h1 {
+    margin: 0;
+    padding-top: 0.5rem;
+    font-size: 2.5rem;
+    color: #00274c;
+    margin-bottom: 1rem;
 }
 
 section h2 {
@@ -45,154 +71,9 @@ section h2 {
     margin-bottom: 1rem;
 }
 
-.flush-left {
+section h3 {
     text-align: left;
-    margin: 0 ;
-    width: 100%;
-    line-height: 1.6;
-}
-
-/* Header and Navigation */
-
-header {
-    display: flex;
-    justify-content: space-between; /* Align items to the left and right */
-    align-items: center;
-    background-color: #00274c;
-    color: white;
-    margin: 0;
-    padding: 0;
-    /* padding: 1.5rem 2rem; */
-}
-
-header .logo {
-    text-decoration: none;
-    color: white;
-    font-family: 'Papyrus', fantasy;
-}
-
-header, .topnav {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #00274c;
-}
-
-header h1 {
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.topnav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* position: sticky; */
-    top: 0;
-    width: 100%;
-    background-color: #00274c;
-    /* border-bottom: 1px solid #dbdbdb; */
-    padding: 0.5rem 2rem; 
-    margin: 0;
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    margin-right: 0rem;
-}
-
-.nav-item {
-    margin: 0 15px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.nav-item:hover {
-    color: #ffcb05; /* Michigan Maize for hover */
-}
-
-/* Footer */
-footer {
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: #00274c;
-    color: white;
-    padding: 1rem;
-    margin: 0;
-    text-align: center;
-    box-sizing: border-box; /* Includes padding in the total width calculation */
-}
-.footer a {
-    color: #ffcb05;
-    text-decoration: none;
-}
-
-.footer a:hover {
-    text-decoration: underline;
-}
-
-/* Homepage */
-.banner {
-    position: relative;
-    background-image: url('../images/homepage/banner.png'); /* Set the background image separately */
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 0;
-    padding-top: 35%;
-    display: flex;
-    color: white;
-    overflow: hidden;
-}
-
-.banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(242, 244, 248, 0.3) 0.5%, rgba(0, 0, 0, 0.5) 50%, #001325 100%);
-    z-index: 1;
-}
-
-/* Text styling */
-.banner-text {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 20%;
-    right: 10%;
-    z-index: 2;
-    padding: 0 20px;
-    max-width: 55%;
-    text-align: left;
-    font-family: 'Helvetica', sans-serif;
-    text-shadow: 1px 1px 2px #333;
-}
-
-.banner-text h2 {
-    font-size: 2.5vw; 
-    color: #ffcb05;
-    font-family: 'Papyrus', fantasy;
-    margin-bottom: 1rem;
-}
-
-.banner-text p {
-    font-size: 1.5vw;
-    line-height: 1.6;
-    color: white;
-}
-
-.hero {
-    padding: 20px;
-    background-color: #f5f5f5;
+    font-size: 1.2rem;
 }
 
 .home-section h2 {
@@ -206,125 +87,16 @@ footer {
     font-size: 1.5rem;
 }
 
-.square-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.square-card {
-    width: 200px;  /* Control the size of the cards */
-    text-align: center;
-    padding: 2rem;
-    cursor: pointer;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    aspect-ratio: 1; /* Keep the cards square */
-}
-
-.square-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
-}
-
-.square-card .thumbnail {
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
-
-.square-card p {
-    font-size: 1.2rem;
-    font-weight: 700; /* Increased font weight */
-}
-
-@media (max-width: 768px) {
-    .square-card {
-        width: 150px; /* Adjust size for smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .square-card {
-        width: 100%; /* Full width on very small screens */
-        max-width: 300px; /* Limit width on mobile */
-    }
-}
-
-/* Two-Column Layout */
-.two-column-layout {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 1rem;
-    max-width: 1200px; /* Limit overall width for better readability */
-    margin: 2rem auto;
-    padding: 0 1.5rem; /* Add horizontal padding */
-}
-
-/* Adjust column for right sections */
-.main-wrapper {
-    flex: 3; /* Wider column */
-    margin: 0rem auto;
-    padding: 0rem 1rem;
-}
-
-.main-wrapper > section {
-    margin-bottom: 1rem;
-}
-
-.side-wrapper {
-    flex: 1; /* narrower column */
-    margin: 0rem auto;
-    padding: 0rem 1rem;
-}
-
-.side-wrapper > section {
-    margin-bottom: 1rem;
-}
-
 
 /* Links */
 a {
-    color: #00274c; /* Michigan Blue */
+    color: #00274c;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease, border-bottom 0.3s ease;
     border-bottom: 1px solid transparent;
 }
 
-a:hover {
-    color: #ffcb05; /* Michigan Maize */
-    border-bottom: 1px solid #ffcb05;
-}
-
-/* Hero Section */
-.hero {
-    background-color: white;
-    color: #00274c;
-    padding: 3rem 1.5rem;
-    text-align: center;
-    max-width: 900px;
-    margin: 3rem auto;
-    border-radius: 12px;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.hero h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin-bottom: 1rem;
-}
 
 /* Buttons */
 button {
@@ -406,127 +178,4 @@ button + button {
     color: #333;
     line-height: 1.6;
     margin: 0;
-}
-
-/* About page stuff */
-
-.profile-picture {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border: 3px solid #ffcb05;
-    margin-bottom: 1rem;
-}
-
-.skills-category {
-    margin-bottom: 2rem;
-}
-
-.icon-container {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.skills-category ul {
-    margin-top: 1rem;
-    padding-left: 20px;
-    list-style: disc;
-}
-
-.skills-category ul li {
-    margin-bottom: 0.5rem; /* Adjust the spacing between items */
-}
-
-.icon-item {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 2px;
-    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-}
-
-.icon-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.icon-item:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Experience Item */
-.experience-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-}
-
-.experience-item img.experience-logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 1rem;
-    border-radius: 8px;
-    object-fit: cover;
-    align-self: flex-start; /* Top align logo with title */
-}
-
-.experience-item div {
-    flex: 1;
-}
-
-.experience-item h3 {
-    font-size: 1.2rem;
-    margin: 0;
-    margin-bottom: 0.5rem;
-}
-
-.experience-item p {
-    margin: 0.3rem 0;
-    color: #555;
-}
-
-.experience-item ul {
-    margin: 0.5rem 0 0 1rem;
-    padding-left: 1rem;
-    list-style-type: disc;
-}
-
-.experience-item ul li {
-    margin-bottom: 0.5rem; /* Adjust the spacing between items */
-}
-
-/* Date Alignment */
-.date-align {
-    text-align: right;
-    font-style: italic;
-    color: #555;
-}
-
-.role-and-dates {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline; /* Align text vertically at the baseline */
-    margin-top: 0.5rem; /* Optional: Add spacing above */
-}
-
-.role-and-dates p {
-    margin: 0;
-    font-size: 1rem; /* Adjust text size if needed */
-    color: #333; /* Match other text styles */
-}
-
-.role-and-dates .date-align {
-    text-align: right; /* Ensure date aligns right within flex container */
-    font-style: italic;
-    color: #555;
 }
