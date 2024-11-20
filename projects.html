@@ -14,28 +14,37 @@
 
     <!-- Main Content -->
     <main>
-        <section class="section-page">
-            <h1>Projects</h1>
-            
-            <!-- Filter Section -->
-            <div class="filters">
-                <label><input type="checkbox" id="ai" checked> Artificial Intelligence</label>
-                <label><input type="checkbox" id="ml" checked> Machine Learning</label>
-                <label><input type="checkbox" id="nlp" checked> Natural Language Processing</label>
-                <label><input type="checkbox" id="cv" checked> Computer Vision</label>
-                <label><input type="checkbox" id="rl" checked> Reinforcement Learning</label>
-                <label><input type="checkbox" id="webdev" checked> Web Development</label>
-                <label><input type="checkbox" id="db" checked> Databases</label>
-                <label><input type="checkbox" id="dsa" checked> Data Structures & Algorithms</label>
-                <label><input type="checkbox" id="comp-ling" checked> Computational Linguistics</label>
-                <label><input type="checkbox" id="finance" checked> Finance</label>
-                <label><input type="checkbox" id="select-all" checked> Select All</label>
+        <div class="two-column-layout">
+            <!-- Left Column: Filter Section -->
+            <div class="side-wrapper">
+                <section id="filters">
+                    <div class="filters">
+                        <h3>Filter Projects</h3>
+                        <label style="margin-bottom: 15px;"><input type="checkbox" id="select-all" checked> Select All</label>
+                        <label><input type="checkbox" id="ai" checked> Artificial Intelligence</label>
+                        <label><input type="checkbox" id="ml" checked> Machine Learning</label>
+                        <label><input type="checkbox" id="nlp" checked> Natural Language Processing</label>
+                        <label><input type="checkbox" id="cv" checked> Computer Vision</label>
+                        <label><input type="checkbox" id="rl" checked> Reinforcement Learning</label>
+                        <label><input type="checkbox" id="webdev" checked> Web Development</label>
+                        <label><input type="checkbox" id="db" checked> Databases</label>
+                        <label><input type="checkbox" id="dsa" checked> Data Structures & Algorithms</label>
+                        <label><input type="checkbox" id="comp-ling" checked> Computational Linguistics</label>
+                        <label><input type="checkbox" id="finance" checked> Finance</label>
+                    </div>
+                </section>
             </div>
-            
-            <div class="square-grid" id="project-container">
-                <!-- Dynamic project cards will be inserted here by JS -->
+
+            <!-- Right Column: Project Cards -->
+            <div class="main-wrapper">
+                <section class="section-page">
+                    <h1>Projects</h1>
+                    <div class="square-grid" id="project-container">
+                        <!-- Dynamic project cards will be inserted here by JS -->
+                    </div>
+                </section>
             </div>
-        </section>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -71,12 +80,22 @@
                 document.getElementById('cl').addEventListener('change', () => renderProjects(data.projects));
                 document.getElementById('finance').addEventListener('change', () => renderProjects(data.projects));
                 document.getElementById('select-all').addEventListener('change', () => {
-                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    const checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#select-all)');
                     checkboxes.forEach(checkbox => checkbox.checked = document.getElementById('select-all').checked);
                     renderProjects(data.projects);
                 });
             })
             .catch(error => console.error('Error loading projects:', error));
+
+            // Add event listeners for all the individual checkboxes to update "Select All"
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#select-all)');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+                    document.getElementById('select-all').checked = allChecked;
+                    renderProjects(data.projects);
+                });
+            });
     
         // Function to render projects
         function renderProjects(projects) {

@@ -1,3 +1,53 @@
+/* Two-column layout for main content */
+.two-column-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: 1200px; /* Limit overall width for better readability */
+    margin: 2rem auto;
+    padding: 0 1.5rem; /* Add horizontal padding */
+}
+
+/* Side wrapper for filter section */
+.side-wrapper {
+    flex: 1;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Filters section styling */
+.filters {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.filters h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.filters label {
+    margin-right: 1rem;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.filters input[type="checkbox"] {
+    transform: scale(1.1);
+    vertical-align: top;
+}
+
+/* Main content wrapper for project cards */
+.main-wrapper {
+    flex: 3; /* Wider column */
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
 /* Pub Card Layout */
 .pub-card {
     display: flex;

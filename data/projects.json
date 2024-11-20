@@ -155,7 +155,7 @@
         "details": "Implemented a Variational Autoencoder (VAE) using PyTorch to reconstruct images from the Flowers102 dataset, focusing on model architecture and parameter tuning. Learned advanced techniques in deep learning including stochastic gradient descent, latent space optimization, and loss function customization to enhance image quality and model stability."
       },
       {
-        "title": "Stock price Prediction with Time-Series Models",
+        "title": "Stock Price Prediction with LSTM",
         "pub_id": 15,
         "link": "",
         "thumbnail": "static/projects/stocktime-thumbnail.png",
@@ -185,14 +185,14 @@
         "date": "November 2024",
         "languages": ["Python"],
         "tags": ["DSA", "WebDev"],
-        "details": "Implemented a MapReduce framework in Java to process and analyze large datasets. The project required breaking down tasks into the Map and Reduce phases, distributing them across multiple nodes, and aggregating the results. Gained hands-on experience with distributed computing concepts, fault tolerance, and parallel data processing using Hadoop."
+        "details": "Implemented a MapReduce framework to break down tasks into the Map and Reduce phases, distributing them across multiple workers, and aggregating the results. Gained hands-on experience with distributed computing concepts, fault tolerance, and parallel data processing using Hadoop."
       },
       {
-        "title": "Kanerva Memory Syntactic Tree Unbinding",
+        "title": "Syntactic Trees Unbinding with Kanerva Memory",
         "pub_id": 18,
         "link": "",
         "thumbnail": "static/projects/kanerva-memory-thumbnail.png",
-        "keywords": ["Hyperdimensional Computing", "Syntactic Tree", "Kanerva Memory"],
+        "keywords": ["Hyperdimensional Computing", "Syntactic Trees", "Kanerva Memory"],
         "date": "November 2024",
         "languages": ["Python"],
         "tags": ["NLP", "CompLing"],
