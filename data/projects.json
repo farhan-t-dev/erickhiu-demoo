@@ -104,7 +104,7 @@
         "pub_id": 10,
         "link": "",
         "thumbnail": "static/projects/svm-thumbnail.png",
-        "keywords": ["Support Vector Machine", "Sentiment Analysis"],
+        "keywords": ["SVM", "Sentiment Analysis"],
         "date": "February 2024",
         "languages": ["Python"],
         "tags": ["AI", "ML", "NLP"],
@@ -115,7 +115,7 @@
         "pub_id": 11,
         "link": "",
         "thumbnail": "static/projects/cnn-thumbnail.png",
-        "keywords": ["Convolutional Neural Network", "Image Classification"],
+        "keywords": ["CNN", "Image Classification"],
         "date": "March 2024",
         "languages": ["Python"],
         "tags": ["AI", "ML", "CV"],
@@ -137,7 +137,7 @@
         "pub_id": 13,
         "link": "",
         "thumbnail": "static/projects/mdp-thumbnail.png",
-        "keywords": ["Markov Decision Processes", "Constraint Satisfaction"],
+        "keywords": ["MDP", "Constraint Satisfaction"],
         "date": "March 2024",
         "languages": ["Python"],
         "tags": ["AI", "RL"],
@@ -148,10 +148,10 @@
         "pub_id": 14,
         "link": "",
         "thumbnail": "static/projects/vae-thumbnail.png",
-        "keywords": ["Variational Autoencoder", "PyTorch"],
+        "keywords": ["VAE", "PyTorch"],
         "date": "April 2024",
         "languages": ["Python"],
-        "tags": ["ML", "CV"],
+        "tags": ["AI", "ML", "CV"],
         "details": "Implemented a Variational Autoencoder (VAE) using PyTorch to reconstruct images from the Flowers102 dataset, focusing on model architecture and parameter tuning. Learned advanced techniques in deep learning including stochastic gradient descent, latent space optimization, and loss function customization to enhance image quality and model stability."
       },
       {
@@ -162,7 +162,7 @@
         "keywords": ["Stock", "LSTM", "GRU"],
         "date": "June 2024",
         "languages": ["Python"],
-        "tags": ["ML", "NLP", "Finance"],
+        "tags": ["AI", "ML", "NLP", "Finance"],
         "details": "Developed LSTM and GRU models for stock price prediction, capturing temporal patterns in financial data. Improved accuracy by integrating sentiment analysis with market data using advanced NLP techniques. Incorporated stochastic elements into the models to account for market volatility, enhancing robustness and predictive reliability."
       },
       {
@@ -175,7 +175,29 @@
         "languages": ["Python", "HTML", "JavaScript"],
         "tags": ["WebDev","DB"],
         "details": "Developed an Instagram-like app using React and Flask, with dynamic post display, likes, and comments via RESTful APIs. Implemented real-time interactions like infinite scrolling, double-click likes, and comment updates for a seamless user experience."
-      }
+      },
+      {
+        "title": "Map Reduce",
+        "pub_id": 17,
+        "link": "https://eecs485staff.github.io/p4-mapreduce/",
+        "thumbnail": "static/projects/mapreduce-thumbnail.png",
+        "keywords": ["MapReduce", "Distributed System"],
+        "date": "November 2024",
+        "languages": ["Python"],
+        "tags": ["DSA", "WebDev"],
+        "details": "Implemented a MapReduce framework in Java to process and analyze large datasets. The project required breaking down tasks into the Map and Reduce phases, distributing them across multiple nodes, and aggregating the results. Gained hands-on experience with distributed computing concepts, fault tolerance, and parallel data processing using Hadoop."
+      },
+      {
+        "title": "Kanerva Memory Syntactic Tree Unbinding",
+        "pub_id": 18,
+        "link": "",
+        "thumbnail": "static/projects/kanerva-memory-thumbnail.png",
+        "keywords": ["Hyperdimensional Computing", "Syntactic Tree", "Kanerva Memory"],
+        "date": "November 2024",
+        "languages": ["Python"],
+        "tags": ["NLP", "CL"],
+        "details": "Developed a system to unbind syntactic trees encoded using Kanerva's hyperdimensional memory model. The project explored high-dimensional vectors for representing syntactic trees, ensuring minimal interference between tree node and string character vectors. It tested the unbinding mechanism on various trees, including Japanese grammar trees, applying hyperdimensional computing principles to enhance language processing."
+      }      
     ]
   }
   

@@ -263,14 +263,18 @@
     color: white;
 }
 
-.tag-nlp,
 .tag-cl {
-    background-color: #ffcb05; /* NLP & CL tag color */
+    background-color: #ffcb05;
+    color: white;
+}
+
+.tag-cl {
+    background-color: #ff7f50;
     color: white;
 }
 
 .tag-cv {
-    background-color: #ff5722; /* CV tag color */
+    background-color: #85f0ff; /* CV tag color */
     color: white;
 }
 
@@ -302,6 +306,7 @@
 /* Filter Section Styles */
 .filters {
     margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .filters label {
