@@ -111,14 +111,17 @@
         
                     <!-- Conditional Rendering for Journal -->
                     ${publication.journal ? `<p><strong>Published on:</strong> <a href="${publication.journal_link}">${publication.journal}</a></p>` : ''}
-        
+                    
+                    <p>${publication.date}</p>
                     <div class="publication-links">
                         ${generateIcons(publication)}
                     </div>
                 </div>
         
                 <div class="right-column">
-                    <h2><a href="${publication.paper}">${publication.title}</a></h2>
+                    <h2>
+                        <a href="${publication.paper}">${publication.title}</a>
+                    </h2>
                     <div class="tags">
                         ${generateTags(publication)}
                     </div>
@@ -126,6 +129,22 @@
                     <p class="abstract">${getAbstract(publication.abstract)}</p>
                 </div>
             `;
+
+                // Add click event to toggle abstract
+                card.addEventListener('click', function() {
+                    const abstractText = card.querySelector('.abstract-text');
+                    const fullAbstract = card.querySelector('.full-abstract');
+                    const isTruncated = abstractText.style.display !== 'none';
+
+                    // Toggle visibility of the abstract
+                    if (isTruncated) {
+                        abstractText.style.display = 'none'; // Hide truncated
+                        fullAbstract.style.display = 'block'; // Show full
+                    } else {
+                        abstractText.style.display = 'block'; // Show truncated
+                        fullAbstract.style.display = 'none'; // Hide full
+                    }
+                });
             return card;
         }
         
@@ -167,43 +186,19 @@
             }).join(', ');
         }
 
-        // Function to truncate and add a "view more" option for long abstracts
+        // Function to truncate the abstract and add a full version
         function getAbstract(abstract) {
             const maxLength = 350; // Max length before truncation
             if (abstract.length > maxLength) {
                 return `
-                    <p class="abstract-text">${abstract.substring(0, maxLength)}...</p>
-                    <a href="#" class="view-more">View more</a>
+                    <p class="abstract-text">${abstract.substring(0, maxLength)} ...</p>
                     <div class="full-abstract" style="display: none;">
                         <p>${abstract}</p>
-                        <a href="#" class="view-less">View less</a>
                     </div>
                 `;
             }
             return `<p class="abstract-text">${abstract}</p>`;
         }
-
-        // Function to handle the expanding and collapsing of the abstract
-        function toggleAbstract(event) {
-            if (!event.target.classList.contains('view-more') && !event.target.classList.contains('view-less')) return;
-
-            const isViewMore = event.target.classList.contains('view-more');
-            const fullAbstractEl = event.target.closest('.full-abstract');
-            const abstractText = fullAbstractEl.previousElementSibling;
-
-            if (isViewMore) {
-                fullAbstractEl.style.display = 'block';
-                abstractText.style.display = 'none';
-                event.target.textContent = 'View less';
-            } else {
-                fullAbstractEl.style.display = 'none';
-                abstractText.style.display = 'block';
-                event.target.textContent = 'View more';
-            }
-        }
-
-        // Add event listener to handle "view more" and "view less" clicks
-        document.addEventListener('click', toggleAbstract);
 
     </script>
     

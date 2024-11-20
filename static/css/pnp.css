@@ -23,18 +23,18 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start; /* Align other content to the left */
     padding-left: 1rem;
-    margin-right: 1.5rem;
+    margin-right: 1rem;
 }
 
-.pub-card .left-column .thumbnail {
-    width: 120px;
-    height: 120px;
+.pub-card .left-column .thumbnail img {
+    width: 200px;  /* Size of the thumbnail */
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 1rem; /* Space between thumbnail and venue */
-    align-self: center;
+    align-self: center; /* This centers the image */
 }
 
 .pub-card .right-column {
@@ -87,8 +87,6 @@
     object-fit: contain;
 }
 
-
-
 /* Tag Colors */
 .tag-nlp {
     background-color: #ffcb05;
@@ -118,29 +116,27 @@
 }
 
 /* Abstract Styling */
-.pub-card .right-column .abstract {
-    font-size: 1rem;
+.pub-card .abstract-text {
+    display: block;
     color: #333;
-    line-height: 1.6;
-    overflow: hidden;
-    max-height: 80px; /* Set maximum height for abstract */
-    position: relative;
-}
-
-.pub-card .right-column .abstract-text {
-    margin-bottom: 0.5rem;
-}
-
-.pub-card .right-column .view-more {
-    text-decoration: none;
-    color: #00274c;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.pub-card .right-column .full-abstract {
     font-size: 1rem;
+}
+
+/* Full Abstract */
+.pub-card .full-abstract {
+    display: none;
     color: #333;
+    font-size: 1rem;
     line-height: 1.6;
-    display: none; /* Initially hidden */
+}
+
+/* Abstract Expanding */
+.pub-card.expanded .abstract-text {
+    max-height: none;             /* Removes height restriction when expanded */
+    overflow: visible;
+}
+
+/* Full Abstract on Click */
+.pub-card.expanded .full-abstract {
+    display: block;
 }
