@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publication - {{ publication.title }}</title>
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/header-footer.css">
-    <link rel="stylesheet" href="static/css/pnp.css">
+    <!-- Use url_for to generate the correct path to static CSS files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header-footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pnp.css') }}">
 </head>
 <body>
-    <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
+    <!-- Header Template -->
+    {% include 'header.html' %}
 
     <main>
         <div class="two-column-layout">
@@ -33,16 +34,16 @@
 
                     <div class="publication-links">
                         {% if publication.paper %}
-                        <a href="{{ publication.paper }}" class="link-icon"><img src="static/publications/paper-icon.png" alt="Paper"></a>
+                        <a href="{{ publication.paper }}" class="link-icon"><img src="{{ url_for('static', filename='publications/paper-icon.png') }}" alt="Paper"></a>
                         {% endif %}
                         {% if publication.poster %}
-                        <a href="{{ publication.poster }}" class="link-icon"><img src="static/publications/poster-icon.png" alt="Poster"></a>
+                        <a href="{{ publication.poster }}" class="link-icon"><img src="{{ url_for('static', filename='publications/poster-icon.png') }}" alt="Poster"></a>
                         {% endif %}
                         {% if publication.slides %}
-                        <a href="{{ publication.slides }}" class="link-icon"><img src="static/publications/slides-icon.png" alt="Slides"></a>
+                        <a href="{{ publication.slides }}" class="link-icon"><img src="{{ url_for('static', filename='publications/slides-icon.png') }}" alt="Slides"></a>
                         {% endif %}
                         {% if publication.presentation %}
-                        <a href="{{ publication.presentation }}" class="link-icon"><img src="static/publications/presentation-icon.png" alt="Presentation"></a>
+                        <a href="{{ publication.presentation }}" class="link-icon"><img src="{{ url_for('static', filename='publications/presentation-icon.png') }}" alt="Presentation"></a>
                         {% endif %}
                     </div>
                 </section>
@@ -55,7 +56,7 @@
                     <p class="authors">
                         {% for author in publication.authors %}
                             <span class="{% if author == 'Eric Khiu' %}bold-author{% endif %}">{{ author }}</span>
-                            {% if not loop.last %}, {% endif %}
+                            {% if not loop.last %},{% endif %}
                         {% endfor %}
                     </p>
                     <p class="abstract">{{ publication.abstract }}</p>
@@ -64,13 +65,7 @@
         </div>
     </main>
 
-    <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
-
-    <script>
-        // Load header and footer
-        loadTemplate('header-placeholder', 'templates/header.html');
-        loadTemplate('footer-placeholder', 'templates/footer.html');
-    </script>
+    <!-- Footer Template -->
+    {% include 'footer.html' %}
 </body>
 </html>

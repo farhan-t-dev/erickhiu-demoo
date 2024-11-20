@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publications - Eric Khiu</title>
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/header-footer.css">
-    <link rel="stylesheet" href="static/css/publications.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header-footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/publications.css') }}">
 </head>
 <body>
-    <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
+    <!-- Header Template -->
+    {% include 'header.html' %}
 
     <main>
         <section class="section-page">
@@ -25,7 +25,7 @@
         </section>
     </main>
 
-    <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <!-- Footer Template -->
+    {% include 'footer.html' %}
 </body>
 </html>
