@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Eric Khiu</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/header-footer.css">
+    <link rel="stylesheet" href="static/css/pnp.css">
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section-page">
+            <h1>Publications</h1>
+            <!-- Filter Section -->
+            <div>
+                <label><input type="checkbox" id="nlp" checked> Natural Language Processing</label>
+                <label><input type="checkbox" id="cl" checked> Computational Linguistics</label>
+                <label><input type="checkbox" id="math-ed" checked> Mathematics Education</label>
+                <label><input type="checkbox" id="select-all" checked> Select All</label>
+            </div>
+            
+            <div class="square-grid" id="publication-container">
+                <!-- Dynamic publication cards will be inserted here by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Function to dynamically load templates
+        async function loadTemplate(id, path) {
+            const response = await fetch(path);
+            const text = await response.text();
+            document.getElementById(id).innerHTML = text;
+        }
+    
+        // Load header and footer templates
+        loadTemplate('header-placeholder', 'templates/header.html');
+        loadTemplate('footer-placeholder', 'templates/footer.html');
+    
+        // Fetch publications data and render cards
+        fetch('data/publications.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); 
+                renderPublications(data.publications);
+    
+                // Add event listeners for filtering
+                document.getElementById('nlp').addEventListener('change', () => renderPublications(data.publications));
+                document.getElementById('cl').addEventListener('change', () => renderPublications(data.publications));
+                document.getElementById('math-ed').addEventListener('change', () => renderPublications(data.publications));
+                document.getElementById('select-all').addEventListener('change', () => {
+                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    checkboxes.forEach(checkbox => checkbox.checked = document.getElementById('select-all').checked);
+                    renderPublications(data.publications);
+                });
+            })
+            .catch(error => console.error('Error loading publications:', error));
+    
+        // Function to render publications
+        function renderPublications(publications) {
+            const container = document.getElementById('publication-container');
+            container.innerHTML = ''; // Clear previous content
+    
+            const selectedTags = getSelectedTags();
+            console.log('Selected Tags:', selectedTags);
+    
+            // Filter and sort publications
+            const filteredPublications = publications
+                .filter(pub => selectedTags.some(tag => pub.tags.includes(tag))) // Filter by selected tags
+                .sort((a, b) => b.pub_id - a.pub_id); // Sort by pub_id in descending order
+            
+            console.log('Filtered Publications:', filteredPublications); 
+            
+            filteredPublications.forEach(publication => {
+                const pubCard = createPubCard(publication);
+                container.appendChild(pubCard);
+            });
+        }
+    
+        // Function to get selected tags
+        function getSelectedTags() {
+            const tags = [];
+            if (document.getElementById('nlp').checked) tags.push('NLP');
+            if (document.getElementById('cl').checked) tags.push('CompLing');
+            if (document.getElementById('math-ed').checked) tags.push('MathEd');
+            return tags;
+        }
+
+        // Function to create a single pub-card
+        function createPubCard(publication) {
+            const card = document.createElement('div');
+            card.classList.add('pub-card'); // Use pub-card class
+        
+            // Dynamically generate HTML with conditional rendering for venue and journal
+            card.innerHTML = `
+                <div class="left-column">
+                    <div class="thumbnail">
+                        <img src="${publication.thumbnail}" alt="${publication.pub_id}-Thumbnail">
+                    </div>
+        
+                    <!-- Conditional Rendering for Venue -->
+                    ${publication.venue ? `<p><strong>Presented in:</strong> <a href="${publication.venue_link}">${publication.venue}</a></p>` : ''}
+        
+                    <!-- Conditional Rendering for Journal -->
+                    ${publication.journal ? `<p><strong>Published on:</strong> <a href="${publication.journal_link}">${publication.journal}</a></p>` : ''}
+        
+                    <div class="publication-links">
+                        ${generateIcons(publication)}
+                    </div>
+                </div>
+        
+                <div class="right-column">
+                    <h2><a href="${publication.paper}">${publication.title}</a></h2>
+                    <div class="tags">
+                        ${generateTags(publication)}
+                    </div>
+                    <p class="authors">${getAuthors(publication.authors)}</p>
+                    <p class="abstract">${getAbstract(publication.abstract)}</p>
+                </div>
+            `;
+            return card;
+        }
+        
+        // Function to generate tags (NLP, CompLing, MathEd)
+        function generateTags(publication) {
+            const tagClasses = {
+                'NLP': 'tag-nlp',
+                'CompLing': 'tag-cl',
+                'MathEd': 'tag-mathed'
+            };
+    
+            return publication.tags.map(tag => `<span class="${tagClasses[tag]}">${tag}</span>`).join(' ');
+        }
+
+        // Function to generate clickable icons for paper, poster, slides, presentation
+        function generateIcons(publication) {
+            const icons = [];
+
+            if (publication.paper) {
+                icons.push(`<a href="${publication.paper}" class="link-icon"><img src="static/publications/paper-icon.png" alt="Paper"></a>`);
+            }
+            if (publication.poster) {
+                icons.push(`<a href="${publication.poster}" class="link-icon"><img src="static/publications/poster-icon.png" alt="Poster"></a>`);
+            }
+            if (publication.slides) {
+                icons.push(`<a href="${publication.slides}" class="link-icon"><img src="static/publications/slides-icon.png" alt="Slides"></a>`);
+            }
+            if (publication.presentation) {
+                icons.push(`<a href="${publication.presentation}" class="link-icon"><img src="static/publications/presentation-icon.png" alt="Presentation"></a>`);
+            }
+
+            return icons.join(' ');
+        }
+
+        // Function to return authors as a formatted string
+        function getAuthors(authors) {
+            return authors.map(author => {
+                return author === 'Eric Khiu' ? `<strong class="bold-author">${author}</strong>` : author;
+            }).join(', ');
+        }
+
+        // Function to truncate and add a "view more" option for long abstracts
+        function getAbstract(abstract) {
+            const maxLength = 350; // Max length before truncation
+            if (abstract.length > maxLength) {
+                return `
+                    <p class="abstract-text">${abstract.substring(0, maxLength)}...</p>
+                    <a href="#" class="view-more">View more</a>
+                    <div class="full-abstract" style="display: none;">
+                        <p>${abstract}</p>
+                        <a href="#" class="view-less">View less</a>
+                    </div>
+                `;
+            }
+            return `<p class="abstract-text">${abstract}</p>`;
+        }
+
+        // Function to handle the expanding and collapsing of the abstract
+        function toggleAbstract(event) {
+            if (!event.target.classList.contains('view-more') && !event.target.classList.contains('view-less')) return;
+
+            const isViewMore = event.target.classList.contains('view-more');
+            const fullAbstractEl = event.target.closest('.full-abstract');
+            const abstractText = fullAbstractEl.previousElementSibling;
+
+            if (isViewMore) {
+                fullAbstractEl.style.display = 'block';
+                abstractText.style.display = 'none';
+                event.target.textContent = 'View less';
+            } else {
+                fullAbstractEl.style.display = 'none';
+                abstractText.style.display = 'block';
+                event.target.textContent = 'View more';
+            }
+        }
+
+        // Add event listener to handle "view more" and "view less" clicks
+        document.addEventListener('click', toggleAbstract);
+
+    </script>
+    
+</body>
+</html>
