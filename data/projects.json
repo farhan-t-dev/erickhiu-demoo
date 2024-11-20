@@ -195,9 +195,20 @@
         "keywords": ["Hyperdimensional Computing", "Syntactic Tree", "Kanerva Memory"],
         "date": "November 2024",
         "languages": ["Python"],
-        "tags": ["NLP", "CL"],
-        "details": "Developed a system to unbind syntactic trees encoded using Kanerva's hyperdimensional memory model. The project explored high-dimensional vectors for representing syntactic trees, ensuring minimal interference between tree node and string character vectors. It tested the unbinding mechanism on various trees, including Japanese grammar trees, applying hyperdimensional computing principles to enhance language processing."
-      }      
+        "tags": ["NLP", "CompLing"],
+        "details": "Developed a system to unbind syntactic trees encoded using Kanerva's hyperdimensional memory model. The project explored high-dimensional vectors for representing syntactic trees, ensuring minimal interference between tree node and string character vectors. Tested on Japanese grammar trees and successfully enhanced downstream language processing."
+      },
+      {
+        "title": "Inflectional Prediction",
+        "pub_id": 19,
+        "link": "",
+        "thumbnail": "static/projects/inflectional-prediction-thumbnail.png",
+        "keywords": ["Inflectional Prediction", "Regex", "Meta-patterns"],
+        "date": "November 2024",
+        "languages": ["Python"],
+        "tags": ["NLP", "CompLing"],
+        "details": "Developed a system to analyze Estonian inflectional forms using string differences and meta-patterns. The project focused on processing lexical data, creating dictionaries for case forms, and analyzing string differences to identify patterns in word forms. It also examined the impact of superheavy syllables on inflection and explored robust patterns in the Estonian language, applying computational linguistics techniques to predict inflectional behavior."
+      }
     ]
   }
   

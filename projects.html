@@ -25,9 +25,9 @@
                 <label><input type="checkbox" id="cv" checked> Computer Vision</label>
                 <label><input type="checkbox" id="rl" checked> Reinforcement Learning</label>
                 <label><input type="checkbox" id="webdev" checked> Web Development</label>
-                <label><input type="checkbox" id="db" checked> Database</label>
+                <label><input type="checkbox" id="db" checked> Databases</label>
                 <label><input type="checkbox" id="dsa" checked> Data Structures & Algorithms</label>
-                <label><input type="checkbox" id="cl" checked> Computational Linguistics</label>
+                <label><input type="checkbox" id="comp-ling" checked> Computational Linguistics</label>
                 <label><input type="checkbox" id="finance" checked> Finance</label>
                 <label><input type="checkbox" id="select-all" checked> Select All</label>
             </div>
@@ -107,7 +107,7 @@
             if (document.getElementById('webdev').checked) tags.push('WebDev');
             if (document.getElementById('db').checked) tags.push('DB');
             if (document.getElementById('dsa').checked) tags.push('DSA');
-            if (document.getElementById('cl').checked) tags.push('CompLing');
+            if (document.getElementById('comp-ling').checked) tags.push('CompLing');
             if (document.getElementById('finance').checked) tags.push('Finance');
             return tags;
         }
@@ -158,12 +158,12 @@
                 'AI': 'tag-ai',
                 'ML': 'tag-ml',
                 'NLP': 'tag-nlp',
-                'CL': 'tag-cl',
                 'CV': 'tag-cv',
                 'RL': 'tag-rl',
                 'WebDev': 'tag-webdev',
                 'DB': 'tag-db',
                 'DSA': 'tag-dsa',
+                'CompLing': 'tag-cl',
                 'Finance': 'tag-finance'
             };
         
