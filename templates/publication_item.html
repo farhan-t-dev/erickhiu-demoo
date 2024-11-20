@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publication - {{ publication.title }}</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header-footer.css">
+    <link rel="stylesheet" href="assets/css/pnp.css">
+</head>
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="two-column-layout">
+            <!-- Left Column: Publication Thumbnail, Venue, and Links -->
+            <div class="side-wrapper">
+                <section class="publication-info section-shadow">
+                    <img src="{{ publication.thumbnail }}" alt="{{ publication.title }} Thumbnail" class="publication-thumbnail">
+                    {% if publication.venue %}
+                    <p>
+                        <strong>Presented in:</strong>
+                        <a href="{{ publication.venue_link }}">{{ publication.venue }}</a>
+                    </p>
+                    {% endif %}
+                    {% if publication.journal %}
+                    <p>
+                        <strong>Published in:</strong>
+                        <a href="{{ publication.journal_link }}">{{ publication.journal }}</a>
+                    </p>
+                    {% endif %}
+
+                    <div class="publication-links">
+                        {% if publication.paper %}
+                        <a href="{{ publication.paper }}" class="link-icon"><img src="assets/publications/paper-icon.png" alt="Paper"></a>
+                        {% endif %}
+                        {% if publication.poster %}
+                        <a href="{{ publication.poster }}" class="link-icon"><img src="assets/publications/poster-icon.png" alt="Poster"></a>
+                        {% endif %}
+                        {% if publication.slides %}
+                        <a href="{{ publication.slides }}" class="link-icon"><img src="assets/publications/slides-icon.png" alt="Slides"></a>
+                        {% endif %}
+                        {% if publication.presentation %}
+                        <a href="{{ publication.presentation }}" class="link-icon"><img src="assets/publications/presentation-icon.png" alt="Presentation"></a>
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column: Main Content -->
+            <div class="main-wrapper">
+                <section class="publication-content section-shadow">
+                    <h2><a href="{{ publication.paper }}">{{ publication.title }}</a></h2>
+                    <p class="authors">
+                        {% for author in publication.authors %}
+                            <span class="{% if author == 'Eric Khiu' %}bold-author{% endif %}">{{ author }}</span>
+                            {% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    <p class="abstract">{{ publication.abstract }}</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load header and footer
+        loadTemplate('header-placeholder', 'templates/header.html');
+        loadTemplate('footer-placeholder', 'templates/footer.html');
+    </script>
+</body>
+</html>
