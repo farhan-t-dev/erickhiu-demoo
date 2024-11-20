@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Eric Khiu</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/header-footer.css">
-    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/header-footer.css">
+    <link rel="stylesheet" href="static/css/about.css">
 </head>
 <body>
     <!-- Header Placeholder -->
@@ -17,7 +17,7 @@
             <!-- Left Column: Profile Picture and Skillbox -->
              <div class="side-wrapper">
                 <section id="profile" class="section-shadow">
-                    <img src="assets/images/headshot.png" alt="Turing Machine Thumbnail" class="profile-picture" style="display: block; margin: 0 auto;">
+                    <img src="static/images/headshot.png" alt="Turing Machine Thumbnail" class="profile-picture" style="display: block; margin: 0 auto;">
                     <h2 style="text-align:center; margin-top: 20px;">Eric Khiu</h2>
                     <p style="text-align: center; margin-top: 10px;"><strong>Malaysian</strong> 〽️ <strong>Wolverine</strong> </p>
                 </section>
@@ -89,7 +89,7 @@
             skills.natural_languages.forEach(lang => {
                 naturalLanguagesContainer.innerHTML += `
                     <div class="icon-item" title="${lang.name}">
-                        <img src="assets/images/skills/natural-languages/${lang.icon}" alt="${lang.alt}">
+                        <img src="static/images/skills/natural-languages/${lang.icon}" alt="${lang.alt}">
                     </div>
                 `;
             });
@@ -99,7 +99,7 @@
             skills.programming_languages.forEach(lang => {
                 programmingLanguagesContainer.innerHTML += `
                     <div class="icon-item" title="${lang.name}">
-                        <img src="assets/images/skills/programming-languages/${lang.icon}" alt="${lang.alt}">
+                        <img src="static/images/skills/programming-languages/${lang.icon}" alt="${lang.alt}">
                     </div>
                 `;
             });
@@ -109,7 +109,7 @@
             skills.tools.forEach(tool => {
                 toolsContainer.innerHTML += `
                     <div class="icon-item" title="${tool.name}">
-                        <img src="assets/images/skills/tools/${tool.icon}" alt="${tool.alt}">
+                        <img src="static/images/skills/tools/${tool.icon}" alt="${tool.alt}">
                     </div>
                 `;
             });
@@ -127,7 +127,7 @@
             education.forEach(edu => {
                 section.innerHTML += `
                     <div class="experience-item">
-                        <img src="assets/images/about/${edu.logo}" alt="${edu.institution} Logo" class="experience-logo">
+                        <img src="static/images/about/${edu.logo}" alt="${edu.institution} Logo" class="experience-logo">
                         <div>
                             <h3>${edu.institution}</h3>
                             <div class="role-and-dates">
@@ -149,7 +149,7 @@
             workExperience.forEach(work => {
                 section.innerHTML += `
                     <div class="experience-item">
-                        <img src="assets/images/about/${work.logo}" alt="${work.organization} Logo" class="experience-logo">
+                        <img src="static/images/about/${work.logo}" alt="${work.organization} Logo" class="experience-logo">
                         <div>
                             <h3>${work.organization}</h3>
                             <div class="role-and-dates">
@@ -171,7 +171,7 @@
             researchExperience.forEach(research => {
                 section.innerHTML += `
                     <div class="experience-item">
-                        <img src="assets/images/about/${research.logo}" alt="${research.organization} Logo" class="experience-logo">
+                        <img src="static/images/about/${research.logo}" alt="${research.organization} Logo" class="experience-logo">
                         <div>
                             <h3>${research.organization}</h3>
                             <div class="role-and-dates">

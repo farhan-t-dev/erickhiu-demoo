@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publication - {{ publication.title }}</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/header-footer.css">
-    <link rel="stylesheet" href="assets/css/pnp.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/header-footer.css">
+    <link rel="stylesheet" href="static/css/pnp.css">
 </head>
 <body>
     <!-- Header Placeholder -->
@@ -33,16 +33,16 @@
 
                     <div class="publication-links">
                         {% if publication.paper %}
-                        <a href="{{ publication.paper }}" class="link-icon"><img src="assets/publications/paper-icon.png" alt="Paper"></a>
+                        <a href="{{ publication.paper }}" class="link-icon"><img src="static/publications/paper-icon.png" alt="Paper"></a>
                         {% endif %}
                         {% if publication.poster %}
-                        <a href="{{ publication.poster }}" class="link-icon"><img src="assets/publications/poster-icon.png" alt="Poster"></a>
+                        <a href="{{ publication.poster }}" class="link-icon"><img src="static/publications/poster-icon.png" alt="Poster"></a>
                         {% endif %}
                         {% if publication.slides %}
-                        <a href="{{ publication.slides }}" class="link-icon"><img src="assets/publications/slides-icon.png" alt="Slides"></a>
+                        <a href="{{ publication.slides }}" class="link-icon"><img src="static/publications/slides-icon.png" alt="Slides"></a>
                         {% endif %}
                         {% if publication.presentation %}
-                        <a href="{{ publication.presentation }}" class="link-icon"><img src="assets/publications/presentation-icon.png" alt="Presentation"></a>
+                        <a href="{{ publication.presentation }}" class="link-icon"><img src="static/publications/presentation-icon.png" alt="Presentation"></a>
                         {% endif %}
                     </div>
                 </section>
