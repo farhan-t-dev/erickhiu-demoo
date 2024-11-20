@@ -1,0 +1,181 @@
+{
+    "projects": [
+      {
+        "title": "Seam-carving Image Processor",
+        "pub_id": 1,
+        "link": "https://eecs280staff.github.io/p2-cv/",
+        "thumbnail": "static/projects/seam-carving-thumbnail.png",
+        "keywords": ["C-style pointers", "Arrays", "Struct"],
+        "date": "September 2022",
+        "languages": ["C++"],
+        "tags": ["DSA", "CV"],
+        "details": "Built a content-aware image resizing program using a seam-carving algorithm by finding and removing “seams” in the image that pass through the least important pixels. Learned C-style pointers, arrays, structs, streams, IO, and Abstract Data Types in C."
+      },
+      {
+        "title": "Euchre Project",
+        "pub_id": 2,
+        "link": "https://eecs280staff.github.io/p3-euchre/",
+        "thumbnail": "static/projects/euchre-thumbnail.png",
+        "keywords": ["Classes", "Inheritance", "Polymorphism"],
+        "date": "October 2022",
+        "languages": ["C++"],
+        "tags": ["DSA"],
+        "details": "Developed a program that simulates a game of Euchre (a card game popular in Michigan) with a simple AI player. Gained experience in C++-style Object Oriented Programming (OOP) with classes and virtual functions that utilize Abstract Data Types in C++, derived classes, inheritance, and polymorphism."
+      },
+      {
+        "title": "Office Hour Queue",
+        "pub_id": 3,
+        "link": "https://eecs280staff.github.io/p4-web/",
+        "thumbnail": "static/projects/oh-thumbnail.png",
+        "keywords": ["Linked-list", "The Big Three", "Dynamic Memory"],
+        "date": "November 2022",
+        "languages": ["C++","HTML"],
+        "tags": ["DSA", "WebDev"],
+        "details": "Built a working web application accessible through a browser that directs the user to an office hour queue. Acquired skills to handle doubly linked-list with Containers ADTs, dynamic memory, The Big Three, and iterators. Learnt about simple Web 2.0 applications and HTTP."
+      },
+      {
+        "title": "Piazza Post Classifier",
+        "pub_id": 4,
+        "link": "https://eecs280staff.github.io/p5-ml/",
+        "thumbnail": "static/projects/piazza-thumbnail.png",
+        "keywords": ["Map", "The Big Three", "Iterators"],
+        "date": "November 2022",
+        "languages": ["C++"],
+        "tags": ["DSA", "NLP"],
+        "details": "Wrote a program to automatically identify the subject of students' posts on Piazza (a Q&A forum) using natural language processing and machine learning techniques. Handled binary trees with Containers ADTs, dynamic memory, The Big Three, iterators, and the map data structure."
+      },
+      {
+        "title": "3D Maze Solver",
+        "pub_id": 5,
+        "link": "",
+        "thumbnail": "static/projects/3dmaze-thumbnail.png",
+        "keywords": ["Graph Search", "BFS", "DFS"],
+        "date": "January 2023",
+        "languages": ["C++"],
+        "tags": ["DSA"],
+        "details": "Created a program that is able to read, store, and solve a 3D maze. Utilize Breadth-first search (BFS w/ queue), Depth first search (DFS w/ stack), map and coordinate list mode input and output, and handle command line arguments using getopt_long()."
+      },
+      {
+        "title": "Stock Market Simulator",
+        "pub_id": 6,
+        "link": "",
+        "thumbnail": "static/projects/stocksim-thumbnail.png",
+        "keywords": ["Deque", "Priority Queue"],
+        "date": "February 2023",
+        "languages": ["C++"],
+        "tags": ["DSA", "Finance"],
+        "details": "Designed and implemented a real-time stock market simulator, leveraging priority queues and deque for efficient data processing and market trend analysis. Learned stream-based algorithms and running median calculations, enabling identification of optimal trading strategies under varying market conditions."
+      },
+      {
+        "title": "Mini SQL",
+        "pub_id": 7,
+        "link": "",
+        "thumbnail": "static/projects/minisql-thumbnail.png",
+        "keywords": ["BST", "Hash Tables"],
+        "date": "March 2023",
+        "languages": ["C++"],
+        "tags": ["DSA", "DB"],
+        "details": "Created a relational database using structural query language (SQL). Implemented essential functions including CREATE, INSERT, JOIN, REMOVE, PRINT, and INDEX GENERATION, with a focus on exploring binary search tree and hash tables."
+      },
+      {
+        "title": "Traveling Salesman Problem",
+        "pub_id": 8,
+        "link": "",
+        "thumbnail": "static/projects/tspl-thumbnail.png",
+        "keywords": ["Heap", "Dynamic Polymorphism", "Prim's Algorithm"],
+        "date": "April 2023",
+        "languages": ["C++"],
+        "tags": ["DSA"],
+        "details": "Developed and implemented sorted, binary heap, and pairing heap priority queues using inheritance and dynamic polymorphism based on templated generic code. Utilized branch and bound algorithm and Prim's Algorithm to solve the Traveling Salesman Problem (TSP) for a complete weighted graph, while exploring heuristic approaches for near-optimal solutions."
+      },
+      {
+        "title": "Domain Adaptation via Adaptive Tokenization",
+        "pub_id": 9,
+        "link": "static/projects/DomainAdapt.pdf",
+        "thumbnail": "static/projects/domadapt-thumbnail.png",
+        "keywords": ["Domain Adaptor", "Adaptive Tokenization", "Vector Semantics"],
+        "date": "November 2023",
+        "languages": ["Python"],
+        "tags": ["AI", "ML", "NLP"],
+        "details": "Explored adaptive tokenization in developing a dynamic algorithm to improve language models' adaptability in different textual domains. Introduced a creative approach to integrating vector semantics with adaptive tokenization."
+      },
+      {
+        "title": "Sentiment Analyzer with SVM",
+        "pub_id": 10,
+        "link": "",
+        "thumbnail": "static/projects/svm-thumbnail.png",
+        "keywords": ["Support Vector Machine", "Sentiment Analysis"],
+        "date": "February 2024",
+        "languages": ["Python"],
+        "tags": ["AI", "ML", "NLP"],
+        "details": "Implemented and optimized Support Vector Machine (SVM) for sentiment analysis on Amazon Prime Video reviews, focusing on hyperparameter tuning, class imbalance, and bias detection. Applied feature extraction, regularization, and evaluated machine learning models using metrics to address dataset biases and enhance prediction accuracy."
+      },
+      {
+        "title": "Image Classifier with CNN",
+        "pub_id": 11,
+        "link": "",
+        "thumbnail": "static/projects/cnn-thumbnail.png",
+        "keywords": ["Convolutional Neural Network", "Image Classification"],
+        "date": "March 2024",
+        "languages": ["Python"],
+        "tags": ["AI", "ML", "CV"],
+        "details": "Developed a convolutional neural network (CNN) for classifying images of European landmarks, employing data augmentation and transfer learning to enhance model performance on limited training data. Applied visualization techniques to interpret CNN decisions, gaining insights into model behavior and improving reliability through Grad-CAM visualizations and systematic architecture adjustments."
+      },
+      {
+        "title": "Minimax AI with αβ Pruning for Chess",
+        "pub_id": 12,
+        "link": "",
+        "thumbnail": "static/projects/chess-thumbnail.png",
+        "keywords": ["Minimax", "αβ Pruning", "Chess"],
+        "date": "February 2024",
+        "languages": ["Python"],
+        "tags": ["AI"],
+        "details": "Designed a chess AI that maximizes winning chances by evaluating the state of the board using a simplified evaluation function. Applied Minimax algorithm with αβ pruning to predict the best possible moves in a given chess game state."
+      },
+      {
+        "title": "Optimizing Decision Making in MDP",
+        "pub_id": 13,
+        "link": "",
+        "thumbnail": "static/projects/mdp-thumbnail.png",
+        "keywords": ["Markov Decision Processes", "Constraint Satisfaction"],
+        "date": "March 2024",
+        "languages": ["Python"],
+        "tags": ["AI", "RL"],
+        "details": "Implemented the value iteration algorithm to compute utilities of each state in a Markov Decision Process (MDP), using an environment file to define state transitions and rewards. Developed a grid-based environment to handle state transitions with specific probabilities, including handling terminal states, walls, and various action dynamics such as moving north, south, east, and west."
+      },
+      {
+        "title": "VAE for Image Reconstruction",
+        "pub_id": 14,
+        "link": "",
+        "thumbnail": "static/projects/vae-thumbnail.png",
+        "keywords": ["Variational Autoencoder", "PyTorch"],
+        "date": "April 2024",
+        "languages": ["Python"],
+        "tags": ["ML", "CV"],
+        "details": "Implemented a Variational Autoencoder (VAE) using PyTorch to reconstruct images from the Flowers102 dataset, focusing on model architecture and parameter tuning. Learned advanced techniques in deep learning including stochastic gradient descent, latent space optimization, and loss function customization to enhance image quality and model stability."
+      },
+      {
+        "title": "Stock price Prediction with Time-Series Models",
+        "pub_id": 15,
+        "link": "",
+        "thumbnail": "static/projects/stocktime-thumbnail.png",
+        "keywords": ["Stock", "LSTM", "GRU"],
+        "date": "June 2024",
+        "languages": ["Python"],
+        "tags": ["ML", "NLP", "Finance"],
+        "details": "Developed LSTM and GRU models for stock price prediction, capturing temporal patterns in financial data. Improved accuracy by integrating sentiment analysis with market data using advanced NLP techniques. Incorporated stochastic elements into the models to account for market volatility, enhancing robustness and predictive reliability."
+      },
+      {
+        "title": "Insta485",
+        "pub_id": 16,
+        "link": "https://eecs485staff.github.io/p3-insta485-clientside/",
+        "thumbnail": "static/projects/insta485-thumbnail.png",
+        "keywords": ["REST API", "Flask", "React"],
+        "date": "October 2024",
+        "languages": ["Python", "HTML", "JavaScript"],
+        "tags": ["WebDev","DB"],
+        "details": "Developed an Instagram-like app using React and Flask, with dynamic post display, likes, and comments via RESTful APIs. Implemented real-time interactions like infinite scrolling, double-click likes, and comment updates for a seamless user experience."
+      }
+    ]
+  }
+  

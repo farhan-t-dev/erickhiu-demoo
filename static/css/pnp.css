@@ -48,7 +48,7 @@
 
 .pub-card .right-column h2 {
     font-size: 1.5rem;
-    font-weight: 700; /* Increased font weight */
+    font-weight: bold;
     color: #00274c;
     margin-bottom: 1rem;
 }
@@ -139,4 +139,179 @@
 /* Full Abstract on Click */
 .pub-card.expanded .full-abstract {
     display: block;
+}
+
+/* Project Stuff starts here */
+/* General styling for the project card layout */
+.proj-card {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background-color: white;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 0; /* Default, no rounded corners */
+}
+
+.proj-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+    border-radius: 12px; /* Rounded corners on hover */
+}
+
+/* Left column styles (thumbnail, keywords, and programming languages) */
+.proj-card .left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align other content to the left */
+    padding-left: 1rem;
+    margin-right: 1rem;
+}
+
+.proj-card .left-column .thumbnail img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem; /* Space between thumbnail and keywords */
+    align-self: center; /* Centers the image */
+}
+
+.proj-card .left-column .keywords {
+    /* font-weight: bold; */
+    color: grey; /* Grey color for keywords */
+    margin-bottom: 1rem; /* Space between keywords and programming languages */
+    text-align: left; /* Left align */
+}
+
+.proj-card .programming-languages {
+    margin-top: 1rem; /* Space between keywords and programming languages */
+}
+
+.proj-card .programming-languages img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-right: 8px; /* Add some spacing between icons */
+}
+
+/* Right column styles (title, tags, and project details) */
+.proj-card .right-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.proj-card .right-column h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00274c;
+    margin-bottom: 1rem;
+}
+
+.proj-card .right-column .tags {
+    margin-bottom: 1rem;
+}
+
+.proj-card .right-column .tags .tag-ai,
+.proj-card .right-column .tags .tag-ml,
+.proj-card .right-column .tags .tag-nlp,
+.proj-card .right-column .tags .tag-cl,
+.proj-card .right-column .tags .tag-cv,
+.proj-card .right-column .tags .tag-rl,
+.proj-card .right-column .tags .tag-webdev,
+.proj-card .right-column .tags .tag-db,
+.proj-card .right-column .tags .tag-dsa,
+.proj-card .right-column .tags .tag-finance {
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+/* Details section */
+.proj-card .right-column .details-text {
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Full details */
+.proj-card .full-details {
+    display: none;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Filter Tags Styles */
+.tag-ai {
+    background-color: #4caf50; /* AI tag color */
+    color: white;
+}
+
+.tag-ml {
+    background-color: #3f51b5; /* ML tag color */
+    color: white;
+}
+
+.tag-nlp,
+.tag-cl {
+    background-color: #ffcb05; /* NLP & CL tag color */
+    color: white;
+}
+
+.tag-cv {
+    background-color: #ff5722; /* CV tag color */
+    color: white;
+}
+
+.tag-rl {
+    background-color: #009688; /* RL tag color */
+    color: white;
+}
+
+.tag-webdev {
+    background-color: #f44336; /* WebDev tag color */
+    color: white;
+}
+
+.tag-db {
+    background-color: #9c27b0; /* DB tag color */
+    color: white;
+}
+
+.tag-dsa {
+    background-color: #2196f3; /* DSA tag color */
+    color: white;
+}
+
+.tag-finance {
+    background-color: #673ab7; /* Finance tag color */
+    color: white;
+}
+
+/* Filter Section Styles */
+.filters {
+    margin-bottom: 1.5rem;
+}
+
+.filters label {
+    margin-right: 1rem;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.filters input[type="checkbox"] {
+    transform: scale(1.1);
 }

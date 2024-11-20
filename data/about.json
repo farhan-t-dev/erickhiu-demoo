@@ -10,11 +10,11 @@
         ],
         "programming_languages": [
             { "name": "Python", "icon": "python-icon.png", "alt": "Python" },
-            { "name": "C++", "icon": "cpp-icon.png", "alt": "C++" },
+            { "name": "C++", "icon": "c++-icon.png", "alt": "C++" },
             { "name": "C", "icon": "c-icon.png", "alt": "C" },
             { "name": "R", "icon": "r-icon.png", "alt": "R" },
             { "name": "HTML", "icon": "html-icon.png", "alt": "HTML" },
-            { "name": "JavaScript", "icon": "js-icon.png", "alt": "JavaScript" }
+            { "name": "JavaScript", "icon": "javascript-icon.png", "alt": "JavaScript" }
         ],
         "tools": [
             { "name": "VS Code", "icon": "vscode-icon.jpg", "alt": "VS Code" },
