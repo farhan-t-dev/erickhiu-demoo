@@ -53,46 +53,6 @@
     }
 }
 
-/* Rectangle Card */
-.rectangle-card {
-    width: 200px;
-    height: 100px; /* Aspect ratio 2:1 (width:height) */
-    text-align: center;
-    background-color: white;
-    padding: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease; /* Add transition for border-radius */
-    border-radius: 0; /* Default, no rounded corners */
-}
-
-.rectangle-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 12px; /* Rounded corners on hover */
-}
-
-.rectangle-card .thumbnail {
-    width: 60px; /* Centered square thumbnail */
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-}
-
-.rectangle-card h2 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #00274c;
-    margin-bottom: 0.5rem;
-}
-
-.rectangle-card .content {
-    text-align: left; /* Left-aligned content */
-    font-size: 1rem;
-    color: #333;
-}
-
 /* Long Card */
 .long-card {
     width: 95%;
@@ -147,6 +107,97 @@
 }
 
 .long-card .content p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Teaching Card */
+.teaching-card {
+    display: flex;
+    align-items: flex-start;
+    background-color: white;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 800px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teaching-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.teaching-card .left-column {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+}
+
+.teaching-card .left-column .thumbnail {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #f4f4f4; /* Fallback background for empty thumbnails */
+}
+
+.teaching-card .right-column {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.teaching-card .right-column h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00274c;
+    margin-bottom: 0.5rem;
+    text-align: left; /* Left-align the title */
+}
+
+.teaching-card .role-and-dates {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+}
+
+.teaching-card .role-and-dates p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.teaching-card .role-and-dates .role {
+    color: #333;
+}
+
+.teaching-card .role-and-dates .date-align {
+    text-align: right;
+    font-style: italic;
+    color: #555;
+}
+
+.teaching-card .course {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.teaching-card .course a {
+    text-decoration: none;
+    color: #0056b3;
+    transition: color 0.2s ease;
+}
+
+.teaching-card .course a:hover {
+    color: #ffcb05; /* Highlight on hover */
+}
+
+.teaching-card p {
     font-size: 1rem;
     color: #333;
     line-height: 1.6;

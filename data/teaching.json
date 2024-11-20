@@ -1,0 +1,40 @@
+{
+    "teaching": [
+        {
+            "title": "Tutors in Action Malaysia",
+            "institution_link": "https://tutors-in-action.org/",
+            "role": "Online Tutor",
+            "teach_id": 1,
+            "thumbnail": "static/teaching/tia-thumbnail.png",
+            "start_date": "July 2020",
+            "end_date": "Dec 2022",
+            "course": {},
+            "details": "Provided scheduled Additional Mathematics tutoring to Malaysian Certificate of Education (SPM) candidates impacted by class disruptions and limited access to affordable tuition. Created online learning modules and study resources for Malaysian high school students."
+        },
+        {
+            "title": "University of Michigan- Mathematics",
+            "institution_link": "https://lsa.umich.edu/math",
+            "role": "Mathematics Tutor",
+            "teach_id": 2,
+            "thumbnail": "static/teaching/mathlab-thumbnail.jpg",
+            "start_date": "Sept 2022",
+            "end_date": "Oct 2022",
+            "course": {},
+            "details": "Provided walk-in tutoring for undergraduate students in Calculus I, II, Multivariable and Vector Calculus, Linear Algebra, and Intro Probability."
+        },
+        {
+            "title": "University of Michigan- Computer Science and Engineering (CSE)",
+            "institution_link": "https://cse.engin.umich.edu/",
+            "role": "Instructional Aide",
+            "teach_id": 3,
+            "thumbnail": "static/teaching/eecs376-thumbnail.png",
+            "start_date": "Jan 2024",
+            "end_date": "Present",
+            "course": {
+                "name": "EECS 376: Foundations of Computer Science",
+                "link": "https://eecs376.org/"
+            },
+            "details": "Facilitate weekly discussion sections and hold office hours. Course topics: Algorithm design, computability (finite automata, Turing Machines, Turing reductions), complexity theory (P & NP, NP-hard, NP-Completeness, heuristics), cryptography (Diffie-Hellman, RSA)."
+        }
+    ]
+}

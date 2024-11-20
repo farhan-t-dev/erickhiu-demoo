@@ -6,7 +6,7 @@
         "link": "https://eecs280staff.github.io/p2-cv/",
         "thumbnail": "static/projects/seam-thumbnail.png",
         "keywords": ["C-style pointers", "Arrays", "Struct"],
-        "date": "September 2022",
+        "date": "Sept 2022",
         "languages": ["C++"],
         "tags": ["DSA", "CV"],
         "details": "Built a content-aware image resizing program using a seam-carving algorithm by finding and removing “seams” in the image that pass through the least important pixels. Learned C-style pointers, arrays, structs, streams, IO, and Abstract Data Types in C."
@@ -17,7 +17,7 @@
         "link": "https://eecs280staff.github.io/p3-euchre/",
         "thumbnail": "static/projects/euchre-thumbnail.png",
         "keywords": ["Classes", "Inheritance", "Polymorphism"],
-        "date": "October 2022",
+        "date": "Oct 2022",
         "languages": ["C++"],
         "tags": ["DSA"],
         "details": "Developed a program that simulates a game of Euchre (a card game popular in Michigan) with a simple AI player. Gained experience in C++-style Object Oriented Programming (OOP) with classes and virtual functions that utilize Abstract Data Types in C++, derived classes, inheritance, and polymorphism."
@@ -28,7 +28,7 @@
         "link": "https://eecs280staff.github.io/p4-web/",
         "thumbnail": "static/projects/oh-thumbnail.png",
         "keywords": ["Linked-list", "The Big Three", "Dynamic Memory"],
-        "date": "November 2022",
+        "date": "Nov 2022",
         "languages": ["C++","HTML"],
         "tags": ["DSA", "WebDev"],
         "details": "Built a working web application accessible through a browser that directs the user to an office hour queue. Acquired skills to handle doubly linked-list with Containers ADTs, dynamic memory, The Big Three, and iterators. Learnt about simple Web 2.0 applications and HTTP."
@@ -39,7 +39,7 @@
         "link": "https://eecs280staff.github.io/p5-ml/",
         "thumbnail": "static/projects/piazza-thumbnail.png",
         "keywords": ["Map", "The Big Three", "Iterators"],
-        "date": "November 2022",
+        "date": "Nov 2022",
         "languages": ["C++"],
         "tags": ["DSA", "NLP"],
         "details": "Wrote a program to automatically identify the subject of students' posts on Piazza (a Q&A forum) using natural language processing and machine learning techniques. Handled binary trees with Containers ADTs, dynamic memory, The Big Three, iterators, and the map data structure."
@@ -94,7 +94,7 @@
         "link": "static/projects/DomainAdapt.pdf",
         "thumbnail": "static/projects/domadpt-thumbnail.png",
         "keywords": ["Domain Adaptor", "Adaptive Tokenization", "Vector Semantics"],
-        "date": "November 2023",
+        "date": "Nov 2023",
         "languages": ["Python"],
         "tags": ["AI", "ML", "NLP"],
         "details": "Explored adaptive tokenization in developing a dynamic algorithm to improve language models' adaptability in different textual domains. Introduced a creative approach to integrating vector semantics with adaptive tokenization."
@@ -122,11 +122,11 @@
         "details": "Developed a convolutional neural network (CNN) for classifying images of European landmarks, employing data augmentation and transfer learning to enhance model performance on limited training data. Applied visualization techniques to interpret CNN decisions, gaining insights into model behavior and improving reliability through Grad-CAM visualizations and systematic architecture adjustments."
       },
       {
-        "title": "Minimax AI with αβ Pruning for Chess",
+        "title": "Minimax AI with αβ-Pruning for Chess",
         "pub_id": 12,
         "link": "",
         "thumbnail": "static/projects/chess-thumbnail.webp",
-        "keywords": ["Minimax", "αβ Pruning", "Chess"],
+        "keywords": ["Minimax", "αβ-Pruning", "Chess"],
         "date": "February 2024",
         "languages": ["Python"],
         "tags": ["AI"],
@@ -170,8 +170,8 @@
         "pub_id": 16,
         "link": "https://eecs485staff.github.io/p3-insta485-clientside/",
         "thumbnail": "static/projects/insta485-thumbnail.png",
-        "keywords": ["REST API", "Flask", "React"],
-        "date": "October 2024",
+        "keywords": ["React", "Flask", "REST API"],
+        "date": "Oct 2024",
         "languages": ["Python", "HTML", "JavaScript"],
         "tags": ["WebDev","DB"],
         "details": "Developed an Instagram-like app using React and Flask, with dynamic post display, likes, and comments via RESTful APIs. Implemented real-time interactions like infinite scrolling, double-click likes, and comment updates for a seamless user experience."
@@ -182,7 +182,7 @@
         "link": "https://eecs485staff.github.io/p4-mapreduce/",
         "thumbnail": "static/projects/mapreduce-thumbnail.webp",
         "keywords": ["MapReduce", "Distributed System"],
-        "date": "November 2024",
+        "date": "Nov 2024",
         "languages": ["Python"],
         "tags": ["DSA", "WebDev"],
         "details": "Implemented a MapReduce framework to break down tasks into the Map and Reduce phases, distributing them across multiple workers, and aggregating the results. Gained hands-on experience with distributed computing concepts, fault tolerance, and parallel data processing using Hadoop."
@@ -193,7 +193,7 @@
         "link": "",
         "thumbnail": "static/projects/kanerva-thumbnail.png",
         "keywords": ["Hyperdimensional Computing", "Syntactic Trees", "Kanerva Memory"],
-        "date": "November 2024",
+        "date": "Nov 2024",
         "languages": ["Python"],
         "tags": ["NLP", "CompLing"],
         "details": "Developed a system to unbind syntactic trees encoded using Kanerva's hyperdimensional memory model. The project explored high-dimensional vectors for representing syntactic trees, ensuring minimal interference between tree node and string character vectors. Tested on Japanese grammar trees and successfully enhanced downstream language processing."
@@ -204,7 +204,7 @@
         "link": "",
         "thumbnail": "static/projects/infpred-thumbnail.png",
         "keywords": ["Inflectional Prediction", "Regex", "Meta-patterns"],
-        "date": "November 2024",
+        "date": "Nov 2024",
         "languages": ["Python"],
         "tags": ["NLP", "CompLing"],
         "details": "Developed a system to analyze Estonian inflectional forms using string differences and meta-patterns. The project focused on processing lexical data, creating dictionaries for case forms, and analyzing string differences to identify patterns in word forms. It also examined the impact of superheavy syllables on inflection and explored robust patterns in the Estonian language, applying computational linguistics techniques to predict inflectional behavior."

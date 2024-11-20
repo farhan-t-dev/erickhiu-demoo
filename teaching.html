@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eric Khiu - Teaching</title>
+    <title>Teaching - Eric Khiu</title>
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/header-footer.css">
+    <link rel="stylesheet" href="static/css/card.css">
 </head>
 <body>
     <!-- Include header -->
     <div id="header-placeholder"></div>
-
-    <main class="hero">
-        <h2>Teaching</h2>
+    
+    <main>
+        <section class="section-page">
+            <h1>Teaching</h1> 
+            <!-- Teaching Cards -->
+            <div id="teaching-container">
+                <!-- Teaching cards will be dynamically added here -->
+            </div>
+        </section>
     </main>
 
     <!-- Include footer -->
@@ -26,9 +33,49 @@
             document.getElementById(id).innerHTML = text;
         }
 
-        // Load header
+        // Load header and footer templates
         loadTemplate('header-placeholder', 'templates/header.html');
         loadTemplate('footer-placeholder', 'templates/footer.html');
+
+        // Fetch and render teaching data
+        async function loadTeachingData() {
+            const response = await fetch('data/teaching.json');
+            const data = await response.json();
+            renderTeachingCards(data.teaching);
+        }
+
+        // Function to render teaching cards
+        function renderTeachingCards(teaching) {
+            const container = document.getElementById('teaching-container');
+
+            // Sort by teach_id in descending order
+            const sortedTeaching = teaching.sort((a, b) => b.teach_id - a.teach_id);
+
+            sortedTeaching.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('teaching-card');
+
+                card.innerHTML = `
+                    <div class="left-column">
+                        ${item.thumbnail ? `<img src="${item.thumbnail}" alt="${item.title}" class="thumbnail">` : ''}
+                    </div>
+                    <div class="right-column">
+                        <h2>${item.title}</h2>
+                        <div class="role-and-dates">
+                            <p class="role">${item.role}</p>
+                            <p class="date-align">${item.start_date} - ${item.end_date}</p>
+                        </div>
+                        ${item.course?.link ? `<p class="course"><a href="${item.course.link}" target="_blank">${item.course.name}</a></p>` : ''}
+                        <p>${item.details}</p>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // Load teaching data on page load
+        loadTeachingData();
     </script>
 </body>
 </html>
