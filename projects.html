@@ -153,7 +153,11 @@
                     </div>
                     <p>${project.date}</p>
                     <div class="programming-languages">
-                        ${project.languages.map(lang => `<img src="static/images/skills/programming-languages/${lang.toLowerCase()}-icon.png" alt="${lang}">`).join('')}
+                        ${project.languages
+                            .map(
+                                lang => `<img src="static/images/skills/programming-languages/${lang.toLowerCase()}-icon.png" alt="${lang}" title="${lang}">`
+                            )
+                            .join('')}
                     </div>
                 </div>
 
@@ -185,8 +189,26 @@
                 'CompLing': 'tag-cl',
                 'Finance': 'tag-finance'
             };
+            
+            const tagFullNames = {
+                'AI': 'Artificial Intelligence',
+                'ML': 'Machine Learning',
+                'NLP': 'Natural Language Processing',
+                'CV': 'Computer Vision',
+                'RL': 'Reinforcement Learning',
+                'WebDev': 'Web Development',
+                'DB': 'Databases',
+                'DSA': 'Data Structures and Algorithms',
+                'CompLing': 'Computational Linguistics',
+                'Finance': 'Finance'
+            };
         
-            return project.tags.map(tag => `<span class="${tagClasses[tag]}">${tag}</span>`).join(' ');
+            return project.tags
+            .map(
+                tag =>
+                    `<span class="${tagClasses[tag]}" title="${tagFullNames[tag]}">${tag}</span>`
+            )
+            .join(' ');
         }
         
         // Function to display full details without truncation

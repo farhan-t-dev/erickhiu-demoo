@@ -163,7 +163,18 @@
                 'MathEd': 'tag-mathed'
             };
 
-            return publication.tags.map(tag => `<span class="${tagClasses[tag]}">${tag}</span>`).join(' ');
+            const tagFullNames = {
+                'NLP': 'Natural Language Processing',
+                'CompLing': 'Computational Linguistics',
+                'MathEd': 'Mathematics Education'
+            };
+
+            return publication.tags
+            .map(
+                tag =>
+                    `<span class="${tagClasses[tag]}" title="${tagFullNames[tag]}">${tag}</span>`
+            )
+            .join(' ');
         }
 
         // Function to generate clickable icons for paper, poster, slides, presentation
@@ -171,16 +182,16 @@
             const icons = [];
 
             if (publication.paper) {
-                icons.push(`<a href="${publication.paper}" class="link-icon"><img src="static/publications/paper-icon.png" alt="Paper"></a>`);
+                icons.push(`<a href="${publication.paper}" class="link-icon"><img src="static/publications/paper-icon.png" alt="Paper" title="Paper"></a>`);
             }
             if (publication.poster) {
-                icons.push(`<a href="${publication.poster}" class="link-icon"><img src="static/publications/poster-icon.png" alt="Poster"></a>`);
+                icons.push(`<a href="${publication.poster}" class="link-icon"><img src="static/publications/poster-icon.png" alt="Poster" title="Poster"></a>`);
             }
             if (publication.slides) {
-                icons.push(`<a href="${publication.slides}" class="link-icon"><img src="static/publications/slides-icon.png" alt="Slides"></a>`);
+                icons.push(`<a href="${publication.slides}" class="link-icon"><img src="static/publications/slides-icon.png" alt="Slides" title="Slides"></a>`);
             }
             if (publication.presentation) {
-                icons.push(`<a href="${publication.presentation}" class="link-icon"><img src="static/publications/presentation-icon.png" alt="Presentation"></a>`);
+                icons.push(`<a href="${publication.presentation}" class="link-icon"><img src="static/publications/presentation-icon.png" alt="Presentation" title="Presentation"></a>`);
             }
 
             return icons.join(' ');

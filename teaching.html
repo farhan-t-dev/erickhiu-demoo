@@ -60,7 +60,7 @@
                         ${item.thumbnail ? `<img src="${item.thumbnail}" alt="${item.title}" class="thumbnail">` : ''}
                     </div>
                     <div class="right-column">
-                        <h2>${item.title}</h2>
+                        <h2><a href="${item.institution_link}">${item.title}</a></h2>
                         <div class="role-and-dates">
                             <p class="role">${item.role}</p>
                             <p class="date-align">${item.start_date} - ${item.end_date}</p>
