@@ -1,0 +1,188 @@
+{
+    "ducks": [
+        {
+            "name": "Waquackquack Elizabeth III",
+            "duck_id": 1,
+            "aka": ["白たま (Shirotama | White Egg)"],
+            "pfp": "static/images/ducks/Waquackquack.jpg",
+            "story": "The third duck of the family and my very first duck plush. Often mistaken for a penguin, he has traveled with me across America, Europe, and Asia, becoming a constant companion on my adventures.",
+            "name-reference": "His name is inspired by Watoto from HoloEN's TTRPG and Elizabeth from Gintama."
+        },
+        {
+            "name": "Doul P. Su*k",
+            "duck_id": 2,
+            "aka": ["Mimi"],
+            "pfp": "static/images/ducks/Mimi.jpg",
+            "story": "A special gift for my 22nd birthday from someone dear to me. He earned his nickname because, one morning, I woke up and thought he looked like a cat.",
+            "name-reference": "When he stands up with his long, delicate limbs, he resembles a soul ascending to heaven. Since he's a duck, the name was created by swapping the first letters of 'soul' and 'duck', with the 'P' inspired by his soft, amber hue, like the color of morning dew caught in golden light."
+        },
+        {
+            "name": "Mumu",
+            "duck_id": 3,
+            "aka": [],
+            "pfp": "static/images/ducks/Mumu.jpg",
+            "story": "I got him from a gift shop after talking with the cashier on her last day of work. She shared that she had cancer and led me to the duck section, pointing out the interesting toys. She said, 'I never understood the toys here, but some of them are just cute.' I chose him because he looked like Mimi's brother, and it felt like he belonged with us.",
+            "name-reference": ""
+        },
+        {
+            "name": "Waquackquack Elizabeth V",
+            "duck_id": 4,
+            "aka": ["Vivi", "새대갈 (Saedaegal | Bird Brain)"],
+            "pfp": "static/images/ducks/Vivi.jpg",
+            "story": "I brought her home from a farm the day before an alpaca there was euthanized. Her slanted head reminded me of Saedaegal from Beast Friends, and the alpaca reminded me of Saedaegal's death for some reasons. Something about her posture made me feel like she was about to say Saedaegal's iconic line at any moment.",
+            "name-reference": "Her name pays homage to Saedaegal from Beast Friends."
+        },
+        {
+            "name": "Dummy",
+            "duck_id": 5,
+            "aka": [],
+            "pfp": "static/images/ducks/Dummy.jpg",
+            "story": "The very first duck of the family from my claimed rival. Named after her.",
+            "name-reference": ""
+        },
+        {
+            "name": "Drownie-Petes",
+            "duck_id": 6,
+            "aka": [],
+            "pfp": "static/images/ducks/Drownie-Petes.jpg",
+            "story": "The second duck of the family.",
+            "name-reference": "I got him from Pinball Pete's on the day I had a very good brownie. He used to sit as a decoration in the house, perched on the router section atop a 30-meter blue cable roll, making him look like he was drowning in water."
+        },
+        {
+            "name": "Lmfao",
+            "duck_id": 7,
+            "aka": ["The Chinese Hacker"],
+            "pfp": "static/images/ducks/Lmfao.jpg",
+            "story": "The proof that I completed EECS 280. He has been on my deks for years as a debugging duck.",
+            "name-reference": "Since he is a debugging duck, she's probably Lmfao the Chinese Hacker."
+        },
+        {
+            "name": "Waquackquack Elizabeth IV",
+            "duck_id": 8,
+            "aka": [],
+            "pfp": "static/images/ducks/Wqq4.jpg",
+            "story": "Too lazy to turn off the light, so I decided to get a bed lamp.",
+            "name-reference": ""
+        },
+        {
+            "name": "``",
+            "duck_id": 9,
+            "aka": [],
+            "pfp": "static/images/ducks/Overleaf.jpg",
+            "story": "Got him from MAA Math Fest 2023 in Florida.",
+            "name-reference": "Did you know that LaTeX users are always frustrated with open quotes? I hope he tells Overleaf to do something about it."
+        },
+        {
+            "name": "Puck",
+            "duck_id": 10,
+            "aka": [],
+            "pfp": "static/images/ducks/Puck.jpg",
+            "story": "A gift from someone who knows I'm obsessed with ducks.",
+            "name-reference": "Pink + Duck. Also Puck from Re:Zero."
+        },
+        {
+            "name": "Bosmmy",
+            "duck_id": 11,
+            "aka": [],
+            "pfp": "static/images/ducks/Bosmmy.jpg",
+            "story": "The first gift I received from her after we got together. Named after her.",
+            "name-reference": ""
+        },
+        {
+            "name": "TT",
+            "duck_id": 12,
+            "aka": [],
+            "pfp": "static/images/ducks/TT.jpg",
+            "story": "From some engineering career fair. Pretended to be an engineer just to have small talk with the recruiter.",
+            "name-reference": ""
+        },
+        {
+            "name": "Chicken",
+            "duck_id": 13,
+            "aka": [],
+            "pfp": "static/images/ducks/Chicken.jpg",
+            "story": "Brought a visitor to Ann Arbor to Pinball Pete's, and rubber ducks are the only thing I want from there.",
+            "name-reference": "Did you know there is no duck mob in Minescraft? So chicken = duck."
+        },
+        {
+            "name": "Dunickorn",
+            "duck_id": 14,
+            "aka": [],
+            "pfp": "static/images/ducks/Dunickorn.jpg",
+            "story": "Brought a visitor to Ann Arbor to Pinball Pete's, and rubber ducks are the only thing I want from there.",
+            "name-reference": "Duck + Unicorn"
+        },
+        {
+            "name": "Quooster",
+            "duck_id": 15,
+            "aka": [],
+            "pfp": "static/images/ducks/Quooster.jpg",
+            "story": "Brought a visitor to Ann Arbor to Pinball Pete's, and rubber ducks are the only thing I want from there.",
+            "name-reference": "A rooster who quacks."
+        },
+        {
+            "name": "Ruck",
+            "duck_id": 15,
+            "aka": [],
+            "pfp": "static/images/ducks/Ruck.jpg",
+            "story": "Brought a visitor to Ann Arbor to Pinball Pete's, and rubber ducks are the only thing I want from there.",
+            "name-reference": "Red + Duck"
+        },
+        {
+            "name": "Priduck",
+            "duck_id": 16,
+            "aka": [],
+            "pfp": "static/images/ducks/Priduck.jpg",
+            "story": "It's pride month!",
+            "name-reference": "Pride + Duck"
+        },
+        {
+            "name": "Purpluck",
+            "duck_id": 17,
+            "aka": [],
+            "pfp": "static/images/ducks/Purpluck.jpg",
+            "story": "Needed some coins for laundry. Also to remember one of my math professor who likes to pluck his beard.",
+            "name-reference": "Purple + Duck"
+        },
+        {
+            "name": "Witte-Eend",
+            "duck_id": 18,
+            "aka": [],
+            "pfp": "static/images/ducks/Witte-Eend.jpg",
+            "story": "From Amsterdam Airport Schiphol when I had 10 hours layover.",
+            "name-reference": ""
+        },
+        {
+            "name": "Muck",
+            "duck_id": 19,
+            "aka": [],
+            "pfp": "static/images/ducks/Muck.jpg",
+            "story": "Got him from M Den before they closed down.",
+            "name-reference": "M + Duck"
+        },
+        {
+            "name": "Flappybird Billowquack Incredibird",
+            "duck_id": 20,
+            "aka": [],
+            "pfp": "static/images/ducks/FBI.jpg",
+            "story": "My housemate got him from an art fair that I wanted to go but too busy with work.",
+            "name-reference": "Look at his initials."
+        },
+        {
+            "name": "Parallel",
+            "duck_id": 21,
+            "aka": [],
+            "pfp": "static/images/ducks/Parallel.jpg",
+            "story": "Needed some coins for laundry.",
+            "name-reference": ""
+        },
+        {
+            "name": "Haato",
+            "duck_id": 22,
+            "aka": [],
+            "pfp": "static/images/ducks/Haato.jpg",
+            "story": "Needed some coins for laundry.",
+            "name-reference": "Akai Haato aka Haachama from HoloJP."
+        }
+    ]
+}
