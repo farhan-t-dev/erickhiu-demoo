@@ -44,12 +44,13 @@
     .square-card {
         width: 150px; /* Adjust size for smaller screens */
     }
+    
 }
 
 @media (max-width: 480px) {
     .square-card {
         width: 100%; /* Full width on very small screens */
-        max-width: 300px; /* Limit width on mobile */
+        max-width: 150px; /* Limit width on mobile */
     }
 }
 
@@ -115,6 +116,7 @@
 /* Teaching Card */
 .teaching-card {
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
     align-items: flex-start;
     background-color: white;
     padding: 1.5rem;
@@ -139,8 +141,8 @@
 }
 
 .teaching-card .left-column .thumbnail {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 8px;
     background-color: #f4f4f4; /* Fallback background for empty thumbnails */
@@ -159,6 +161,14 @@
     margin-bottom: 0.5rem;
     text-align: left; /* Left-align the title */
 }
+
+.teaching-card .right-column a {
+    font-weight: bold;
+  }
+  
+  .teaching-card .right-column a:hover {
+    text-decoration: underline;
+  }
 
 .teaching-card .role-and-dates {
     display: flex;
@@ -201,4 +211,56 @@
     font-size: 1rem;
     color: #333;
     line-height: 1.6;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .teaching-card {
+        flex-direction: column; /* Stack columns on smaller screens */
+        padding: 1rem;
+    }
+
+    .teaching-card .left-column {
+        margin-right: 0; /* Remove margin for smaller devices */
+        margin-bottom: 1rem; /* Add spacing between columns */
+    }
+
+    .teaching-card .left-column .thumbnail {
+        width: 120px; /* Smaller thumbnail */
+        height: 120px;
+    }
+
+    .teaching-card .right-column h2 {
+        font-size: 1.25rem; /* Adjust heading size */
+    }
+
+    .teaching-card .role-and-dates p {
+        font-size: 0.9rem; /* Reduce text size */
+    }
+
+    .teaching-card p,
+    .teaching-card .course {
+        font-size: 0.9rem; /* Smaller text for content */
+    }
+}
+
+@media (max-width: 480px) {
+    .teaching-card {
+        padding: 0.8rem;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for smaller screens */
+    }
+
+    .teaching-card .left-column .thumbnail {
+        width: 100px; /* Smaller thumbnail */
+        height: 100px;
+    }
+
+    .teaching-card .right-column h2 {
+        font-size: 1rem; /* Further reduce heading size */
+    }
+
+    .teaching-card p,
+    .teaching-card .course {
+        font-size: 0.8rem; /* Adjust text size for readability */
+    }
 }

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Quacks - Eric Khiu</title>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="static/css/header-footer.css" />
+    <link rel="stylesheet" href="static/css/banner.css" />
+    <link rel="stylesheet" href="static/css/duck.css" />
+  </head>
+  <body>
+    <!-- Include header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Banner Section -->
+    <section
+      class="duck-banner"
+      style="background-image: url('static/images/ducks/the-quacks.png')"
+    ></section>
+
+    <section class="duck-page">
+      <h1>The Quacks</h1>
+      <!-- Intro Paragraph -->
+      <section class="intro">
+        <p>
+          We all know that every programmer needs a debugging duck, right? Well,
+          let me tell you, I’ve got a whole flock of 'em! They are just the
+          cutest little things. Take a look and meet my squad of feathered (but
+          not really) friends who help me crush those pesky coding bugs. Click
+          on them to see their stories and how they got their names!
+        </p>
+      </section>
+      <!-- Ducks Grid -->
+      <section class="duck-grid" id="duck-grid">
+        <!-- Duck cards will be dynamically populated here -->
+      </section>
+    </section>
+
+    <!-- Popup Modal -->
+    <div id="duck-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-modal">&times;</span>
+        <div class="modal-body">
+          <img id="modal-img" alt="Duck Image" />
+          <h2 id="modal-name"></h2>
+          <p id="modal-aka" class="duck-aka"></p>
+          <p id="modal-story"></p>
+          <p id="modal-name-reference"></p>
+        </div>
+        <div class="modal-footer">
+          <button id="prev-duck">Previous</button>
+          <button id="next-duck">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      async function loadTemplate(id, path) {
+        const response = await fetch(path);
+        const text = await response.text();
+        document.getElementById(id).innerHTML = text;
+      }
+
+      loadTemplate("header-placeholder", "templates/header.html");
+      loadTemplate("footer-placeholder", "templates/footer.html");
+
+      async function loadDucks() {
+        const response = await fetch("data/ducks.json");
+        const data = await response.json();
+        const grid = document.getElementById("duck-grid");
+        const modal = document.getElementById("duck-modal");
+        const closeModal = document.getElementById("close-modal");
+        const modalImg = document.getElementById("modal-img");
+        const modalName = document.getElementById("modal-name");
+        const modalAka = document.getElementById("modal-aka");
+        const modalStory = document.getElementById("modal-story");
+        const modalNameRef = document.getElementById("modal-name-reference");
+        const prevDuck = document.getElementById("prev-duck");
+        const nextDuck = document.getElementById("next-duck");
+        let currentDuckIndex = 0;
+
+        function openModal(duckIndex) {
+          const duck = data.ducks[duckIndex];
+          modalImg.src = duck.pfp;
+          modalImg.alt = duck.name;
+          modalName.textContent = duck.name;
+          modalAka.textContent =
+            duck.aka.length > 0 ? `Aka: ${duck.aka.join(", ")}` : "";
+          modalStory.textContent = duck.story ? duck.story : "";
+          modalNameRef.innerHTML = duck["name-reference"]
+            ? `<strong>How they got their name:</strong> ${duck["name-reference"]}`
+            : "";
+          modal.style.display = "block";
+          currentDuckIndex = duckIndex;
+        }
+
+        function closeModalFunc() {
+          modal.style.display = "none";
+        }
+
+        function navigateDuck(direction) {
+          const totalDucks = data.ducks.length;
+          currentDuckIndex =
+            (currentDuckIndex + direction + totalDucks) % totalDucks; // Circular navigation
+          openModal(currentDuckIndex);
+        }
+
+        data.ducks.forEach((duck, index) => {
+          const card = document.createElement("div");
+          card.classList.add("duck-card");
+          card.setAttribute("data-duck-id", duck.duck_id);
+
+          const img = document.createElement("img");
+          img.src = duck.pfp;
+          img.alt = duck.name;
+          img.classList.add("duck-pfp");
+          card.appendChild(img);
+
+          const name = document.createElement("h3");
+          name.textContent = duck.name;
+          card.appendChild(name);
+
+          if (duck.aka && duck.aka.length > 0) {
+            const aka = document.createElement("p");
+            aka.textContent = `Aka: ${duck.aka.join(", ")}`;
+            aka.classList.add("duck-aka");
+            card.appendChild(aka);
+          }
+
+          card.addEventListener("click", () => openModal(index));
+          grid.appendChild(card);
+        });
+
+        closeModal.addEventListener("click", closeModalFunc);
+        prevDuck.addEventListener("click", () => navigateDuck(-1));
+        nextDuck.addEventListener("click", () => navigateDuck(1));
+
+        window.addEventListener("click", (event) => {
+          if (event.target === modal) closeModalFunc();
+        });
+        // Close modal with the Escape key and navigate with Arrow keys
+        window.addEventListener("keydown", (event) => {
+          if (modal.style.display === "block") {
+            // Ensure modal is open
+            if (event.key === "Escape") {
+              closeModalFunc(); // Close modal on Esc
+            } else if (event.key === "ArrowRight") {
+              navigateDuck(1); // Navigate to the next duck
+            } else if (event.key === "ArrowLeft") {
+              navigateDuck(-1); // Navigate to the previous duck
+            }
+          }
+        });
+
+        // When creating duck cards dynamically, add `loading="lazy"`
+        const img = document.createElement("img");
+        img.src = duck.pfp;
+        img.alt = duck.name;
+        img.classList.add("duck-pfp");
+        img.loading = "lazy"; // Enable lazy loading
+        card.appendChild(img);
+      }
+
+      loadDucks();
+    </script>
+
+    <!-- nav bar's menu toggle script -->
+    <script src="javascript/menu-toggle.js"></script>
+  </body>
+</html>

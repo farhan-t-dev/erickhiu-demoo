@@ -44,13 +44,25 @@
                     </div>
                 </section>
             </div>
+<<<<<<< Updated upstream
+=======
+
+            <section class="pagination">
+              <!-- Pagination buttons will be dynamically inserted here -->
+              <div id="pagination-container"></div>
+            </section>
+          </section>
+>>>>>>> Stashed changes
         </div>
     </main>
 
     <!-- Footer -->
     <div id="footer-placeholder"></div>
 
+    <script src="javascript/pagination.js"></script>
+
     <script>
+<<<<<<< Updated upstream
         // Function to dynamically load templates
         async function loadTemplate(id, path) {
             const response = await fetch(path);
@@ -218,4 +230,254 @@
     </script>
     
 </body>
+=======
+      // Function to dynamically load templates
+      async function loadTemplate(id, path) {
+        try {
+          const response = await fetch(path);
+          const text = await response.text();
+          document.getElementById(id).innerHTML = text;
+        } catch (error) {
+          console.error(`Error loading template from ${path}:`, error);
+        }
+      }
+
+      // Function to get selected tags
+      function getSelectedTags() {
+        const tags = [];
+        if (document.getElementById("ai").checked) tags.push("AI");
+        if (document.getElementById("ml").checked) tags.push("ML");
+        if (document.getElementById("nlp").checked) tags.push("NLP");
+        if (document.getElementById("cv").checked) tags.push("CV");
+        if (document.getElementById("rl").checked) tags.push("RL");
+        if (document.getElementById("webdev").checked) tags.push("WebDev");
+        if (document.getElementById("db").checked) tags.push("DB");
+        if (document.getElementById("dsa").checked) tags.push("DSA");
+        if (document.getElementById("comp-ling").checked) tags.push("CompLing");
+        if (document.getElementById("finance").checked) tags.push("Finance");
+        return tags;
+      }
+
+      // Function to render a single project card
+      function createProjCard(project) {
+        const card = document.createElement("div");
+        card.classList.add("proj-card");
+
+        // Make card clickable if a valid link exists
+        if (project.link?.trim()) {
+          card.addEventListener("click", () =>
+            window.open(project.link, "_blank")
+          );
+        }
+
+        card.innerHTML = `
+        <div class="left-column">
+            <div class="thumbnail">
+                <img src="${project.thumbnail}" alt="${
+          project.pub_id
+        }-Thumbnail">
+            </div>
+            <div class="keywords">
+                <strong>Keywords:</strong> ${project.keywords.join(", ")}
+            </div>
+            <p>${project.date}</p>
+            <div class="programming-languages">
+                ${project.languages
+                  .map(
+                    (lang) =>
+                      `<img src="static/images/skills/programming-languages/${lang.toLowerCase()}-icon.png" alt="${lang}" title="${lang}">`
+                  )
+                  .join("")}
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>${
+              project.link?.trim()
+                ? `<a href="${project.link}" target="_blank">${project.title}</a>`
+                : project.title
+            }</h2>
+            <div class="tags">${generateTags(project)}</div>
+            <div class="details">${getAbstract(project.details)}</div>
+        </div>
+    `;
+        return card;
+      }
+
+      // Function to generate tags for a project
+      function generateTags(project) {
+        const tagClasses = {
+          AI: "tag-ai",
+          ML: "tag-ml",
+          NLP: "tag-nlp",
+          CV: "tag-cv",
+          RL: "tag-rl",
+          WebDev: "tag-webdev",
+          DB: "tag-db",
+          DSA: "tag-dsa",
+          CompLing: "tag-cl",
+          Finance: "tag-finance",
+        };
+
+        const tagFullNames = {
+          AI: "Artificial Intelligence",
+          ML: "Machine Learning",
+          NLP: "Natural Language Processing",
+          CV: "Computer Vision",
+          RL: "Reinforcement Learning",
+          WebDev: "Web Development",
+          DB: "Databases",
+          DSA: "Data Structures and Algorithms",
+          CompLing: "Computational Linguistics",
+          Finance: "Finance",
+        };
+
+        return project.tags
+          .map(
+            (tag) =>
+              `<span class="${tagClasses[tag]}" title="${tagFullNames[tag]}">${tag}</span>`
+          )
+          .join(" ");
+      }
+
+      // Function to display full details without truncation
+      function getAbstract(details) {
+        return `<p class="details-text">${details}</p>`;
+      }
+
+      // Function to render projects based on pagination
+      function renderProjects(projects, page = 1) {
+        const container = document.getElementById("project-container");
+        container.innerHTML = ""; // Clear previous content
+
+        const selectedTags = getSelectedTags();
+        const filteredProjects = projects
+          .filter((proj) => selectedTags.some((tag) => proj.tags.includes(tag))) // Filter by selected tags
+          .sort((a, b) => b.pub_id - a.pub_id); // Sort by pub_id in descending order
+
+        const totalProjects = filteredProjects.length;
+        const projectsPerPage = 10; // Adjust the number of projects per page
+        const startIndex = (page - 1) * projectsPerPage;
+        const endIndex = startIndex + projectsPerPage;
+
+        const paginatedProjects = filteredProjects.slice(startIndex, endIndex);
+
+        // Render filtered and paginated projects
+        paginatedProjects.forEach((project) => {
+          const projCard = createProjCard(project);
+          container.appendChild(projCard);
+        });
+
+        return totalProjects;
+      }
+
+      // Initialize the pagination class and call onPageChange
+      function initializePagination(projects) {
+        const totalItems = projects.length;
+        const itemsPerPage = 10;
+
+        // Initialize the pagination component
+        const pagination = new Pagination(
+          "pagination-container",
+          totalItems,
+          itemsPerPage,
+          (page) => {
+            renderProjects(projects, page); // Re-render projects for the selected page
+          }
+        );
+
+        renderProjects(projects, 1); // Initial render for the first page
+      }
+
+      // Event Listener for DOMContentLoaded
+      document.addEventListener("DOMContentLoaded", () => {
+        // Load header and footer templates
+        loadTemplate("header-placeholder", "templates/header.html");
+        loadTemplate("footer-placeholder", "templates/footer.html");
+
+        // Fetch projects data and set up filtering
+        fetch("data/projects.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const projects = data.projects;
+
+            // Set up pagination after fetching projects data
+            initializePagination(projects);
+
+            const checkboxes = document.querySelectorAll(
+              'input[type="checkbox"]:not(#select-all)'
+            );
+            const selectAllCheckbox = document.getElementById("select-all");
+
+            // Add event listeners for individual checkboxes
+            checkboxes.forEach((checkbox) => {
+              checkbox.addEventListener("change", () => {
+                const allChecked = Array.from(checkboxes).every(
+                  (cb) => cb.checked
+                );
+                selectAllCheckbox.checked = allChecked;
+                initializePagination(projects); // Re-initialize pagination with updated filter
+              });
+            });
+
+            // Add event listener for "Select All" checkbox
+            selectAllCheckbox.addEventListener("change", () => {
+              checkboxes.forEach(
+                (checkbox) => (checkbox.checked = selectAllCheckbox.checked)
+              );
+              initializePagination(projects); // Re-initialize pagination with updated filter
+            });
+          })
+          .catch((error) =>
+            console.error("Error loading project data:", error)
+          );
+      });
+      // Toggle filters visibility
+      document.addEventListener("DOMContentLoaded", () => {
+        const filtersToggleBtn = document.getElementById("filters-toggle-btn");
+        const filtersSection = document.getElementById("filters");
+
+        filtersToggleBtn.addEventListener("click", () => {
+          const isHidden = filtersSection.style.display !== "block";
+          filtersSection.style.display = isHidden ? "block" : "none";
+          filtersToggleBtn.textContent = isHidden
+            ? "Hide Filters"
+            : "Show Filters";
+        });
+      });
+
+      function updateActiveFilters() {
+        const checkboxes = document.querySelectorAll(
+          'input[type="checkbox"]:not(#select-all)'
+        );
+        const activeFilters = Array.from(checkboxes).filter(
+          (checkbox) => checkbox.checked
+        );
+        const activeFiltersCount = activeFilters.length;
+        const activeFiltersDisplay = document.getElementById("active-filters");
+
+        activeFiltersDisplay.textContent = `Filters Applied: ${activeFiltersCount}`;
+
+        // Highlight active filter labels
+        checkboxes.forEach((checkbox) => {
+          const label = checkbox.closest("label");
+          if (label) {
+            label.classList.toggle("active", checkbox.checked);
+          }
+        });
+      }
+
+      // Update active filters whenever a checkbox changes
+      document
+        .querySelectorAll('input[type="checkbox"]')
+        .forEach((checkbox) => {
+          checkbox.addEventListener("change", updateActiveFilters);
+        });
+
+      // Initial call to set active filters on page load
+      updateActiveFilters();
+    </script>
+    <!-- nav bar's menu toggle script -->
+    <script src="javascript/menu-toggle.js"></script>
+  </body>
+>>>>>>> Stashed changes
 </html>

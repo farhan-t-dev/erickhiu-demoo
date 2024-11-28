@@ -1,0 +1,246 @@
+/* Duck Banner */
+.duck-banner {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    /* height: 0; */
+    padding-top: 45%;
+    display: flex;
+    color: white;
+    overflow: hidden;
+}
+
+.duck-page {
+    padding: 0rem rem;
+    text-align: center;
+    max-width: 1000px;
+    margin: 2rem auto;
+}
+
+/* Duck Grid Section */
+.duck-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* Duck Card */
+.duck-card {
+    max-width: 200px; /* Default size */
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.duck-card:hover {
+    transform: translateY(-5px) scale(1.05);/* Slight scaling for more impact */
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Duck Image */
+.duck-pfp {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* Duck Name */
+.duck-card h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #00274c;
+    margin: 0.5rem 0;
+}
+
+/* Duck Aka */
+.duck-aka {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+/* Expanded Duck Card */
+.duck-card.expanded {
+    width: 100%; /* Expand to fit the container */
+    max-width: 500px; /* Limit max size */
+    border: 2px solid #00274c;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+}
+
+.duck-card.expanded .duck-story {
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.duck-card.expanded .duck-name-reference {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+
+/* Center the Duck Name in the Modal */
+.modal-body h2#modal-name {
+    text-align: center; /* Center-align the duck name */
+    color: #00274c;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    line-height: 1.5; /* Increase spacing for duck name */
+}
+
+/* Center the Aka Text */
+.modal-body p#modal-aka {
+    text-align: center; /* Center-align the aka text */
+    font-size: 1rem;
+    margin-top: 0px;
+    color: #555; /* Optional styling */
+    line-height: 1.6; /* Increase spacing for aka text */
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the modal */
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%; /* Scale based on window size */
+    max-width: 500px; /* Ensure it doesn’t get too wide */
+    height: 80%; /* Fixed height for consistent sizing */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Footer stays at the bottom */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* Ensure content stays within fixed area */
+}
+
+/* Modal Body for Scrollable Content */
+.modal-body {
+    overflow-y: auto; /* Enable vertical scrolling for content */
+    padding: 10px 0;
+    margin-bottom: 20px;
+    text-align: center;
+    flex-grow: 1; /* Allow content to fill available space */
+    line-height: 1.5; /* Increase spacing for all body text */
+}
+
+/* Adjust image to scale with modal */
+.modal-body img#modal-img {
+    display: block;
+    margin: 10px auto;
+    max-width: 80%; /* Image scales dynamically with modal */
+    max-height: 40vh; /* Constrain height relative to viewport */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+}
+
+
+
+/* Modal Footer */
+.modal-footer {
+    display: flex;
+    justify-content: center; /* Center-align buttons */
+    gap: 10px; /* Add spacing between buttons */
+    padding-top: 10px;
+    margin-top: auto; /* Ensure footer is pinned to the bottom */
+}
+
+.modal-footer button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00274c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-footer button:hover {
+    color: #ffcb05;
+    transform: scale(1.1); /* Slight enlargement */
+}
+
+.modal-footer button:active {
+    transform: scale(0.95); /* Shrink slightly for click feedback */
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+/* Responsive Adustments for Tablet Devices (768px and below) */
+@media (max-width: 768px) {
+    .duck-card {
+        width: 90%; /* Full width for better stacking */
+        padding: 0.5rem; /* Reduce padding */
+    }
+
+    .duck-card h3 {
+        font-size: 1rem; /* Smaller font size */
+    }
+
+    .duck-aka {
+        font-size: 0.8rem; /* Adjust font size */
+    }
+
+    .modal-body {
+        padding: 5px; /* Less padding in modal */
+    }
+}
+
+/* Responsive Adustments for Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+    .duck-banner {
+        padding-top: 60%; /* Increase aspect ratio for better banner visibility */
+    }
+
+    .modal-content {
+        width: 95%; /* Almost full-width modal */
+        height: auto; /* Auto height for better fit */
+    }
+
+    .duck-card {
+        width: 100%; /* Full width for small screens */
+        padding: 0.3rem; /* Less padding for tight spaces */
+    }
+
+    .duck-card h3, .duck-aka {
+        font-size: 0.9rem; /* Smaller text for tight spaces */
+    }
+}

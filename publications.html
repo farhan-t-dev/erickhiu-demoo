@@ -17,6 +17,7 @@
         <div class="two-column-layout">
             <!-- Left Column: Filter Section -->
             <div class="side-wrapper">
+                <button id="filters-toggle-btn">Show Filters</button>  
                 <section id="filters">
                     <div class="filters">
                         <h3>Filter Publications</h3>
@@ -35,6 +36,7 @@
                     <div class="square-grid" id="publication-container">
                         <!-- Dynamic publication cards will be inserted here by JS -->
                     </div>
+                    <div id="pagination-controls"></div> <!-- Pagination Controls -->
                 </section>
             </div>
         </div>
@@ -218,7 +220,127 @@
             return `<p class="abstract-text">${abstract}</p>`;
         }
 
+<<<<<<< Updated upstream
     </script>
 
+=======
+        // Filter toggle button
+        const toggleButton = document.getElementById("filters-toggle-btn");
+        const filters = document.getElementById("filters");
+
+        toggleButton.addEventListener("click", () => {
+          filters.classList.toggle("visible");
+          toggleButton.textContent = filters.classList.contains("visible")
+            ? "Hide Filters"
+            : "Show Filters";
+        });
+
+        // Variables for pagination
+let currentPage = 1;
+const publicationsPerPage = 5; // Adjust this value as needed
+
+// Function to render publications with pagination
+function renderPublications(publications) {
+    const container = document.getElementById('publication-container');
+    container.innerHTML = ''; // Clear previous content
+    
+    const selectedTags = getSelectedTags();
+    
+    // Filter and sort publications
+    const filteredPublications = publications
+        .filter(pub => selectedTags.some(tag => pub.tags.includes(tag))) // Filter by selected tags
+        .sort((a, b) => b.pub_id - a.pub_id); // Sort by pub_id in descending order
+
+    // Paginate publications
+    const totalPages = Math.ceil(filteredPublications.length / publicationsPerPage);
+    const startIndex = (currentPage - 1) * publicationsPerPage;
+    const paginatedPublications = filteredPublications.slice(startIndex, startIndex + publicationsPerPage);
+
+    // Render filtered publications for the current page
+    paginatedPublications.forEach(publication => {
+        const pubCard = createPubCard(publication);
+        container.appendChild(pubCard);
+    });
+
+    // Render pagination controls
+    renderPaginationControls(totalPages);
+}
+
+// Function to render pagination controls
+function renderPaginationControls(totalPages) {
+    const paginationControls = document.getElementById('pagination-controls');
+    paginationControls.innerHTML = ''; // Clear previous controls
+    
+    // Add "Previous" button
+    if (currentPage > 1) {
+        const prevButton = document.createElement('button');
+        prevButton.textContent = 'Previous';
+        prevButton.addEventListener('click', () => {
+            currentPage--;
+            fetchPublications(); // Re-render publications when page changes
+        });
+        paginationControls.appendChild(prevButton);
+    }
+
+    // Add current page number and total pages
+    const pageInfo = document.createElement('span');
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+    paginationControls.appendChild(pageInfo);
+
+    // Add "Next" button
+    if (currentPage < totalPages) {
+        const nextButton = document.createElement('button');
+        nextButton.textContent = 'Next';
+        nextButton.addEventListener('click', () => {
+            currentPage++;
+            fetchPublications(); // Re-render publications when page changes
+        });
+        paginationControls.appendChild(nextButton);
+    }
+}
+
+// Fetch publications data and render them with pagination
+function fetchPublications() {
+    fetch('data/publications.json')
+        .then(response => response.json())
+        .then(data => {
+            renderPublications(data.publications);
+    
+            // Add event listeners for filtering
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#select-all)');
+            const selectAll = document.getElementById('select-all');
+    
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    // Uncheck "Select All" if any individual checkbox is unchecked
+                    if (!checkbox.checked) {
+                        selectAll.checked = false;
+                    }
+                    // Check "Select All" if all checkboxes are checked
+                    else if ([...checkboxes].every(cb => cb.checked)) {
+                        selectAll.checked = true;
+                    }
+                    currentPage = 1; // Reset to first page when filters change
+                    renderPublications(data.publications);
+                });
+            });
+    
+            selectAll.addEventListener('change', () => {
+                checkboxes.forEach(checkbox => checkbox.checked = selectAll.checked);
+                currentPage = 1; // Reset to first page when filters change
+                renderPublications(data.publications);
+            });
+        })
+        .catch(error => console.error('Error loading publications:', error));
+}
+
+// Initial call to fetch publications
+fetchPublications();
+
+    </script>
+    
+        <!-- nav bar's menu toggle script -->
+        <script src="javascript/menu-toggle.js"></script>
+>>>>>>> Stashed changes
 </body>
 </html>

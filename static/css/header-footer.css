@@ -1,13 +1,12 @@
-
+/* General Styles */
 header {
     display: flex;
-    justify-content: space-between; /* Align items to the left and right */
+    justify-content: space-between;
     align-items: center;
     background-color: #00274c;
     color: white;
-    margin: 0;
-    padding: 0;
-    /* padding: 1.5rem 2rem; */
+    padding: 0.7rem 2rem;
+    position: relative; /* Ensure nav is positioned correctly relative to header */
 }
 
 header .logo {
@@ -16,39 +15,19 @@ header .logo {
     font-family: 'Papyrus', fantasy;
 }
 
-header, .topnav {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #00274c;
-}
-
 header h1 {
     font-size: 1.5rem;
-    margin: 0;
-}
-
-.topnav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* position: sticky; */
-    top: 0;
-    width: 100%;
-    background-color: #00274c;
-    /* border-bottom: 1px solid #dbdbdb; */
-    padding: 0.5rem 2rem; 
     margin: 0;
 }
 
 .nav {
     display: flex;
     align-items: center;
-    margin-right: 0rem;
+    gap: 15px;
+    
 }
 
 .nav-item {
-    margin: 0 15px;
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -56,8 +35,47 @@ header h1 {
 }
 
 .nav-item:hover {
-    color: #ffcb05; 
+    color: #ffcb05;
 }
+
+/* Responsive Styles */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Below header */
+        right: 0;
+        background-color: #00274c;
+        width: 100%;
+        padding: 1rem;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    .nav.show {
+        display: flex; /* Show the menu when 'show' class is added */
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+    right: 0;
+    }
+}
+
+
 
 /* Footer */
 footer {
@@ -80,4 +98,10 @@ footer {
 
 .footer a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    footer{
+        font-size: 0.9rem;
+    }
 }
