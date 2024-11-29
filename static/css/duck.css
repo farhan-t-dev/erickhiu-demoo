@@ -144,7 +144,7 @@
     overflow-y: auto; /* Enable vertical scrolling for content */
     padding: 10px 0;
     margin-bottom: 20px;
-    text-align: center;
+    text-align: left;
     flex-grow: 1; /* Allow content to fill available space */
     line-height: 1.5; /* Increase spacing for all body text */
 }
