@@ -1,274 +1,333 @@
 /* Two-column layout for main content */
 .two-column-layout {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 2rem;
-    max-width: 1200px; /* Limit overall width for better readability */
-    margin: 2rem auto;
-    padding: 0 1.5rem; /* Add horizontal padding */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1200px; /* Limit overall width for better readability */
+  margin: 0rem auto;
+  padding: 0 1.5rem; /* Add horizontal padding */
 }
 
 /* Side wrapper for filter section */
-.side-wrapper {
-    flex: 1;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-/* Filters section styling */
-.filters {
-    margin-bottom: 1.5rem;
-    text-align: left;
+/* Container for the filter UI */
+#filters {
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .filters h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #00274c;
 }
 
-.filters label {
-    margin-right: 1rem;
-    font-size: 1rem;
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 5px;
-    margin-bottom: 0.5rem;
+.filter-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  padding: 3px 8px 3px 0px;
+  box-shadow: 0 3.5px 3.5px #00000002, 0 2px 2px #00000002, 0 0 1px #00000002;
+  border-color: #e5e7ebb3;
+  color: rgb(55 65 81);
 }
 
-.filters input[type="checkbox"] {
-    transform: scale(1.1);
-    vertical-align: top;
+.filter-option input {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.filter-option span {
+  font-size: 14px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.filter-option input:checked + span {
+  font-weight: bold;
+  color: #00274c;
+}
+
+.filter-option:hover {
+  background-color: #eaeaea;
+  border-radius: 4px;
+}
+
+.filter-option input:disabled + span {
+  color: #b0b0b0;
+}
+
+.filter-option input:checked:disabled + span {
+  color: #00274c;
+}
+
+.filter-option input:checked:not(#select-all) + span {
+  font-weight: bold;
+}
+
+#select-all:checked + span {
+  font-weight: bold;
+  color: #00274c;
+}
+
+/* Grey-out unselected options */
+.filter-option input:not(:checked) + span {
+  color: #aaa;
 }
 
 /* Main content wrapper for project cards */
 .main-wrapper {
-    flex: 3; /* Wider column */
-    margin: 0 auto;
-    padding: 0 1rem;
+  flex: 3; /* Wider column */
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* Pub Card Layout */
 .pub-card {
-    display: flex;
-    flex-direction: row;
-    width: 95%;
-    max-width: 1200px;
-    margin: 2rem auto;
-    background-color: white;
-    padding: 1.5rem;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 0; /* Default, no rounded corners */
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 0; /* Default, no rounded corners */
 }
 
 .pub-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
-    border-radius: 12px; /* Rounded corners on hover */
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+  border-radius: 12px; /* Rounded corners on hover */
 }
 
 .pub-card .left-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align other content to the left */
-    padding-left: 1rem;
-    margin-right: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align other content to the left */
+  padding-left: 1rem;
+  margin-right: 1rem;
 }
 
 .pub-card .left-column .thumbnail img {
-    width: 200px;  /* Size of the thumbnail */
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1rem; /* Space between thumbnail and venue */
-    align-self: center; /* This centers the image */
+  width: 200px; /* Size of the thumbnail */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem; /* Space between thumbnail and venue */
+  align-self: center; /* This centers the image */
 }
 
 .pub-card .right-column {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    text-align: left;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  transition: text-decoration 0.2s ease;
 }
 
 .pub-card .right-column h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #00274c;
-    margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00274c;
+  margin-bottom: 1rem;
+}
+
+.pub-card .right-column a {
+  font-weight: bold;
+}
+
+.pub-card .right-column a:hover {
+  text-decoration: underline;
 }
 
 .pub-card .right-column .tags {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .pub-card .right-column .tags .tag-nlp,
 .pub-card .right-column .tags .tag-cl,
 .pub-card .right-column .tags .tag-mathed {
-    padding: 0.2rem 0.5rem;
-    border-radius: 5px;
-    margin-right: 0.5rem;
-    font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+  font-weight: bold;
 }
 
 /* Publication Links Icons */
 .pub-card .publication-links {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-top: 0.5rem;
-    padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+  padding-left: 0;
 }
 
 .pub-card .publication-links a {
-    margin-right: 1rem;
-    display: inline-block;
+  margin-right: 1rem;
+  display: inline-block;
 }
 
 .pub-card .publication-links img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 /* Tag Colors */
 .tag-nlp {
-    background-color: #ffcb05;
-    color: white;
+  background-color: #ffcb05;
+  color: white;
 }
 
 .tag-cl {
-    background-color: #ff7f50;
-    color: white;
+  background-color: #ff7f50;
+  color: white;
 }
 
 .tag-mathed {
-    background-color: #32cd32;
-    color: white;
+  background-color: #32cd32;
+  color: white;
 }
 
 /* Authors */
 .pub-card .right-column .authors {
-    font-size: 1rem;
-    color: grey;
-    font-style: italic;
-    margin-bottom: 1rem;
+  font-size: 1rem;
+  color: grey;
+  font-style: italic;
+  margin-bottom: 1rem;
 }
 
 .bold-author {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* Abstract Styling */
 .pub-card .abstract-text {
-    display: block;
-    color: #333;
-    font-size: 1rem;
+  display: block;
+  color: #333;
+  font-size: 1rem;
 }
 
 /* Full Abstract */
 .pub-card .full-abstract {
-    display: none;
-    color: #333;
-    font-size: 1rem;
-    line-height: 1.6;
+  display: none;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* Abstract Expanding */
 .pub-card.expanded .abstract-text {
-    max-height: none;             /* Removes height restriction when expanded */
-    overflow: visible;
+  max-height: none; /* Removes height restriction when expanded */
+  overflow: visible;
 }
 
 /* Full Abstract on Click */
 .pub-card.expanded .full-abstract {
-    display: block;
+  display: block;
 }
 
 /* Project Stuff starts here */
 /* General styling for the project card layout */
 .proj-card {
-    display: flex;
-    flex-direction: row;
-    width: 95%;
-    max-width: 1200px;
-    margin: 2rem auto;
-    background-color: white;
-    padding: 1.5rem;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 0; /* Default, no rounded corners */
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 0; /* Default, no rounded corners */
 }
 
 .proj-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
-    border-radius: 12px; /* Rounded corners on hover */
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+  border-radius: 12px; /* Rounded corners on hover */
 }
 
 /* Left column styles (thumbnail, keywords, and programming languages) */
 .proj-card .left-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align other content to the left */
-    padding-left: 1rem;
-    margin-right: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align other content to the left */
+  padding-left: 1rem;
+  margin-right: 1rem;
 }
 
 .proj-card .left-column .thumbnail img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1rem; /* Space between thumbnail and keywords */
-    align-self: center; /* Centers the image */
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem; /* Space between thumbnail and keywords */
+  align-self: center; /* Centers the image */
 }
 
 .proj-card .left-column .keywords {
-    /* font-weight: bold; */
-    color: grey; /* Grey color for keywords */
-    margin-bottom: 1rem; /* Space between keywords and programming languages */
-    text-align: left; /* Left align */
+  /* font-weight: bold; */
+  color: grey; /* Grey color for keywords */
+  margin-bottom: 1rem; /* Space between keywords and programming languages */
+  text-align: left; /* Left align */
 }
 
 .proj-card .programming-languages {
-    margin-top: 1rem; /* Space between keywords and programming languages */
+  margin-top: 1rem; /* Space between keywords and programming languages */
 }
 
 .proj-card .programming-languages img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    margin-right: 8px; /* Add some spacing between icons */
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 8px; /* Add some spacing between icons */
 }
 
 /* Right column styles (title, tags, and project details) */
 .proj-card .right-column {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    text-align: left;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  text-decoration: none; /* No underline by default */
+  color: inherit; /* Maintain inherited text color */
+  transition: text-decoration 0.2s ease; /* Smooth transition */
 }
 
 .proj-card .right-column h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #00274c;
-    margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00274c;
+  margin-bottom: 1rem;
+}
+
+.proj-card .right-column a {
+  font-weight: bold;
+}
+.proj-card .right-column a:hover {
+  text-decoration: underline; /* Underline on hover */
 }
 
 .proj-card .right-column .tags {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .proj-card .right-column .tags .tag-ai,
@@ -281,92 +340,222 @@
 .proj-card .right-column .tags .tag-db,
 .proj-card .right-column .tags .tag-dsa,
 .proj-card .right-column .tags .tag-finance {
-    padding: 0.2rem 0.5rem;
-    border-radius: 5px;
-    margin-right: 0.5rem;
-    font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+  font-weight: bold;
 }
 
 /* Details section */
 .proj-card .right-column .details-text {
-    color: #333;
-    font-size: 1rem;
-    margin-bottom: 1rem;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* Full details */
 .proj-card .full-details {
-    display: none;
-    color: #333;
-    font-size: 1rem;
-    line-height: 1.6;
+  display: none;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* Filter Tags Styles */
 .tag-ai {
-    background-color: #4caf50; /* AI tag color */
-    color: white;
+  background-color: #4caf50; /* AI tag color */
+  color: white;
 }
 
 .tag-ml {
-    background-color: #3f51b5; /* ML tag color */
-    color: white;
+  background-color: #3f51b5; /* ML tag color */
+  color: white;
 }
 
 .tag-nlp {
-    background-color: #ffcb05;
-    color: white;
+  background-color: #ffcb05;
+  color: white;
 }
 
 .tag-cl {
-    background-color: #ff7f50;
-    color: white;
+  background-color: #ff7f50;
+  color: white;
 }
 
 .tag-cv {
-    background-color: #85f0ff; /* CV tag color */
-    color: white;
+  background-color: #85f0ff; /* CV tag color */
+  color: white;
 }
 
 .tag-rl {
-    background-color: #009688; /* RL tag color */
-    color: white;
+  background-color: #009688; /* RL tag color */
+  color: white;
 }
 
 .tag-webdev {
-    background-color: #2E3197; /* WebDev tag color */
-    color: white;
+  background-color: #2e3197; /* WebDev tag color */
+  color: white;
 }
 
 .tag-db {
-    background-color: #9c27b0; /* DB tag color */
-    color: white;
+  background-color: #9c27b0; /* DB tag color */
+  color: white;
 }
 
 .tag-dsa {
-    background-color: #2196f3; /* DSA tag color */
-    color: white;
+  background-color: #2196f3; /* DSA tag color */
+  color: white;
 }
 
 .tag-finance {
-    background-color: #673ab7; /* Finance tag color */
-    color: white;
+  background-color: #673ab7; /* Finance tag color */
+  color: white;
 }
 
-/* Filter Section Styles */
-.filters {
-    margin-bottom: 1.5rem;
-    text-align: left;
+/* Pagination */
+.pagination {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
-.filters label {
-    margin-right: 1rem;
+.pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background: #00274c;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.pagination button.active {
+  font-weight: bold;
+  background: #007bff;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  color: #ffcb05;
+}
+
+/* Responsive Layout Adjustments */
+@media (max-width: 768px) {
+  /* Two-column layout becomes single-column */
+  .two-column-layout {
+    flex-direction: column;
+    gap: 1rem; /* Reduced gap */
+  }
+
+  #filters {
+    width: 100%; /* Expand filter section to full width */
+    margin-bottom: 1rem; /* Add spacing below filters */
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .main-wrapper {
+    flex: none;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Reduce card size and adjust spacing */
+  .pub-card,
+  .proj-card {
+    flex-direction: column; /* Stack columns vertically */
+    width: 100%; /* Full width for small screens */
+    padding: 1rem; /* Reduce padding */
+  }
+
+  .pub-card .left-column,
+  .proj-card .left-column {
+    margin-right: 0; /* Remove horizontal margin */
+    padding-left: 0;
+    align-items: center; /* Center-align content */
+  }
+
+  .pub-card .left-column .thumbnail img,
+  .proj-card .left-column .thumbnail img {
+    width: 100%; /* Scale images to fit card */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 150px; /* Limit image size */
+  }
+
+  .pub-card .right-column h2,
+  .proj-card .right-column h2 {
+    font-size: 1.2rem; /* Slightly smaller heading */
+  }
+
+  .pub-card .right-column .authors,
+  .proj-card .right-column .details-text {
+    font-size: 0.9rem; /* Adjust text size */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for very narrow screens */
+  .filter-option span {
+    font-size: 12px; /* Smaller font for filters */
+  }
+
+  .pub-card .right-column h2,
+  .proj-card .right-column h2 {
     font-size: 1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+  }
+
+  .tag-nlp,
+  .tag-cl,
+  .tag-mathed,
+  .tag-ai,
+  .tag-ml,
+  .tag-cv,
+  .tag-webdev {
+    font-size: 10px; /* Adjust tag font size */
+    padding: 0.1rem 0.3rem; /* Reduce padding */
+  }
+}
+/* Responsive Filters Section */
+@media (max-width: 768px) {
+  #filters {
+    display: none; /* Hidden by default on small screens */
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  #filters.visible {
+    display: block; /* Show when toggled */
+  }
+
+  /* Toggle Button Styling */
+  #filters-toggle-btn {
+    display: block; /* Visible only on small screens */
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #f2f4f8;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  #filters-toggle-btn:hover {
+    color: #00274c;
+  }
 }
 
-.filters input[type="checkbox"] {
-    transform: scale(1.1);
+@media (min-width: 769px) {
+  #filters-toggle-btn {
+    display: none; /* Hide button on larger screens */
+  }
 }

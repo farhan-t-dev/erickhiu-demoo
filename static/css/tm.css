@@ -19,28 +19,30 @@ h3 {
     margin-bottom: 20px;
 }
 
-/* Tape Styling */
+/* Tape Container Responsiveness */
 #tapeContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px; /* Space between cells */
-    margin: 20px auto;
+    justify-content: center; /* Center align tape on all devices */
+    flex-wrap: nowrap; /* Keep cells in a single row by default */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    margin: 10px auto;
+    padding: 5px;
+    max-width: 100%; /* Prevent container overflow */
+    gap: 2px; /* Consistent spacing between cells */
 }
 
+/* Tape Cells - Maintain Original Look */
 .tape-cell {
     display: inline-block;
-    padding: 15px;
-    border: 2px solid #ccc;
-    margin: 2px;
-    text-align: center;
-    font-size: 30px; /* Increase font size to better fit emojis */
-    width: 50px; /* Increase cell size to match text size */
+    width: 50px;
     height: 50px;
-    line-height: 50px; /* Align the emoji/text vertically */
+    font-size: 30px;
+    line-height: 50px;
+    border: 2px solid #ccc;
+    text-align: center;
     border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    cursor: pointer;
+    margin: 2px; /* Remove gaps from inline-block */
+    box-sizing: border-box; /* Ensure padding/border do not increase size */
 }
 
 .tape-cell:hover {
@@ -49,34 +51,34 @@ h3 {
 }
 
 /* Button Styling */
-button {
-    font-size: 16px;
+.button-container {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    align-items: center;    /* Ensure all buttons are vertically aligned */
+    gap: 10px;              /* Space between buttons */
+    margin-top: 20px;       /* Optional: Add spacing above the buttons */
+}
+
+.button-container button {
     padding: 10px 20px;
-    margin-top: 20px;
+    font-size: 14px;
     border: none;
     border-radius: 5px;
-    background-color: #00274c;
-    color: white;
+    background-color: #00274c; /* Use the same button background color */
+    color: white;           /* Text color */
     cursor: pointer;
+    margin-top: 20px;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
+.button-container button:hover {
     background-color: #ffcb05;
     color: #00274c;
-    transform: scale(1.05); /* Slight zoom effect */
+    transform: scale(1.05);/* Slight zoom effect */
 }
 
-button:active {
+.button-container button:active {
     transform: scale(0.95); /* Button press effect */
-}
-
-/* Center Buttons */
-#startSimulation,
-#nextStep,
-#restartSimulation {
-    display: inline-block;
-    margin: 10px auto;
 }
 
 /* State Diagram Styling */
@@ -91,6 +93,13 @@ button:active {
 #stateDiagram svg {
     display: block;
     margin: 0 auto;
+}
+
+/* Responsive State Diagram */
+#stateDiagram {
+    max-width: 100%; /* Make diagram fit within the screen width */
+    overflow-x: auto; /* Add horizontal scrolling if diagram exceeds screen width */
+    margin: 20px auto; /* Center it and add some spacing */
 }
 
 /* State Node Styling */
@@ -121,4 +130,22 @@ button:active {
     fill: none;
     stroke: #666;
     stroke-width: 2px;
+}
+
+@media (max-width: 600px) {
+    #tapeContainer {
+        flex-wrap: wrap; /* Ensure cells wrap on small screens */
+        justify-content: center; /* Center cells */
+    }
+
+    .tape-cell {
+        width: 40px; /* Smaller width for better fit */
+        height: 40px;
+        font-size: 24px; /* Slightly smaller text */
+        line-height: 40px; /* Adjust line height */
+    }
+
+    #stateDiagram {
+        font-size: 12px; /* Reduce text size if the diagram contains text */
+    }
 }
