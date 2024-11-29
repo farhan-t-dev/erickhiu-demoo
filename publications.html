@@ -1,346 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Publications - Eric Khiu</title>
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/header-footer.css">
-    <link rel="stylesheet" href="static/css/pnp.css">
-</head>
-<body>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="static/css/header-footer.css" />
+    <link rel="stylesheet" href="static/css/pnp.css" />
+  </head>
+  <body>
     <!-- Include Header -->
     <div id="header-placeholder"></div>
 
     <!-- Main Content -->
     <main>
-        <div class="two-column-layout">
-            <!-- Left Column: Filter Section -->
-            <div class="side-wrapper">
-                <button id="filters-toggle-btn">Show Filters</button>  
-                <section id="filters">
-                    <div class="filters">
-                        <h3>Filter Publications</h3>
-                        <label style="margin-bottom: 15px;"><input type="checkbox" id="select-all" checked> Select All</label>
-                        <label><input type="checkbox" id="nlp" checked> Natural Language Processing</label>
-                        <label><input type="checkbox" id="cl" checked> Computational Linguistics</label>
-                        <label><input type="checkbox" id="math-ed" checked> Mathematics Education</label>
-                    </div>
-                </section>
+      <div class="two-column-layout">
+        <!-- Left Column: Filter Section -->
+        <div class="side-wrapper">
+          <button id="filters-toggle-btn">Show Filters</button>
+          <section id="filters">
+            <div class="filters">
+              <h3>Filter Publications</h3>
+              <label class="filter-option">
+                <input type="checkbox" id="select-all" checked />
+                <span>Select All</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="nlp" checked />
+                <span>Natural Language Processing</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="cl" checked />
+                <span>Computational Linguistics</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="math-ed" checked />
+                <span>Mathematics Education</span>
+              </label>
             </div>
-
-            <!-- Right Column: Publication Cards -->
-            <div class="main-wrapper">
-                <section class="section-page">
-                    <h1>Publications</h1>
-                    <div class="square-grid" id="publication-container">
-                        <!-- Dynamic publication cards will be inserted here by JS -->
-                    </div>
-                    <div id="pagination-controls"></div> <!-- Pagination Controls -->
-                </section>
-            </div>
+          </section>
         </div>
+
+        <!-- Right Column: Publication Cards -->
+        <div class="main-wrapper">
+          <section class="section-page">
+            <h1>Publications</h1>
+            <div class="square-grid" id="publication-container">
+              <!-- Dynamic publication cards will be inserted here by JS -->
+            </div>
+            <div id="pagination-controls"></div>
+            <!-- Pagination Controls -->
+          </section>
+        </div>
+      </div>
     </main>
 
     <!-- Footer -->
     <div id="footer-placeholder"></div>
 
     <script>
-        // Function to dynamically load templates
-        async function loadTemplate(id, path) {
-            const response = await fetch(path);
-            const text = await response.text();
-            document.getElementById(id).innerHTML = text;
-        }
+      // Function to dynamically load templates
+      async function loadTemplate(id, path) {
+        const response = await fetch(path);
+        const text = await response.text();
+        document.getElementById(id).innerHTML = text;
+      }
 
-        // Load header and footer templates
-        loadTemplate('header-placeholder', 'templates/header.html');
-        loadTemplate('footer-placeholder', 'templates/footer.html');
+      // Load header and footer templates
+      loadTemplate("header-placeholder", "templates/header.html");
+      loadTemplate("footer-placeholder", "templates/footer.html");
 
-        // Fetch publications data and render cards
-        fetch('data/publications.json')
-            .then(response => response.json())
-            .then(data => {
-                renderPublications(data.publications);
+      // Fetch publications data and render cards
+      fetch("data/publications.json")
+        .then((response) => response.json())
+        .then((data) => {
+          renderPublications(data.publications);
 
-                // Add event listeners for filtering
-                document.getElementById('nlp').addEventListener('change', () => renderPublications(data.publications));
-                document.getElementById('cl').addEventListener('change', () => renderPublications(data.publications));
-                document.getElementById('math-ed').addEventListener('change', () => renderPublications(data.publications));
-                document.getElementById('select-all').addEventListener('change', () => {
-                    const checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#select-all)');
-                    checkboxes.forEach(checkbox => checkbox.checked = document.getElementById('select-all').checked);
-                    renderPublications(data.publications);
-                });
-            })
-            .catch(error => console.error('Error loading publications:', error));
+          // Add event listeners for filtering
+          const checkboxes = document.querySelectorAll(
+            'input[type="checkbox"]:not(#select-all)'
+          );
+          const selectAll = document.getElementById("select-all");
 
-        // Function to render publications
-        function renderPublications(publications) {
-            const container = document.getElementById('publication-container');
-            container.innerHTML = ''; // Clear previous content
-
-            const selectedTags = getSelectedTags();
-
-            // Filter and sort publications
-            const filteredPublications = publications
-                .filter(pub => selectedTags.some(tag => pub.tags.includes(tag))) // Filter by selected tags
-                .sort((a, b) => b.pub_id - a.pub_id); // Sort by pub_id in descending order
-
-            filteredPublications.forEach(publication => {
-                const pubCard = createPubCard(publication);
-                container.appendChild(pubCard);
+          checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+              // Uncheck "Select All" if any individual checkbox is unchecked
+              if (!checkbox.checked) {
+                selectAll.checked = false;
+              }
+              // Check "Select All" if all checkboxes are checked
+              else if ([...checkboxes].every((cb) => cb.checked)) {
+                selectAll.checked = true;
+              }
+              renderPublications(data.publications);
             });
+          });
+
+          selectAll.addEventListener("change", () => {
+            checkboxes.forEach(
+              (checkbox) => (checkbox.checked = selectAll.checked)
+            );
+            renderPublications(data.publications);
+          });
+        })
+        .catch((error) => console.error("Error loading publications:", error));
+
+      // Function to render publications
+      function renderPublications(publications) {
+        const container = document.getElementById("publication-container");
+        container.innerHTML = ""; // Clear previous content
+
+        const selectedTags = getSelectedTags();
+
+        // Filter and sort publications
+        const filteredPublications = publications
+          .filter((pub) => selectedTags.some((tag) => pub.tags.includes(tag))) // Filter by selected tags
+          .sort((a, b) => b.pub_id - a.pub_id); // Sort by pub_id in descending order
+
+        filteredPublications.forEach((publication) => {
+          const pubCard = createPubCard(publication);
+          container.appendChild(pubCard);
+        });
+      }
+
+      // Function to get selected tags
+      function getSelectedTags() {
+        const tags = [];
+        if (document.getElementById("nlp").checked) tags.push("NLP");
+        if (document.getElementById("cl").checked) tags.push("CompLing");
+        if (document.getElementById("math-ed").checked) tags.push("MathEd");
+        return tags;
+      }
+
+      // Function to create a single pub-card
+      function createPubCard(publication) {
+        const card = document.createElement("div");
+        card.classList.add("pub-card"); // Use pub-card class
+
+        card.innerHTML = `
+  <div class="left-column">
+    <div class="thumbnail">
+      <img src="${publication.thumbnail}" alt="${publication.pub_id}-Thumbnail">
+    </div>
+    ${
+      publication.venue
+        ? `<p><strong>Presented in:</strong> <a href="${publication.venue_link}">${publication.venue}</a></p>`
+        : ""
+    }
+    ${
+      publication.journal
+        ? `<p><strong>Published on:</strong> <a href="${publication.journal_link}">${publication.journal}</a></p>`
+        : ""
+    }
+    <p>${publication.date}</p>
+    <div class="publication-links">
+      ${generateIcons(publication)}
+    </div>
+  </div>
+  <div class="right-column">
+    <h2>
+      <a href="${publication.paper}">${publication.title}</a>
+    </h2>
+    <div class="tags">
+      ${generateTags(publication)}
+    </div>
+    <p class="authors">${getAuthors(publication.authors)}</p>
+    <p class="abstract">${getAbstract(publication.abstract)}</p>
+  </div>
+`;
+
+        return card;
+      }
+
+      // Function to generate tags (NLP, CompLing, MathEd)
+      function generateTags(publication) {
+        const tagClasses = {
+          NLP: "tag-nlp",
+          CompLing: "tag-cl",
+          MathEd: "tag-mathed",
+        };
+
+        const tagFullNames = {
+          NLP: "Natural Language Processing",
+          CompLing: "Computational Linguistics",
+          MathEd: "Mathematics Education",
+        };
+
+        return publication.tags
+          .map(
+            (tag) =>
+              `<span class="${tagClasses[tag]}" title="${tagFullNames[tag]}">${tag}</span>`
+          )
+          .join(" ");
+      }
+
+      // Function to generate clickable icons for paper, poster, slides, presentation
+      function generateIcons(publication) {
+        const icons = [];
+
+        if (publication.paper) {
+          icons.push(`<a href="${publication.paper}" class="link-icon">
+                        <img src="static/publications/paper-icon.png" alt="Paper" title="Paper">
+                    </a>`);
+        }
+        if (publication.poster) {
+          icons.push(`<a href="${publication.poster}" class="link-icon">
+                        <img src="static/publications/poster-icon.png" alt="Poster" title="Poster">
+                    </a>`);
+        }
+        if (publication.slides) {
+          icons.push(`<a href="${publication.slides}" class="link-icon">
+                        <img src="static/publications/slides-icon.png" alt="Slides" title="Slides">
+                    </a>`);
+        }
+        if (publication.presentation) {
+          icons.push(`<a href="${publication.presentation}" class="link-icon">
+                        <img src="static/publications/presentation-icon.png" alt="Presentation" title="Presentation">
+                    </a>`);
         }
 
-        // Function to get selected tags
-        function getSelectedTags() {
-            const tags = [];
-            if (document.getElementById('nlp').checked) tags.push('NLP');
-            if (document.getElementById('cl').checked) tags.push('CompLing');
-            if (document.getElementById('math-ed').checked) tags.push('MathEd');
-            return tags;
+        return icons.join(" "); // Return a single string with all icons
+      }
+
+      // Function to return authors as a formatted string
+      function getAuthors(authors) {
+        return authors
+          .map((author) =>
+            author === "Eric Khiu"
+              ? `<strong class="bold-author">${author}</strong>`
+              : author
+          )
+          .join(", ");
+      }
+
+      // Function to truncate the abstract and add a full version
+      function getAbstract(abstract) {
+        const maxLength = 350;
+
+        if (abstract.length > maxLength) {
+          return `
+            <p class="abstract-text">${abstract.substring(0, maxLength)}...</p>
+            <div class="full-abstract" style="display: none;">
+                <p>${abstract}</p>
+            </div>
+        `;
         }
+        return `<p class="abstract-text">${abstract}</p>`;
+      }
 
-        // Function to create a single pub-card
-        function createPubCard(publication) {
-            const card = document.createElement('div');
-            card.classList.add('pub-card'); // Use pub-card class
+      // Filter toggle button
+      const toggleButton = document.getElementById("filters-toggle-btn");
+      const filters = document.getElementById("filters");
 
-            // Dynamically generate HTML with conditional rendering for venue and journal
-            card.innerHTML = `
-                <div class="left-column">
-                    <div class="thumbnail">
-                        <img src="${publication.thumbnail}" alt="${publication.pub_id}-Thumbnail">
-                    </div>
+      toggleButton.addEventListener("click", () => {
+        filters.classList.toggle("visible");
+        toggleButton.textContent = filters.classList.contains("visible")
+          ? "Hide Filters"
+          : "Show Filters";
+      });
+      // Variables for pagination
+      let currentPage = 1;
+      const publicationsPerPage = 5; // Adjust this value as needed
 
-                    <!-- Conditional Rendering for Venue -->
-                    ${publication.venue ? `<p><strong>Presented in:</strong> <a href="${publication.venue_link}">${publication.venue}</a></p>` : ''}
+      // Function to render publications with pagination
+      function renderPublications(publications) {
+        const container = document.getElementById("publication-container");
+        container.innerHTML = ""; // Clear previous content
 
-                    <!-- Conditional Rendering for Journal -->
-                    ${publication.journal ? `<p><strong>Published on:</strong> <a href="${publication.journal_link}">${publication.journal}</a></p>` : ''}
-                    
-                    <p>${publication.date}</p>
-                    <div class="publication-links">
-                        ${generateIcons(publication)}
-                    </div>
-                </div>
+        const selectedTags = getSelectedTags();
 
-                <div class="right-column">
-                    <h2>
-                        <a href="${publication.paper}">${publication.title}</a>
-                    </h2>
-                    <div class="tags">
-                        ${generateTags(publication)}
-                    </div>
-                    <p class="authors">${getAuthors(publication.authors)}</p>
-                    <p class="abstract">${getAbstract(publication.abstract)}</p>
-                </div>
-            `;
+        // Filter and sort publications
+        const filteredPublications = publications
+          .filter((pub) => selectedTags.some((tag) => pub.tags.includes(tag))) // Filter by selected tags
+          .sort((a, b) => b.pub_id - a.pub_id); // Sort by pub_id in descending order
 
-            // Add click event to toggle abstract
-            card.addEventListener('click', function() {
-                const abstractText = card.querySelector('.abstract-text');
-                const fullAbstract = card.querySelector('.full-abstract');
-                const isTruncated = abstractText.style.display !== 'none';
+        // Paginate publications
+        const totalPages = Math.ceil(
+          filteredPublications.length / publicationsPerPage
+        );
+        const startIndex = (currentPage - 1) * publicationsPerPage;
+        const paginatedPublications = filteredPublications.slice(
+          startIndex,
+          startIndex + publicationsPerPage
+        );
 
-                // Toggle visibility of the abstract
-                if (isTruncated) {
-                    abstractText.style.display = 'none'; // Hide truncated
-                    fullAbstract.style.display = 'block'; // Show full
-                } else {
-                    abstractText.style.display = 'block'; // Show truncated
-                    fullAbstract.style.display = 'none'; // Hide full
-                }
-            });
-
-            return card;
-        }
-
-        // Function to generate tags (NLP, CompLing, MathEd)
-        function generateTags(publication) {
-            const tagClasses = {
-                'NLP': 'tag-nlp',
-                'CompLing': 'tag-cl',
-                'MathEd': 'tag-mathed'
-            };
-
-            const tagFullNames = {
-                'NLP': 'Natural Language Processing',
-                'CompLing': 'Computational Linguistics',
-                'MathEd': 'Mathematics Education'
-            };
-
-            return publication.tags
-            .map(
-                tag =>
-                    `<span class="${tagClasses[tag]}" title="${tagFullNames[tag]}">${tag}</span>`
-            )
-            .join(' ');
-        }
-
-        // Function to generate clickable icons for paper, poster, slides, presentation
-        function generateIcons(publication) {
-            const icons = [];
-
-            if (publication.paper) {
-                icons.push(`<a href="${publication.paper}" class="link-icon"><img src="static/publications/paper-icon.png" alt="Paper" title="Paper"></a>`);
-            }
-            if (publication.poster) {
-                icons.push(`<a href="${publication.poster}" class="link-icon"><img src="static/publications/poster-icon.png" alt="Poster" title="Poster"></a>`);
-            }
-            if (publication.slides) {
-                icons.push(`<a href="${publication.slides}" class="link-icon"><img src="static/publications/slides-icon.png" alt="Slides" title="Slides"></a>`);
-            }
-            if (publication.presentation) {
-                icons.push(`<a href="${publication.presentation}" class="link-icon"><img src="static/publications/presentation-icon.png" alt="Presentation" title="Presentation"></a>`);
-            }
-
-            return icons.join(' ');
-        }
-
-        // Function to return authors as a formatted string
-        function getAuthors(authors) {
-            return authors.map(author => {
-                return author === 'Eric Khiu' ? `<strong class="bold-author">${author}</strong>` : author;
-            }).join(', ');
-        }
-
-        // Function to truncate the abstract and add a full version
-        function getAbstract(abstract) {
-            const maxLength = 350; // Max length before truncation
-            if (abstract.length > maxLength) {
-                return `
-                    <p class="abstract-text">${abstract.substring(0, maxLength)} ...</p>
-                    <div class="full-abstract" style="display: none;">
-                        <p>${abstract}</p>
-                    </div>
-                `;
-            }
-            return `<p class="abstract-text">${abstract}</p>`;
-        }
-
-<<<<<<< Updated upstream
-    </script>
-
-=======
-        // Filter toggle button
-        const toggleButton = document.getElementById("filters-toggle-btn");
-        const filters = document.getElementById("filters");
-
-        toggleButton.addEventListener("click", () => {
-          filters.classList.toggle("visible");
-          toggleButton.textContent = filters.classList.contains("visible")
-            ? "Hide Filters"
-            : "Show Filters";
+        // Render filtered publications for the current page
+        paginatedPublications.forEach((publication) => {
+          const pubCard = createPubCard(publication);
+          container.appendChild(pubCard);
         });
 
-        // Variables for pagination
-let currentPage = 1;
-const publicationsPerPage = 5; // Adjust this value as needed
+        // Render pagination controls
+        renderPaginationControls(totalPages);
+      }
 
-// Function to render publications with pagination
-function renderPublications(publications) {
-    const container = document.getElementById('publication-container');
-    container.innerHTML = ''; // Clear previous content
-    
-    const selectedTags = getSelectedTags();
-    
-    // Filter and sort publications
-    const filteredPublications = publications
-        .filter(pub => selectedTags.some(tag => pub.tags.includes(tag))) // Filter by selected tags
-        .sort((a, b) => b.pub_id - a.pub_id); // Sort by pub_id in descending order
+      // Function to render pagination controls
+      function renderPaginationControls(totalPages) {
+        const paginationControls = document.getElementById(
+          "pagination-controls"
+        );
+        paginationControls.innerHTML = ""; // Clear previous controls
 
-    // Paginate publications
-    const totalPages = Math.ceil(filteredPublications.length / publicationsPerPage);
-    const startIndex = (currentPage - 1) * publicationsPerPage;
-    const paginatedPublications = filteredPublications.slice(startIndex, startIndex + publicationsPerPage);
-
-    // Render filtered publications for the current page
-    paginatedPublications.forEach(publication => {
-        const pubCard = createPubCard(publication);
-        container.appendChild(pubCard);
-    });
-
-    // Render pagination controls
-    renderPaginationControls(totalPages);
-}
-
-// Function to render pagination controls
-function renderPaginationControls(totalPages) {
-    const paginationControls = document.getElementById('pagination-controls');
-    paginationControls.innerHTML = ''; // Clear previous controls
-    
-    // Add "Previous" button
-    if (currentPage > 1) {
-        const prevButton = document.createElement('button');
-        prevButton.textContent = 'Previous';
-        prevButton.addEventListener('click', () => {
+        // Add "Previous" button
+        if (currentPage > 1) {
+          const prevButton = document.createElement("button");
+          prevButton.textContent = "Previous";
+          prevButton.addEventListener("click", () => {
             currentPage--;
             fetchPublications(); // Re-render publications when page changes
-        });
-        paginationControls.appendChild(prevButton);
-    }
+          });
+          paginationControls.appendChild(prevButton);
+        }
 
-    // Add current page number and total pages
-    const pageInfo = document.createElement('span');
-    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-    paginationControls.appendChild(pageInfo);
+        // Add current page number and total pages
+        const pageInfo = document.createElement("span");
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        paginationControls.appendChild(pageInfo);
 
-    // Add "Next" button
-    if (currentPage < totalPages) {
-        const nextButton = document.createElement('button');
-        nextButton.textContent = 'Next';
-        nextButton.addEventListener('click', () => {
+        // Add "Next" button
+        if (currentPage < totalPages) {
+          const nextButton = document.createElement("button");
+          nextButton.textContent = "Next";
+          nextButton.addEventListener("click", () => {
             currentPage++;
             fetchPublications(); // Re-render publications when page changes
-        });
-        paginationControls.appendChild(nextButton);
-    }
-}
+          });
+          paginationControls.appendChild(nextButton);
+        }
+      }
 
-// Fetch publications data and render them with pagination
-function fetchPublications() {
-    fetch('data/publications.json')
-        .then(response => response.json())
-        .then(data => {
+      // Fetch publications data and render them with pagination
+      function fetchPublications() {
+        fetch("data/publications.json")
+          .then((response) => response.json())
+          .then((data) => {
             renderPublications(data.publications);
-    
+
             // Add event listeners for filtering
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#select-all)');
-            const selectAll = document.getElementById('select-all');
-    
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    // Uncheck "Select All" if any individual checkbox is unchecked
-                    if (!checkbox.checked) {
-                        selectAll.checked = false;
-                    }
-                    // Check "Select All" if all checkboxes are checked
-                    else if ([...checkboxes].every(cb => cb.checked)) {
-                        selectAll.checked = true;
-                    }
-                    currentPage = 1; // Reset to first page when filters change
-                    renderPublications(data.publications);
-                });
-            });
-    
-            selectAll.addEventListener('change', () => {
-                checkboxes.forEach(checkbox => checkbox.checked = selectAll.checked);
+            const checkboxes = document.querySelectorAll(
+              'input[type="checkbox"]:not(#select-all)'
+            );
+            const selectAll = document.getElementById("select-all");
+
+            checkboxes.forEach((checkbox) => {
+              checkbox.addEventListener("change", () => {
+                // Uncheck "Select All" if any individual checkbox is unchecked
+                if (!checkbox.checked) {
+                  selectAll.checked = false;
+                }
+                // Check "Select All" if all checkboxes are checked
+                else if ([...checkboxes].every((cb) => cb.checked)) {
+                  selectAll.checked = true;
+                }
                 currentPage = 1; // Reset to first page when filters change
                 renderPublications(data.publications);
+              });
             });
-        })
-        .catch(error => console.error('Error loading publications:', error));
-}
 
-// Initial call to fetch publications
-fetchPublications();
+            selectAll.addEventListener("change", () => {
+              checkboxes.forEach(
+                (checkbox) => (checkbox.checked = selectAll.checked)
+              );
+              currentPage = 1; // Reset to first page when filters change
+              renderPublications(data.publications);
+            });
+          })
+          .catch((error) =>
+            console.error("Error loading publications:", error)
+          );
+      }
 
+      // Initial call to fetch publications
+      fetchPublications();
     </script>
-    
-        <!-- nav bar's menu toggle script -->
-        <script src="javascript/menu-toggle.js"></script>
->>>>>>> Stashed changes
-</body>
+
+    <!-- nav bar's menu toggle script -->
+    <script src="javascript/menu-toggle.js"></script>
+  </body>
 </html>

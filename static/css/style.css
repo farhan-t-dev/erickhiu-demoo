@@ -43,7 +43,6 @@ section {
     padding: 3rem 1.5rem;
     text-align: center;
     max-width: 900px;
-    margin: 3rem auto;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -178,9 +177,6 @@ button + button {
     color: #333;
     line-height: 1.6;
     margin: 0;
-<<<<<<< Updated upstream
-}
-=======
 }
   
 /* Responsive Typography and Layout */
@@ -279,4 +275,3 @@ button + button {
         font-size: 0.9rem;
     }
 }
->>>>>>> Stashed changes

@@ -1,59 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects - Eric Khiu</title>
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/header-footer.css">
-    <link rel="stylesheet" href="static/css/pnp.css">
-</head>
-<body>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="static/css/header-footer.css" />
+    <link rel="stylesheet" href="static/css/pnp.css" />
+  </head>
+  <body>
     <!-- Include Header -->
     <div id="header-placeholder"></div>
 
     <!-- Main Content -->
     <main>
-        <div class="two-column-layout">
-            <!-- Left Column: Filter Section -->
-            <div class="side-wrapper">
-                <section id="filters">
-                    <div class="filters">
-                        <h3>Filter Projects</h3>
-                        <label style="margin-bottom: 15px;"><input type="checkbox" id="select-all" checked> Select All</label>
-                        <label><input type="checkbox" id="ai" checked> Artificial Intelligence</label>
-                        <label><input type="checkbox" id="ml" checked> Machine Learning</label>
-                        <label><input type="checkbox" id="nlp" checked> Natural Language Processing</label>
-                        <label><input type="checkbox" id="cv" checked> Computer Vision</label>
-                        <label><input type="checkbox" id="rl" checked> Reinforcement Learning</label>
-                        <label><input type="checkbox" id="webdev" checked> Web Development</label>
-                        <label><input type="checkbox" id="db" checked> Databases</label>
-                        <label><input type="checkbox" id="dsa" checked> Data Structures & Algorithms</label>
-                        <label><input type="checkbox" id="comp-ling" checked> Computational Linguistics</label>
-                        <label><input type="checkbox" id="finance" checked> Finance</label>
-                    </div>
-                </section>
+      <div class="two-column-layout">
+        <!-- Left Column: Filter Section -->
+        <div class="side-wrapper">
+          <button id="filters-toggle-btn">Show Filters</button>
+          <section id="filters">
+            <div class="filters">
+              <h3>Filter Projects</h3>
+              <label class="filter-option">
+                <input type="checkbox" id="select-all" checked />
+                <span>Select All</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="ai" checked />
+                <span>Artificial Intelligence</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="ml" checked />
+                <span>Machine Learning</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="nlp" checked />
+                <span>Natural Language Processing</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="cv" checked />
+                <span>Computer Vision</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="rl" checked />
+                <span>Reinforcement Learning</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="webdev" checked />
+                <span>Web Development</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="db" checked />
+                <span>Databases</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="dsa" checked />
+                <span>Data Structures & Algorithms</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="comp-ling" checked />
+                <span>Computational Linguistics</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" id="finance" checked />
+                <span>Finance</span>
+              </label>
             </div>
+          </section>
+        </div>
 
-            <!-- Right Column: Project Cards -->
-            <div class="main-wrapper">
-                <section class="section-page">
-                    <h1>Projects</h1>
-                    <div class="square-grid" id="project-container">
-                        <!-- Dynamic project cards will be inserted here by JS -->
-                    </div>
-                </section>
+        <!-- Right Column: Project Cards -->
+        <div class="main-wrapper">
+          <section class="section-page">
+            <h1>Projects</h1>
+            <div class="square-grid" id="project-container">
+              <!-- Dynamic project cards will be inserted here by JS -->
             </div>
-<<<<<<< Updated upstream
-=======
 
             <section class="pagination">
               <!-- Pagination buttons will be dynamically inserted here -->
               <div id="pagination-container"></div>
             </section>
           </section>
->>>>>>> Stashed changes
         </div>
+      </div>
     </main>
 
     <!-- Footer -->
@@ -62,175 +92,7 @@
     <script src="javascript/pagination.js"></script>
 
     <script>
-<<<<<<< Updated upstream
-        // Function to dynamically load templates
-        async function loadTemplate(id, path) {
-            const response = await fetch(path);
-            const text = await response.text();
-            document.getElementById(id).innerHTML = text;
-        }
-    
-        // Load header and footer templates
-        loadTemplate('header-placeholder', 'templates/header.html');
-        loadTemplate('footer-placeholder', 'templates/footer.html');
-    
-        // Fetch projects data and render cards
-        fetch('data/projects.json')
-            .then(response => response.json())
-            .then(data => {
-                renderProjects(data.projects);
-    
-                // Add event listeners for filtering
-                document.getElementById('ai').addEventListener('change', () => renderProjects(data.projects));
-                document.getElementById('ml').addEventListener('change', () => renderProjects(data.projects));
-                document.getElementById('nlp').addEventListener('change', () => renderProjects(data.projects));
-                document.getElementById('cv').addEventListener('change', () => renderProjects(data.projects));
-                document.getElementById('rl').addEventListener('change', () => renderProjects(data.projects));
-                document.getElementById('webdev').addEventListener('change', () => renderProjects(data.projects));
-                document.getElementById('db').addEventListener('change', () => renderProjects(data.projects));
-                document.getElementById('dsa').addEventListener('change', () => renderProjects(data.projects));
-                document.getElementById('cl').addEventListener('change', () => renderProjects(data.projects));
-                document.getElementById('finance').addEventListener('change', () => renderProjects(data.projects));
-                document.getElementById('select-all').addEventListener('change', () => {
-                    const checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#select-all)');
-                    checkboxes.forEach(checkbox => checkbox.checked = document.getElementById('select-all').checked);
-                    renderProjects(data.projects);
-                });
-            })
-            .catch(error => console.error('Error loading projects:', error));
-
-            // Add event listeners for all the individual checkboxes to update "Select All"
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#select-all)');
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
-                    document.getElementById('select-all').checked = allChecked;
-                    renderProjects(data.projects);
-                });
-            });
-    
-        // Function to render projects
-        function renderProjects(projects) {
-            const container = document.getElementById('project-container');
-            container.innerHTML = ''; // Clear previous content
-    
-            const selectedTags = getSelectedTags();
-    
-            // Filter and sort projects
-            const filteredProjects = projects
-                .filter(proj => selectedTags.some(tag => proj.tags.includes(tag))) // Filter by selected tags
-                .sort((a, b) => b.pub_id - a.pub_id); // Sort by pub_id in descending order
-            
-            filteredProjects.forEach(project => {
-                const projCard = createProjCard(project);
-                container.appendChild(projCard);
-            });
-        }
-    
-        // Function to get selected tags
-        function getSelectedTags() {
-            const tags = [];
-            if (document.getElementById('ai').checked) tags.push('AI');
-            if (document.getElementById('ml').checked) tags.push('ML');
-            if (document.getElementById('nlp').checked) tags.push('NLP');
-            if (document.getElementById('cv').checked) tags.push('CV');
-            if (document.getElementById('rl').checked) tags.push('RL');
-            if (document.getElementById('webdev').checked) tags.push('WebDev');
-            if (document.getElementById('db').checked) tags.push('DB');
-            if (document.getElementById('dsa').checked) tags.push('DSA');
-            if (document.getElementById('comp-ling').checked) tags.push('CompLing');
-            if (document.getElementById('finance').checked) tags.push('Finance');
-            return tags;
-        }
-
-        // Function to create a single project card
-        function createProjCard(project) {
-            const card = document.createElement('div');
-            card.classList.add('proj-card');
-            
-            // Only add a click event if the project has a valid link
-            if (project.link) {
-                card.addEventListener('click', () => {
-                    window.open(project.link, '_blank');
-                });
-            }
-
-            card.innerHTML = `
-                <div class="left-column">
-                    <div class="thumbnail">
-                        <img src="${project.thumbnail}" alt="${project.pub_id}-Thumbnail">
-                    </div>
-                    <div class="keywords">
-                        <strong>Keywords:</strong> ${project.keywords.join(', ')}
-                    </div>
-                    <p>${project.date}</p>
-                    <div class="programming-languages">
-                        ${project.languages
-                            .map(
-                                lang => `<img src="static/images/skills/programming-languages/${lang.toLowerCase()}-icon.png" alt="${lang}" title="${lang}">`
-                            )
-                            .join('')}
-                    </div>
-                </div>
-
-                <div class="right-column">
-                    <h2><a href="${project.link}" target="_blank">${project.title}</a></h2>
-                    <div class="tags">
-                        ${generateTags(project)}
-                    </div>
-                    <div class="details">
-                        ${getAbstract(project.details)}
-                    </div>
-                </div>
-            `;
-            
-            return card;
-        }
-        
-        // Function to generate tags
-        function generateTags(project) {
-            const tagClasses = {
-                'AI': 'tag-ai',
-                'ML': 'tag-ml',
-                'NLP': 'tag-nlp',
-                'CV': 'tag-cv',
-                'RL': 'tag-rl',
-                'WebDev': 'tag-webdev',
-                'DB': 'tag-db',
-                'DSA': 'tag-dsa',
-                'CompLing': 'tag-cl',
-                'Finance': 'tag-finance'
-            };
-            
-            const tagFullNames = {
-                'AI': 'Artificial Intelligence',
-                'ML': 'Machine Learning',
-                'NLP': 'Natural Language Processing',
-                'CV': 'Computer Vision',
-                'RL': 'Reinforcement Learning',
-                'WebDev': 'Web Development',
-                'DB': 'Databases',
-                'DSA': 'Data Structures and Algorithms',
-                'CompLing': 'Computational Linguistics',
-                'Finance': 'Finance'
-            };
-        
-            return project.tags
-            .map(
-                tag =>
-                    `<span class="${tagClasses[tag]}" title="${tagFullNames[tag]}">${tag}</span>`
-            )
-            .join(' ');
-        }
-        
-        // Function to display full details without truncation
-        function getAbstract(details) {
-            return `<p class="details-text">${details}</p>`;
-        }
-    </script>
-    
-</body>
-=======
+     
       // Function to dynamically load templates
       async function loadTemplate(id, path) {
         try {
@@ -444,40 +306,10 @@
             : "Show Filters";
         });
       });
+    
 
-      function updateActiveFilters() {
-        const checkboxes = document.querySelectorAll(
-          'input[type="checkbox"]:not(#select-all)'
-        );
-        const activeFilters = Array.from(checkboxes).filter(
-          (checkbox) => checkbox.checked
-        );
-        const activeFiltersCount = activeFilters.length;
-        const activeFiltersDisplay = document.getElementById("active-filters");
-
-        activeFiltersDisplay.textContent = `Filters Applied: ${activeFiltersCount}`;
-
-        // Highlight active filter labels
-        checkboxes.forEach((checkbox) => {
-          const label = checkbox.closest("label");
-          if (label) {
-            label.classList.toggle("active", checkbox.checked);
-          }
-        });
-      }
-
-      // Update active filters whenever a checkbox changes
-      document
-        .querySelectorAll('input[type="checkbox"]')
-        .forEach((checkbox) => {
-          checkbox.addEventListener("change", updateActiveFilters);
-        });
-
-      // Initial call to set active filters on page load
-      updateActiveFilters();
     </script>
     <!-- nav bar's menu toggle script -->
     <script src="javascript/menu-toggle.js"></script>
   </body>
->>>>>>> Stashed changes
 </html>
